@@ -19,6 +19,18 @@
 		C2DBE8DB27CFB2770065FE19 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = C2DBE8DA27CFB2770065FE19 /* Moya */; };
 		C2DBE8DD27CFB2770065FE19 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = C2DBE8DC27CFB2770065FE19 /* ReactiveMoya */; };
 		C2DBE8E027CFB2C10065FE19 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C2DBE8DF27CFB2C10065FE19 /* SnapKit */; };
+		C2DBE8E427CFD1DA0065FE19 /* PokemonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8E227CFD1DA0065FE19 /* PokemonTableViewCell.swift */; };
+		C2DBE8E527CFD1DA0065FE19 /* PokemonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DBE8E327CFD1DA0065FE19 /* PokemonTableViewCell.xib */; };
+		C2DBE8E827CFDB150065FE19 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8E727CFDB150065FE19 /* Network.swift */; };
+		C2DBE8EA27CFE25F0065FE19 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8E927CFE25F0065FE19 /* API.swift */; };
+		C2DBE8EC27CFE27B0065FE19 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8EB27CFE27B0065FE19 /* Endpoint.swift */; };
+		C2DBE8EE27CFE2C40065FE19 /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8ED27CFE2C40065FE19 /* Enviroment.swift */; };
+		C2DBE8F127CFE62D0065FE19 /* PokemonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8F027CFE62D0065FE19 /* PokemonDTO.swift */; };
+		C2DBE8F327CFE6490065FE19 /* TypeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8F227CFE6490065FE19 /* TypeDTO.swift */; };
+		C2DBE8F527CFEA1D0065FE19 /* Sprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8F427CFEA1D0065FE19 /* Sprites.swift */; };
+		C2DBE8F727CFEDCE0065FE19 /* GetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8F627CFEDCE0065FE19 /* GetImage.swift */; };
+		C2DBE8F927CFF2640065FE19 /* TypeURLDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8F827CFF2640065FE19 /* TypeURLDTO.swift */; };
+		C2DBE8FB27CFF2FE0065FE19 /* TypeURLDTO2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8FA27CFF2FE0065FE19 /* TypeURLDTO2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +64,18 @@
 		C2DBE8C627CFB18C0065FE19 /* PokedexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokedexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2DBE8CA27CFB18C0065FE19 /* PokedexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUITests.swift; sourceTree = "<group>"; };
 		C2DBE8CC27CFB18C0065FE19 /* PokedexUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C2DBE8E227CFD1DA0065FE19 /* PokemonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTableViewCell.swift; sourceTree = "<group>"; };
+		C2DBE8E327CFD1DA0065FE19 /* PokemonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonTableViewCell.xib; sourceTree = "<group>"; };
+		C2DBE8E727CFDB150065FE19 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Network.swift; path = ../../../../../Network.swift; sourceTree = "<group>"; };
+		C2DBE8E927CFE25F0065FE19 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C2DBE8EB27CFE27B0065FE19 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		C2DBE8ED27CFE2C40065FE19 /* Enviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
+		C2DBE8F027CFE62D0065FE19 /* PokemonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDTO.swift; sourceTree = "<group>"; };
+		C2DBE8F227CFE6490065FE19 /* TypeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDTO.swift; sourceTree = "<group>"; };
+		C2DBE8F427CFEA1D0065FE19 /* Sprites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sprites.swift; sourceTree = "<group>"; };
+		C2DBE8F627CFEDCE0065FE19 /* GetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImage.swift; sourceTree = "<group>"; };
+		C2DBE8F827CFF2640065FE19 /* TypeURLDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeURLDTO.swift; sourceTree = "<group>"; };
+		C2DBE8FA27CFF2FE0065FE19 /* TypeURLDTO2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeURLDTO2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +129,9 @@
 		C2DBE8A827CFB1750065FE19 /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				C2DBE8EF27CFE60F0065FE19 /* Models */,
+				C2DBE8E627CFDAF20065FE19 /* Network */,
+				C2DBE8E127CFD1BD0065FE19 /* Cells */,
 				C2DBE8A927CFB1750065FE19 /* AppDelegate.swift */,
 				C2DBE8AB27CFB1750065FE19 /* SceneDelegate.swift */,
 				C2DBE8AD27CFB1750065FE19 /* ViewController.swift */,
@@ -131,6 +158,39 @@
 				C2DBE8CC27CFB18C0065FE19 /* PokedexUITestsLaunchTests.swift */,
 			);
 			path = PokedexUITests;
+			sourceTree = "<group>";
+		};
+		C2DBE8E127CFD1BD0065FE19 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C2DBE8E227CFD1DA0065FE19 /* PokemonTableViewCell.swift */,
+				C2DBE8E327CFD1DA0065FE19 /* PokemonTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		C2DBE8E627CFDAF20065FE19 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C2DBE8E727CFDB150065FE19 /* Network.swift */,
+				C2DBE8E927CFE25F0065FE19 /* API.swift */,
+				C2DBE8EB27CFE27B0065FE19 /* Endpoint.swift */,
+				C2DBE8ED27CFE2C40065FE19 /* Enviroment.swift */,
+				C2DBE8F627CFEDCE0065FE19 /* GetImage.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C2DBE8EF27CFE60F0065FE19 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C2DBE8F027CFE62D0065FE19 /* PokemonDTO.swift */,
+				C2DBE8F227CFE6490065FE19 /* TypeDTO.swift */,
+				C2DBE8F427CFEA1D0065FE19 /* Sprites.swift */,
+				C2DBE8F827CFF2640065FE19 /* TypeURLDTO.swift */,
+				C2DBE8FA27CFF2FE0065FE19 /* TypeURLDTO2.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2DBE8B627CFB18B0065FE19 /* LaunchScreen.storyboard in Resources */,
+				C2DBE8E527CFD1DA0065FE19 /* PokemonTableViewCell.xib in Resources */,
 				C2DBE8B327CFB18B0065FE19 /* Assets.xcassets in Resources */,
 				C2DBE8B127CFB1750065FE19 /* Main.storyboard in Resources */,
 			);
@@ -273,8 +334,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2DBE8F127CFE62D0065FE19 /* PokemonDTO.swift in Sources */,
+				C2DBE8EC27CFE27B0065FE19 /* Endpoint.swift in Sources */,
+				C2DBE8FB27CFF2FE0065FE19 /* TypeURLDTO2.swift in Sources */,
+				C2DBE8E827CFDB150065FE19 /* Network.swift in Sources */,
+				C2DBE8F927CFF2640065FE19 /* TypeURLDTO.swift in Sources */,
+				C2DBE8EE27CFE2C40065FE19 /* Enviroment.swift in Sources */,
 				C2DBE8AE27CFB1750065FE19 /* ViewController.swift in Sources */,
+				C2DBE8F327CFE6490065FE19 /* TypeDTO.swift in Sources */,
+				C2DBE8E427CFD1DA0065FE19 /* PokemonTableViewCell.swift in Sources */,
+				C2DBE8F527CFEA1D0065FE19 /* Sprites.swift in Sources */,
+				C2DBE8F727CFEDCE0065FE19 /* GetImage.swift in Sources */,
 				C2DBE8AA27CFB1750065FE19 /* AppDelegate.swift in Sources */,
+				C2DBE8EA27CFE25F0065FE19 /* API.swift in Sources */,
 				C2DBE8AC27CFB1750065FE19 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,6 +524,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "https://pokeapi.co/api/v2/";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CHMY4D29LD;
@@ -480,6 +553,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "https://pokeapi.co/api/v2/";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CHMY4D29LD;
