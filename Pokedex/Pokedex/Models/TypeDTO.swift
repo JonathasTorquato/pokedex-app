@@ -18,6 +18,7 @@ class TypeDTO: Codable{
     let noDamageFrom: [TypeDTO]?
     
     
+    
     enum CodingKeys: String, CodingKey {
         case id
         case name = "name"

@@ -12,13 +12,13 @@ class PokemonDTO: Codable{
     let name: String?
     let id: Int?
     let types: [TypeURLDTO2]?
-    let sprite: [Sprites]?
+    let sprites: Sprites?
     
     enum CodingKeys: String, CodingKey {
-        case id
+        case id = "id"
         case name = "name"
         case types = "types"
-        case sprite = "sprites"
+        case sprites = "sprites"
         
     }
 }

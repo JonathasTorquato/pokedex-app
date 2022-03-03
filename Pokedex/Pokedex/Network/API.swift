@@ -9,6 +9,7 @@ import Foundation
 import Moya
 
 enum API {
+    case typeURL(url: String)
     case type(idType: Int)
     case pokemonId(idPokemon: Int)
     case pokemonName(pokemonName: String)
@@ -30,6 +31,8 @@ extension API: TargetType {
             return Endpoint.POKEMON.pokemons + "/\(name)"
         case .pokemon:
             return Endpoint.POKEMON.pokemons
+        case .typeURL (let url):
+            return url
         }
     }
     
@@ -43,6 +46,8 @@ extension API: TargetType {
             return .get
         case .pokemon:
             return .get
+        case .typeURL:
+            return .get
         }
     }
     
@@ -55,6 +60,8 @@ extension API: TargetType {
         case .pokemonName:
             return .requestPlain
         case .pokemon:
+            return .requestPlain
+        case .typeURL:
             return .requestPlain
         }
     }

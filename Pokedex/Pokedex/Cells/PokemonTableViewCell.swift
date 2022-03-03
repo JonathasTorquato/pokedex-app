@@ -15,9 +15,31 @@ class PokemonTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var pokemonImageView: UIImageView!
     
+    @IBOutlet weak var type2Label: UILabel!
+    @IBOutlet weak var type1Label: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    
     fileprivate func setPokemon(_ pokemon: PokemonDTO)
     {
-        GetImage.downloadImage(from: URL(fileReferenceLiteralResourceName:  pokemon.sprite?.first?.frontMale ?? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png"), imageView: pokemonImageView)
+        if let url = URL(string:  pokemon.sprites?.frontMale ?? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/2.png"){
+            
+            GetImage.downloadImage(from: url, imageView: pokemonImageView)
+        }
+        nameLabel.text = pokemon.name?.capitalizingFirstLetter() ?? "Erro!"
+        guard let number = pokemon.id?.numberToSpecialNumber() else {return}
+        numberLabel.text = "No." + number
+        
+        type1Label.text = getTypePortuguese(name: pokemon.types?[0].type?.name ?? "Erro", type1Label)
+        if pokemon.types?.count == 2
+        {
+            type2Label.text = getTypePortuguese(name: pokemon.types?[1].type?.name ?? "Erro", type2Label)
+        }
+        else
+        {
+            type2Label.text = ""
+        }
     }
     
     
@@ -43,4 +65,79 @@ class PokemonTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    fileprivate func getTypePortuguese(name: String,_ label: UILabel?) -> String
+    {
+        switch name{
+        case "bug":
+            label?.backgroundColor = .systemGreen
+            return "Inseto"
+        case "water":
+            return "Água"
+        case "normal":
+            return "Normal"
+        case "fighting":
+            return "Lutador"
+        case "flying":
+            return "Voador"
+        case "poison":
+            return "Venenoso"
+        case "ground":
+            return "Terrestre"
+        case "rock":
+            return "Pedra"
+        case "ghost":
+            return "Fantasma"
+        case "steel":
+            return "Metal"
+        case "fire":
+            return "Fogo"
+        case "grass":
+            return "Planta"
+        case "electric":
+            return "Elétrico"
+        case "psychic":
+            return "Psíquico"
+        case "ice":
+            return "Gelo"
+        case "dragon":
+            return "Dragão"
+        case "dark":
+            return "Noturno"
+        case "fairy":
+            return "Fada"
+        case "unknown":
+            return "Desconhecido"
+        case "shadow":
+            return "Sombra"
+        default:
+            return "Erro"
+        }
+    }
+    
+}
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+}
+extension Int{
+    func numberToSpecialNumber() -> String
+    {
+        if(self >= 100)
+        {
+            return "\(self)"
+        }
+        else if (self >= 10)
+        {
+            return "0\(self)"
+        }
+        else
+        {
+            return "00\(self)"
+        }
+    }
 }

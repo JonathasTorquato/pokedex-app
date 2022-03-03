@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C28BAE4D27D137B40039F6E5 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BAE4C27D137B40039F6E5 /* Pokemon.swift */; };
 		C2DBE8AA27CFB1750065FE19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8A927CFB1750065FE19 /* AppDelegate.swift */; };
 		C2DBE8AC27CFB1750065FE19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8AB27CFB1750065FE19 /* SceneDelegate.swift */; };
 		C2DBE8AE27CFB1750065FE19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8AD27CFB1750065FE19 /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C28BAE4C27D137B40039F6E5 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		C2DBE8A627CFB1750065FE19 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2DBE8A927CFB1750065FE19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2DBE8AB27CFB1750065FE19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				C2DBE8F427CFEA1D0065FE19 /* Sprites.swift */,
 				C2DBE8F827CFF2640065FE19 /* TypeURLDTO.swift */,
 				C2DBE8FA27CFF2FE0065FE19 /* TypeURLDTO2.swift */,
+				C28BAE4C27D137B40039F6E5 /* Pokemon.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				C2DBE8FB27CFF2FE0065FE19 /* TypeURLDTO2.swift in Sources */,
 				C2DBE8E827CFDB150065FE19 /* Network.swift in Sources */,
 				C2DBE8F927CFF2640065FE19 /* TypeURLDTO.swift in Sources */,
+				C28BAE4D27D137B40039F6E5 /* Pokemon.swift in Sources */,
 				C2DBE8EE27CFE2C40065FE19 /* Enviroment.swift in Sources */,
 				C2DBE8AE27CFB1750065FE19 /* ViewController.swift in Sources */,
 				C2DBE8F327CFE6490065FE19 /* TypeDTO.swift in Sources */,
