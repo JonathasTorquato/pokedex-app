@@ -18,26 +18,26 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aEr-LR-1ZJ">
-                        <rect key="frame" x="16" y="16" width="368" height="293"/>
+                        <rect key="frame" x="16" y="0.0" width="368" height="325"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="5oK-tr-qa8">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5oK-tr-qa8">
                                 <rect key="frame" x="0.0" y="0.0" width="368" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="1" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kgl-AX-7kX">
-                                        <rect key="frame" x="0.0" y="0.0" width="89.5" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="74" height="200"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unicorn.png" translatesAutoresizingMaskIntoConstraints="NO" id="cqL-gn-9Jz">
-                                        <rect key="frame" x="139.5" y="0.0" width="89" height="200"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unicorn.png" translatesAutoresizingMaskIntoConstraints="NO" id="cqL-gn-9Jz">
+                                        <rect key="frame" x="84" y="0.0" width="200" height="200"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="RGh-DB-huj"/>
+                                            <constraint firstAttribute="width" constant="200" id="RGh-DB-huj"/>
                                             <constraint firstAttribute="height" constant="200" id="wxO-hA-ZN6"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="1" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFH-O3-czU">
-                                        <rect key="frame" x="278.5" y="0.0" width="89.5" height="200"/>
+                                        <rect key="frame" x="294" y="0.0" width="74" height="200"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -49,16 +49,16 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="adJ-k3-Zev">
-                                <rect key="frame" x="0.0" y="200" width="368" height="93"/>
+                                <rect key="frame" x="0.0" y="200" width="368" height="125"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7i-Wq-vsC">
-                                        <rect key="frame" x="163.5" y="0.0" width="41.5" height="46.5"/>
+                                        <rect key="frame" x="163.5" y="0.0" width="41.5" height="62.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mT-Kv-R0R">
-                                        <rect key="frame" x="163.5" y="46.5" width="41.5" height="46.5"/>
+                                        <rect key="frame" x="163.5" y="62.5" width="41.5" height="62.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -68,18 +68,24 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </stackView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Cyj-wd-EHQ">
+                        <rect key="frame" x="181.5" y="144" width="37" height="37"/>
+                    </activityIndicatorView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="aEr-LR-1ZJ" secondAttribute="trailing" constant="16" id="IzG-ha-dIz"/>
+                    <constraint firstItem="Cyj-wd-EHQ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Kgo-f3-N1L"/>
                     <constraint firstItem="aEr-LR-1ZJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Req-UX-ueX"/>
-                    <constraint firstItem="aEr-LR-1ZJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="mTG-7E-iui"/>
-                    <constraint firstAttribute="bottom" secondItem="aEr-LR-1ZJ" secondAttribute="bottom" constant="16" id="uew-e8-A0Z"/>
+                    <constraint firstItem="Cyj-wd-EHQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="SaW-K4-qfP"/>
+                    <constraint firstItem="aEr-LR-1ZJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mTG-7E-iui"/>
+                    <constraint firstAttribute="bottom" secondItem="aEr-LR-1ZJ" secondAttribute="bottom" id="uew-e8-A0Z"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="activitView" destination="Cyj-wd-EHQ" id="Cfx-cq-cW7"/>
                 <outlet property="nameLabel" destination="1mT-Kv-R0R" id="uH7-xX-ftx"/>
                 <outlet property="numberLabel" destination="s7i-Wq-vsC" id="VWp-uX-cth"/>
                 <outlet property="pokemonImageView" destination="cqL-gn-9Jz" id="Vbk-UY-Ef5"/>

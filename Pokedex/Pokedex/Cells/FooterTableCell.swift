@@ -16,6 +16,7 @@ class FooterTableCell: UITableViewCell {
 
     @IBOutlet weak var loadMoreButton: UIButton!
     
+    @IBOutlet weak var noMorePokemonLabel: UILabel!
     var delegate: FooterTableCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +26,7 @@ class FooterTableCell: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        super.setSelected(false, animated: animated)
   }
     
     @IBAction func didTapLoadMore(_ sender: UIButton) {

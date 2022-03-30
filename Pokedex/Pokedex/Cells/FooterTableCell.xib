@@ -16,31 +16,52 @@
                 <rect key="frame" x="0.0" y="0.0" width="400" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGw-0c-hsg">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QbI-EW-yUg">
                         <rect key="frame" x="16" y="16" width="368" height="68"/>
-                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" title="Carregar mais"/>
-                        <buttonConfiguration key="configuration" style="plain" title="CARREGAR MAIS">
-                            <fontDescription key="titleFontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="16"/>
-                        </buttonConfiguration>
-                        <connections>
-                            <action selector="didTapLoadMore:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4Eg-VP-axY"/>
-                        </connections>
-                    </button>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGw-0c-hsg">
+                                <rect key="frame" x="0.0" y="0.0" width="368" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="S02-oJ-kmm"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Carregar mais"/>
+                                <buttonConfiguration key="configuration" style="plain" title="CARREGAR MAIS">
+                                    <fontDescription key="titleFontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="16"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapLoadMore:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4Eg-VP-axY"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todos os pokemons foram listados" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gws-5u-JFC">
+                                <rect key="frame" x="0.0" y="68" width="368" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="yGw-0c-hsg" secondAttribute="bottom" constant="16" id="5Hs-Dx-XMd"/>
-                    <constraint firstItem="yGw-0c-hsg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="DPn-YQ-IEG"/>
-                    <constraint firstAttribute="trailing" secondItem="yGw-0c-hsg" secondAttribute="trailing" constant="16" id="PKD-kf-9ZE"/>
-                    <constraint firstItem="yGw-0c-hsg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="yAA-Ta-lvV"/>
+                    <constraint firstItem="QbI-EW-yUg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="1HX-kW-k8M"/>
+                    <constraint firstItem="QbI-EW-yUg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="MzP-gh-3Wq"/>
+                    <constraint firstAttribute="bottom" secondItem="QbI-EW-yUg" secondAttribute="bottom" constant="16" id="e35-r0-90A"/>
+                    <constraint firstAttribute="trailing" secondItem="QbI-EW-yUg" secondAttribute="trailing" constant="16" id="uPj-G5-xMX"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="loadMoreButton" destination="yGw-0c-hsg" id="HJa-77-tLU"/>
+                <outlet property="noMorePokemonLabel" destination="gws-5u-JFC" id="72t-nL-FtP"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="78.348214285714278"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

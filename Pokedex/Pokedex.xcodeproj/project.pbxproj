@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C28BAE4D27D137B40039F6E5 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BAE4C27D137B40039F6E5 /* Pokemon.swift */; };
+		C2BF358227F47F42000A3149 /* PokemonCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BF358127F47F42000A3149 /* PokemonCount.swift */; };
+		C2BF358627F480B0000A3149 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BF358527F480B0000A3149 /* MainViewModel.swift */; };
+		C2BF358927F49C94000A3149 /* TypePortuguese.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BF358827F49C94000A3149 /* TypePortuguese.swift */; };
 		C2DBE8AA27CFB1750065FE19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8A927CFB1750065FE19 /* AppDelegate.swift */; };
 		C2DBE8AC27CFB1750065FE19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8AB27CFB1750065FE19 /* SceneDelegate.swift */; };
 		C2DBE8AE27CFB1750065FE19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8AD27CFB1750065FE19 /* ViewController.swift */; };
@@ -57,6 +60,9 @@
 
 /* Begin PBXFileReference section */
 		C28BAE4C27D137B40039F6E5 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		C2BF358127F47F42000A3149 /* PokemonCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCount.swift; sourceTree = "<group>"; };
+		C2BF358527F480B0000A3149 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		C2BF358827F49C94000A3149 /* TypePortuguese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePortuguese.swift; sourceTree = "<group>"; };
 		C2DBE8A627CFB1750065FE19 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2DBE8A927CFB1750065FE19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2DBE8AB27CFB1750065FE19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +122,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2BF358427F48086000A3149 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				C2BF358527F480B0000A3149 /* MainViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		C2BF358727F49C83000A3149 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				C2BF358827F49C94000A3149 /* TypePortuguese.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		C2DBE89D27CFB1750065FE19 = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +161,8 @@
 		C2DBE8A827CFB1750065FE19 /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				C2BF358727F49C83000A3149 /* UseCase */,
+				C2BF358427F48086000A3149 /* View Model */,
 				C2DBE8EF27CFE60F0065FE19 /* Models */,
 				C2DBE8E627CFDAF20065FE19 /* Network */,
 				C2DBE8E127CFD1BD0065FE19 /* Cells */,
@@ -204,6 +228,7 @@
 				C2DBE8F827CFF2640065FE19 /* TypeURLDTO.swift */,
 				C2DBE8FA27CFF2FE0065FE19 /* TypeURLDTO2.swift */,
 				C28BAE4C27D137B40039F6E5 /* Pokemon.swift */,
+				C2BF358127F47F42000A3149 /* PokemonCount.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -352,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2DBE8F127CFE62D0065FE19 /* PokemonDTO.swift in Sources */,
+				C2BF358227F47F42000A3149 /* PokemonCount.swift in Sources */,
 				C2DBE8EC27CFE27B0065FE19 /* Endpoint.swift in Sources */,
 				C2DBE8FB27CFF2FE0065FE19 /* TypeURLDTO2.swift in Sources */,
 				C2DBE8E827CFDB150065FE19 /* Network.swift in Sources */,
@@ -362,7 +388,9 @@
 				C2DBE8AE27CFB1750065FE19 /* ViewController.swift in Sources */,
 				C2DBE8F327CFE6490065FE19 /* TypeDTO.swift in Sources */,
 				C2DBE8E427CFD1DA0065FE19 /* PokemonTableViewCell.swift in Sources */,
+				C2BF358927F49C94000A3149 /* TypePortuguese.swift in Sources */,
 				C2DBE8F527CFEA1D0065FE19 /* Sprites.swift in Sources */,
+				C2BF358627F480B0000A3149 /* MainViewModel.swift in Sources */,
 				C2DBE8F727CFEDCE0065FE19 /* GetImage.swift in Sources */,
 				C2E9785F27D2781100B16496 /* PokemonDetailsViewController.swift in Sources */,
 				C2DBE8AA27CFB1750065FE19 /* AppDelegate.swift in Sources */,

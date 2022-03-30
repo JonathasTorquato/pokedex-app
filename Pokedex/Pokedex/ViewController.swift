@@ -9,7 +9,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var numberOfCells = 10
+    var numberOfCells = 0
+    let viewModel: MainViewModel = MainViewModel()
+    var size:Int = 0
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -18,8 +20,16 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "PokemonTableViewCell", bundle: .main), forCellReuseIdentifier: "PokemonTableCell")
         tableView.register(UINib(nibName: "FooterTableCell", bundle: .main), forCellReuseIdentifier: "FooterCell")
+        getCount()
     }
 
+    func getCount(){
+        viewModel.getPokemonCount { count in
+            self.size = count
+            self.numberOfCells = 10
+            self.tableView.reloadData()
+        }
+    }
 
 }
 extension ViewController: UITableViewDelegate
@@ -31,6 +41,9 @@ extension ViewController: UITableViewDelegate
 extension ViewController: UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if numberOfCells > size{
+            numberOfCells = size
+        }
         return numberOfCells + 1
     }
     
@@ -45,6 +58,15 @@ extension ViewController: UITableViewDataSource
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FooterCell", for: indexPath) as! FooterTableCell
             cell.delegate = self
+            if numberOfCells >= size{
+                cell.loadMoreButton.isHidden = true
+                cell.noMorePokemonLabel.isHidden = false
+            }
+            else
+            {
+                cell.loadMoreButton.isHidden = false
+                cell.noMorePokemonLabel.isHidden = true
+            }
             return cell
         }
         
