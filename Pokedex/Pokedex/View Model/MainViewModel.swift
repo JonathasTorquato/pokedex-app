@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class MainViewModel{
     init(){}
@@ -19,6 +20,19 @@ class MainViewModel{
             case .failure(let error):
                 print(error.localizedDescription)
                 completion(0)
+            }
+        }
+    }
+    func getPokemonId(id: Int, completion: @escaping(PokemonDTO)->Void)
+    {
+        Network.getPokemonID(id: id){ result in
+            switch result
+            {
+                
+            case .success(let response):
+                completion(response)
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }

@@ -12,9 +12,13 @@ struct Endpoint {
     
     struct POKEMON {
         static let pokemons = "/pokemon"
+        static let pokemonEntry = "/pokemon-species"
     }
     
     struct TYPE {
         static let types = "/type"
+    }
+    struct CHAIN {
+        static let chains = "/evolution-chain"
     }
 }

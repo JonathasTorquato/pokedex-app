@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C243D13F28084362008F3FED /* Evolution_Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243D13E28084362008F3FED /* Evolution_Chain.swift */; };
+		C27CA40E2806F7D50027EA7C /* PokedexEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27CA40D2806F7D50027EA7C /* PokedexEntry.swift */; };
+		C27CA411280708B10027EA7C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C27CA410280708B10027EA7C /* RxCocoa */; };
+		C27CA413280708B10027EA7C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C27CA412280708B10027EA7C /* RxSwift */; };
 		C28BAE4D27D137B40039F6E5 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BAE4C27D137B40039F6E5 /* Pokemon.swift */; };
 		C2BF358227F47F42000A3149 /* PokemonCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BF358127F47F42000A3149 /* PokemonCount.swift */; };
 		C2BF358627F480B0000A3149 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BF358527F480B0000A3149 /* MainViewModel.swift */; };
 		C2BF358927F49C94000A3149 /* TypePortuguese.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BF358827F49C94000A3149 /* TypePortuguese.swift */; };
+		C2CD62B12807312C006E89E5 /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = C2CD62B02807312C006E89E5 /* DropDown */; };
 		C2DBE8AA27CFB1750065FE19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8A927CFB1750065FE19 /* AppDelegate.swift */; };
 		C2DBE8AC27CFB1750065FE19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8AB27CFB1750065FE19 /* SceneDelegate.swift */; };
 		C2DBE8AE27CFB1750065FE19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8AD27CFB1750065FE19 /* ViewController.swift */; };
@@ -59,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C243D13E28084362008F3FED /* Evolution_Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evolution_Chain.swift; sourceTree = "<group>"; };
+		C27CA40D2806F7D50027EA7C /* PokedexEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexEntry.swift; sourceTree = "<group>"; };
 		C28BAE4C27D137B40039F6E5 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		C2BF358127F47F42000A3149 /* PokemonCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCount.swift; sourceTree = "<group>"; };
 		C2BF358527F480B0000A3149 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -100,7 +107,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2DBE8E027CFB2C10065FE19 /* SnapKit in Frameworks */,
+				C2CD62B12807312C006E89E5 /* DropDown in Frameworks */,
 				C2DBE8DB27CFB2770065FE19 /* Moya in Frameworks */,
+				C27CA413280708B10027EA7C /* RxSwift in Frameworks */,
+				C27CA411280708B10027EA7C /* RxCocoa in Frameworks */,
 				C2DBE8DD27CFB2770065FE19 /* ReactiveMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,6 +239,8 @@
 				C2DBE8FA27CFF2FE0065FE19 /* TypeURLDTO2.swift */,
 				C28BAE4C27D137B40039F6E5 /* Pokemon.swift */,
 				C2BF358127F47F42000A3149 /* PokemonCount.swift */,
+				C27CA40D2806F7D50027EA7C /* PokedexEntry.swift */,
+				C243D13E28084362008F3FED /* Evolution_Chain.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -253,6 +265,9 @@
 				C2DBE8DA27CFB2770065FE19 /* Moya */,
 				C2DBE8DC27CFB2770065FE19 /* ReactiveMoya */,
 				C2DBE8DF27CFB2C10065FE19 /* SnapKit */,
+				C27CA410280708B10027EA7C /* RxCocoa */,
+				C27CA412280708B10027EA7C /* RxSwift */,
+				C2CD62B02807312C006E89E5 /* DropDown */,
 			);
 			productName = Pokedex;
 			productReference = C2DBE8A627CFB1750065FE19 /* Pokedex.app */;
@@ -329,6 +344,8 @@
 			packageReferences = (
 				C2DBE8D927CFB2770065FE19 /* XCRemoteSwiftPackageReference "Moya" */,
 				C2DBE8DE27CFB2C10065FE19 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C27CA40F280708B10027EA7C /* XCRemoteSwiftPackageReference "RxSwift" */,
+				C2CD62AF2807312C006E89E5 /* XCRemoteSwiftPackageReference "DropDown" */,
 			);
 			productRefGroup = C2DBE8A727CFB1750065FE19 /* Products */;
 			projectDirPath = "";
@@ -381,9 +398,11 @@
 				C2DBE8EC27CFE27B0065FE19 /* Endpoint.swift in Sources */,
 				C2DBE8FB27CFF2FE0065FE19 /* TypeURLDTO2.swift in Sources */,
 				C2DBE8E827CFDB150065FE19 /* Network.swift in Sources */,
+				C243D13F28084362008F3FED /* Evolution_Chain.swift in Sources */,
 				C2DBE8F927CFF2640065FE19 /* TypeURLDTO.swift in Sources */,
 				C28BAE4D27D137B40039F6E5 /* Pokemon.swift in Sources */,
 				C2DBE8EE27CFE2C40065FE19 /* Enviroment.swift in Sources */,
+				C27CA40E2806F7D50027EA7C /* PokedexEntry.swift in Sources */,
 				C2E9785527D23EE400B16496 /* FooterTableCell.swift in Sources */,
 				C2DBE8AE27CFB1750065FE19 /* ViewController.swift in Sources */,
 				C2DBE8F327CFE6490065FE19 /* TypeDTO.swift in Sources */,
@@ -763,6 +782,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C27CA40F280708B10027EA7C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
+		C2CD62AF2807312C006E89E5 /* XCRemoteSwiftPackageReference "DropDown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AssistoLab/DropDown";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		C2DBE8D927CFB2770065FE19 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
@@ -782,6 +817,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C27CA410280708B10027EA7C /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C27CA40F280708B10027EA7C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		C27CA412280708B10027EA7C /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C27CA40F280708B10027EA7C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		C2CD62B02807312C006E89E5 /* DropDown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2CD62AF2807312C006E89E5 /* XCRemoteSwiftPackageReference "DropDown" */;
+			productName = DropDown;
+		};
 		C2DBE8DA27CFB2770065FE19 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C2DBE8D927CFB2770065FE19 /* XCRemoteSwiftPackageReference "Moya" */;

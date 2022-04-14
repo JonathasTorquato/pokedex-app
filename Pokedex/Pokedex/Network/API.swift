@@ -9,11 +9,14 @@ import Foundation
 import Moya
 
 enum API {
-    case typeURL(url: String)
-    case type(idType: Int)
-    case pokemonId(idPokemon: Int)
-    case pokemonName(pokemonName: String)
+    case typeURL(url : String)
+    case type(idType : Int)
+    case pokemonId(idPokemon : Int)
+    case pokemonName(pokemonName : String)
     case pokemon
+    case pokedexEntry(idPokemon : Int)
+    case chain(idChain : Int)
+    case chainURL(url : String)
 }
 
 extension API: TargetType {
@@ -33,6 +36,22 @@ extension API: TargetType {
             return Endpoint.POKEMON.pokemons
         case .typeURL (let url):
             return url
+        case .pokedexEntry(idPokemon: let idPokemon):
+            return Endpoint.POKEMON.pokemonEntry + "/\(idPokemon)"
+        case .chain(idChain: let id):
+            return Endpoint.CHAIN.chains + "/\(id)"
+        case .chainURL(url: let url):
+            var urlAux = url
+            var count : Int = 0
+            urlAux.removeAll { element in
+                if count < Endpoint.baseURL.count{
+                    count += 1;
+                    return true
+                }
+                count += 1
+                return false
+            }
+            return urlAux
         }
     }
     
@@ -48,6 +67,12 @@ extension API: TargetType {
             return .get
         case .typeURL:
             return .get
+        case .pokedexEntry:
+            return .get
+        case .chain:
+            return .get
+        case .chainURL:
+            return .get
         }
     }
     
@@ -62,6 +87,12 @@ extension API: TargetType {
         case .pokemon:
             return .requestPlain
         case .typeURL:
+            return .requestPlain
+        case .pokedexEntry:
+            return .requestPlain
+        case .chainURL:
+            return .requestPlain
+        case .chain:
             return .requestPlain
         }
     }

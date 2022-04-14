@@ -35,7 +35,13 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if indexPath.row < numberOfCells{
+            let vc = PokemonDetailsViewController()
+            viewModel.getPokemonId(id: indexPath.row + 1) { pokemon in
+                vc.setPokemon(pokemon: pokemon)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
 }
 extension ViewController: UITableViewDataSource
