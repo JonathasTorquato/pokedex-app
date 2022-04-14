@@ -88,3 +88,36 @@ extension ViewController: FooterTableCellDelegate
         tableView.reloadData()
     }
 }
+extension ViewController : UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let search = searchBar.text else{return}
+        if search.first?.isLetter ?? false{
+            Network.getPokemonName(name: search.lowercased()) { result in
+                switch result{
+                    
+                case .success(let result):
+                    let vc = PokemonDetailsViewController()
+                    vc.setPokemon(pokemon: result)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                case .failure(_):
+                    self.numberOfCells = 0
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        if search.first?.isNumber ?? false{
+            Network.getPokemonID(id: Int(search) ?? 0) { result in
+                switch result{
+                    
+                case .success(let result):
+                    let vc = PokemonDetailsViewController()
+                    vc.setPokemon(pokemon: result)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                case .failure(_):
+                    self.numberOfCells = 0
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+}
