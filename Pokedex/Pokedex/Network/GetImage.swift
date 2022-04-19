@@ -15,7 +15,6 @@ class GetImage{
     static func downloadImage(from url: URL, imageView: UIImageView) {
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
             DispatchQueue.main.async() {
                 imageView.image = UIImage(data: data)
             }

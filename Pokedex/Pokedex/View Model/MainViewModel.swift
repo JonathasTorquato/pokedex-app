@@ -36,4 +36,15 @@ class MainViewModel{
             }
         }
     }
+    func getPokemonName(name: String, completion: @escaping(PokemonDTO)->Void){
+        Network.getPokemonName(name: name) { result in
+            switch result {
+                
+            case .success(let success):
+                completion(success)
+            case .failure(let error):
+                print("Erro" + error.localizedDescription)
+            }
+        }
+    }
 }

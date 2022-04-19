@@ -10,6 +10,7 @@ import Foundation
 class PokedexEntry : Codable{
     var flavor_text_entries : [Entry]?
     var evolution_chain : EvolutionChain?
+    var varieties : [Forms]?
 }
 class Entry : Codable
 {
@@ -21,4 +22,7 @@ struct Language : Codable{
 }
 struct EvolutionChain : Codable {
     var url : String?
+}
+struct Forms : Codable {
+    var pokemon : TypeURLDTO?
 }

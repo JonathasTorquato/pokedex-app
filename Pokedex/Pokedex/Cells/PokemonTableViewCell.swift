@@ -104,9 +104,13 @@ extension Int{
         {
             return "0\(self)"
         }
-        else
+        else if self > 0
         {
             return "00\(self)"
+        }
+        else
+        {
+            return "invalid number"
         }
     }
 }
