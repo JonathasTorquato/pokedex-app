@@ -67,22 +67,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemGray2Color"/>
-                        <color key="barTintColor" red="1" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
                         <color key="selectedImageTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="9mq-tG-E0Y" kind="relationship" relationship="viewControllers" id="rL2-g7-3Jq"/>
+                        <segue destination="3Dn-B7-Rio" kind="relationship" relationship="viewControllers" id="OYx-1u-pCc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iWx-an-ZGz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5.7971014492753632" y="75.669642857142847"/>
         </scene>
-        <!-- -->
+        <!--Items-->
+        <scene sceneID="f26-nm-G1I">
+            <objects>
+                <tableViewController id="3Dn-B7-Rio" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="r9u-oe-7L9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ern-Hs-SnY">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ern-Hs-SnY" id="Isp-EK-ntD">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3Dn-B7-Rio" id="FHt-mf-jRx"/>
+                            <outlet property="delegate" destination="3Dn-B7-Rio" id="9Jk-ra-jvb"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Items" image="hands.sparkles" catalog="system" id="dws-lQ-MlS"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Meb-bC-Nee" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6" y="796"/>
+        </scene>
+        <!-- Pokemons-->
         <scene sceneID="u0b-ey-LsQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9mq-tG-E0Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title=" " image="magnifyingglass" catalog="system" id="XEg-Dn-57A"/>
+                    <tabBarItem key="tabBarItem" title=" Pokemons" image="rectangle.stack.person.crop" catalog="system" id="XEg-Dn-57A"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="D9y-aS-H8y">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -100,7 +130,8 @@
     </scenes>
     <resources>
         <image name="Screen Shot 2022-03-02 at 13.20.01" width="189" height="352"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="hands.sparkles" catalog="system" width="122" height="128"/>
+        <image name="rectangle.stack.person.crop" catalog="system" width="128" height="122"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

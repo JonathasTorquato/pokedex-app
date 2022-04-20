@@ -7,21 +7,27 @@
 
 import UIKit
 import CloudKit
-
+import RxSwift
+import RxCocoa
 class ViewController: UIViewController {
 
+    let bag = DisposeBag()
     var numberOfCells = 0
     let viewModel: MainViewModel = MainViewModel()
     var size:Int = 0
+    var range:Observable<Int> = Observable<Int>.range(start: 0, count: 0)
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
+        range = .range(start: 0, count: numberOfCells)
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "PokemonTableViewCell", bundle: .main), forCellReuseIdentifier: "PokemonTableCell")
         tableView.register(UINib(nibName: "FooterTableCell", bundle: .main), forCellReuseIdentifier: "FooterCell")
         getCount()
+        
+        
     }
 
     func getCount(){
@@ -34,6 +40,10 @@ class ViewController: UIViewController {
     
     func showPokemonEntry(id: Int, animated: Bool = true){
         let vc = PokemonDetailsViewController()
+        vc.navigationItem.rightBarButtonItem = {
+            let button = UIBarButtonItem(title: "Shiny", style: .plain, target: vc, action: #selector(vc.toggleShiny))
+            return button
+        }()
         vc.delegate = self
         viewModel.getPokemonId(id: id) { pokemon in
             vc.setPokemon(pokemon: pokemon)
@@ -121,8 +131,9 @@ extension ViewController : UISearchBarDelegate {
                 }
             }
         }
-        if search.first?.isNumber ?? false{
-            Network.getPokemonID(id: Int(search) ?? 0) { result in
+        let searched = (Int(search) ?? 0)
+        if search.first?.isNumber ?? false && searched <= 898 && searched > 0 {
+            Network.getPokemonID(id: searched) { result in
                 switch result{
                     
                 case .success(let result):
@@ -158,7 +169,7 @@ extension ViewController : PokemonDetailsViewControllerDelegate{
     }
     
     func otherPokemon(to id: Int, viewController : PokemonDetailsViewController) {
-        if id != 0{
+        if id != 0 {
             viewModel.getPokemonId(id: id) { pokemon in
                 viewController.setPokemon(pokemon: pokemon)
             }

@@ -33,7 +33,7 @@ extension API: TargetType {
         case .pokemonName(pokemonName: let name):
             return Endpoint.POKEMON.pokemons + "/\(name)"
         case .pokemon:
-            return Endpoint.POKEMON.pokemons
+            return Endpoint.POKEMON.pokemons + "/"
         case .typeURL (let url):
             return url
         case .pokedexEntry(idPokemon: let idPokemon):

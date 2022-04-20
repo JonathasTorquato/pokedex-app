@@ -19,12 +19,13 @@ protocol PokemonDetailsViewControllerDelegate {
 
 class PokemonDetailsViewController: UIViewController {
 
+    @IBOutlet weak var femalePokemonButton: UIButton!
+    @IBOutlet weak var malePokemonButton: UIButton!
     @IBOutlet weak var type2Label: UILabel!
     @IBOutlet weak var type1label: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var firstEvolution: UIButton!
     @IBOutlet weak var secondEvolutionTable: UITableView!
     @IBOutlet weak var thirdEvolutionTableView: UITableView!
@@ -35,21 +36,53 @@ class PokemonDetailsViewController: UIViewController {
     let forms = BehaviorRelay<[Forms]>(value: [])
     let secondEvolutions: BehaviorRelay<[Chain]> = BehaviorRelay(value: [])
     let thirdEvolutions: BehaviorRelay<[Chain]> = BehaviorRelay(value: [])
+    let bag = DisposeBag()
+    let shiny : BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    let gender : BehaviorRelay<PokemonGender> = BehaviorRelay(value: .none)
     
+    var pokemon : PokemonDTO?
     var id = 0
     var delegate: PokemonDetailsViewControllerDelegate?
-    let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupForms()
         setupEvolutions()
         setupTables()
+        setupPokemonImage()
+        setupPokemonGender()
+        
         otherFormsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         secondEvolutionTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         thirdEvolutionTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        self.malePokemonButton.layer.borderWidth = 1
+        self.femalePokemonButton.layer.borderWidth = 1
     }
     
+    fileprivate func setupPokemonGender() {
+        self.gender.subscribe(onNext:{ value in
+            let none = value == .none
+            self.malePokemonButton.isEnabled = !none
+            self.femalePokemonButton.isEnabled = !none
+            if !none {
+                if value == .male {
+                    self.malePokemonButton.layer.borderColor = UIColor.black.cgColor
+                    self.femalePokemonButton.layer.borderColor = UIColor.white.cgColor
+                }
+                else {
+                    self.malePokemonButton.layer.borderColor = UIColor.white.cgColor
+                    self.femalePokemonButton.layer.borderColor = UIColor.black.cgColor
+                }
+            }
+            else {
+                self.malePokemonButton.layer.borderColor = UIColor.white.cgColor
+                self.femalePokemonButton.layer.borderColor = UIColor.white.cgColor
+            }
+            
+        }).disposed(by: bag)
+    }
     
     func setupTables() {
         
@@ -91,12 +124,54 @@ class PokemonDetailsViewController: UIViewController {
         }.disposed(by: bag)
         
     }
+    
+    fileprivate func setupPokemonImage(){
+        
+        Observable.combineLatest(self.shiny, self.gender)
+            .subscribe(onNext:{ valueShiny, valueGender in
+                if valueShiny{
+                    if valueGender != .female {
+                        if let image = self.pokemon?.sprites?.frontMaleShiny, let imageURL = URL(string: image) {
+                            
+                            DispatchQueue.main.async{
+                                GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
+                                self.navigationItem.rightBarButtonItem?.title = "Normal"
+                            }
+                        }
+                    }
+                    else {
+                        if let image = self.pokemon?.sprites?.frontFemaleShiny, let imageURL = URL(string: image) {
+                            
+                            DispatchQueue.main.async{
+                                GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
+                                self.navigationItem.rightBarButtonItem?.title = "Normal"
+                            }
+                        }
+                    }
+                }
+                else {
+                    if valueGender != .female{
+                        if let image = self.pokemon?.sprites?.frontMale, let imageURL = URL(string: image) {
+                            DispatchQueue.main.async{
+                                GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
+                                self.navigationItem.rightBarButtonItem?.title = "Shiny"
+                            }
+                        }
+                    }
+                    else {
+                        if let image = self.pokemon?.sprites?.frontFemale, let imageURL = URL(string: image) {
+                            DispatchQueue.main.async{
+                                GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
+                                self.navigationItem.rightBarButtonItem?.title = "Shiny"
+                            }
+                        }
+                    }
+                }
+            }).disposed(by: bag)
+    }
+    
     fileprivate func setPokemonUI(pokemon: PokemonDTO){
         thirdEvolutions.accept([])
-        DispatchQueue.main.async {
-            self.leftButton.isEnabled = self.id > 1
-            self.rightButton.isEnabled = self.id < 889
-        }
         Network.getPokemonEntry(idPokemon: self.id) { result in
             switch result{
             case .success(let success):
@@ -114,7 +189,10 @@ class PokemonDetailsViewController: UIViewController {
                         }
                     }
                 }
-                
+                DispatchQueue.main.async {
+                    self.leftButton.isEnabled = self.id > 1
+                    self.rightButton.isEnabled = self.id <= 897
+                }
                 //MARK: - Entry
                 DispatchQueue.main.async{
                     if let entry = success.flavor_text_entries {
@@ -163,12 +241,22 @@ class PokemonDetailsViewController: UIViewController {
             }
             
         }
+        
+        //MARK: - SETUP GENDER
+        guard let _ = pokemon.sprites?.frontFemale else {
+            self.gender.accept(.none)
+            return
+        }
+        self.gender.accept(.male)
+        
     }
     func setPokemon(pokemon: PokemonDTO){
         self.id = pokemon.id ?? 0
+        self.shiny.accept(false)
         if self.id >= 899 {
             self.delegate?.pokemonVariation(other: pokemon.species?.name ?? ""){ identifier in
                 self.id = identifier
+                self.pokemon = pokemon
                 DispatchQueue.main.async {
                     self.setPokemonUI(pokemon: pokemon)
                 }
@@ -176,6 +264,7 @@ class PokemonDetailsViewController: UIViewController {
         }
         else
         {
+            self.pokemon = pokemon
             setPokemonUI(pokemon: pokemon)
         }
     }
@@ -190,4 +279,22 @@ class PokemonDetailsViewController: UIViewController {
     @IBAction func didTapLeft(_ sender: UIButton) {
         self.delegate?.otherPokemon(to: self.id - 1, viewController: self)
     }
+    
+    @objc func toggleShiny(){
+        self.shiny.accept(!self.shiny.value)
+    }
+    @IBAction func didTapFemale(_ sender: UIButton) {
+        self.gender.accept(.female)
+    }
+    
+    @IBAction func didTapMale(_ sender: UIButton) {
+        self.gender.accept(.male)
+    }
+}
+
+
+enum PokemonGender {
+    case male
+    case female
+    case none
 }
