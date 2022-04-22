@@ -10,15 +10,18 @@ import DropDown
 import RxCocoa
 import RxSwift
 
-
+//MARK: - Delegate
 protocol PokemonDetailsViewControllerDelegate {
     func otherPokemon(to id: Int, viewController: PokemonDetailsViewController)
     func otherPokemon(to name: String, viewController: PokemonDetailsViewController)
     func pokemonVariation(other name: String, completion : @escaping(Int)->Void)
 }
 
+//MARK: - Declarations
 class PokemonDetailsViewController: UIViewController {
 
+    @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var femalePokemonButton: UIButton!
     @IBOutlet weak var malePokemonButton: UIButton!
     @IBOutlet weak var type2Label: UILabel!
@@ -39,14 +42,23 @@ class PokemonDetailsViewController: UIViewController {
     let bag = DisposeBag()
     let shiny : BehaviorRelay<Bool> = BehaviorRelay(value: false)
     let gender : BehaviorRelay<PokemonGender> = BehaviorRelay(value: .none)
+    let frontImage : BehaviorRelay<Bool> = BehaviorRelay(value: true)
+    let viewModel = PokemonDescriptionViewModel()
     
+    var genderColor : BehaviorRelay<UIColor> = BehaviorRelay(value: .black)
     var pokemon : PokemonDTO?
     var id = 0
     var delegate: PokemonDetailsViewControllerDelegate?
     
+}
+
+//MARK: - Functions
+extension PokemonDetailsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            self.genderColor.accept(.white)
+        }
         setupForms()
         setupEvolutions()
         setupTables()
@@ -62,28 +74,29 @@ class PokemonDetailsViewController: UIViewController {
     }
     
     fileprivate func setupPokemonGender() {
-        self.gender.subscribe(onNext:{ value in
+        Observable.combineLatest(self.gender, self.genderColor).subscribe(onNext:{ value, valueColor in
             let none = value == .none
+            let otherColor = valueColor == .black ? UIColor.white : UIColor.black
             self.malePokemonButton.isEnabled = !none
             self.femalePokemonButton.isEnabled = !none
             if !none {
                 if value == .male {
-                    self.malePokemonButton.layer.borderColor = UIColor.black.cgColor
-                    self.femalePokemonButton.layer.borderColor = UIColor.white.cgColor
+                    self.malePokemonButton.layer.borderColor = valueColor.cgColor
+                    self.femalePokemonButton.layer.borderColor = otherColor.cgColor
                 }
                 else {
-                    self.malePokemonButton.layer.borderColor = UIColor.white.cgColor
-                    self.femalePokemonButton.layer.borderColor = UIColor.black.cgColor
+                    self.malePokemonButton.layer.borderColor = otherColor.cgColor
+                    self.femalePokemonButton.layer.borderColor = valueColor.cgColor
                 }
             }
             else {
-                self.malePokemonButton.layer.borderColor = UIColor.white.cgColor
-                self.femalePokemonButton.layer.borderColor = UIColor.white.cgColor
+                self.malePokemonButton.layer.borderColor = otherColor.cgColor
+                self.femalePokemonButton.layer.borderColor = otherColor.cgColor
             }
-            
+
         }).disposed(by: bag)
     }
-    
+    //MARK: - Setup table views
     func setupTables() {
         
         self.secondEvolutionTable.rx.modelSelected(Chain.self).subscribe {[unowned self] pokemon in
@@ -127,11 +140,11 @@ class PokemonDetailsViewController: UIViewController {
     
     fileprivate func setupPokemonImage(){
         
-        Observable.combineLatest(self.shiny, self.gender)
-            .subscribe(onNext:{ valueShiny, valueGender in
+        Observable.combineLatest(self.shiny, self.gender, self.frontImage)
+            .subscribe(onNext:{ valueShiny, valueGender, valueFront in
                 if valueShiny{
                     if valueGender != .female {
-                        if let image = self.pokemon?.sprites?.frontMaleShiny, let imageURL = URL(string: image) {
+                        if let image = valueFront ? self.pokemon?.sprites?.frontMaleShiny : self.pokemon?.sprites?.backMaleShiny, let imageURL = URL(string: image) {
                             
                             DispatchQueue.main.async{
                                 GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
@@ -140,7 +153,7 @@ class PokemonDetailsViewController: UIViewController {
                         }
                     }
                     else {
-                        if let image = self.pokemon?.sprites?.frontFemaleShiny, let imageURL = URL(string: image) {
+                        if let image = valueFront ? self.pokemon?.sprites?.frontFemaleShiny : self.pokemon?.sprites?.backFemaleShiny, let imageURL = URL(string: image) {
                             
                             DispatchQueue.main.async{
                                 GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
@@ -151,7 +164,7 @@ class PokemonDetailsViewController: UIViewController {
                 }
                 else {
                     if valueGender != .female{
-                        if let image = self.pokemon?.sprites?.frontMale, let imageURL = URL(string: image) {
+                        if let image = valueFront ? self.pokemon?.sprites?.frontMale : self.pokemon?.sprites?.backMale, let imageURL = URL(string: image) {
                             DispatchQueue.main.async{
                                 GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
                                 self.navigationItem.rightBarButtonItem?.title = "Shiny"
@@ -159,7 +172,7 @@ class PokemonDetailsViewController: UIViewController {
                         }
                     }
                     else {
-                        if let image = self.pokemon?.sprites?.frontFemale, let imageURL = URL(string: image) {
+                        if let image = valueFront ? self.pokemon?.sprites?.frontFemale : self.pokemon?.sprites?.backFemale, let imageURL = URL(string: image) {
                             DispatchQueue.main.async{
                                 GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
                                 self.navigationItem.rightBarButtonItem?.title = "Shiny"
@@ -216,9 +229,15 @@ class PokemonDetailsViewController: UIViewController {
                     self.nameLabel.text = pokemon.name?.capitalizingFirstLetter()
                     self.title = "No. " + self.id.numberToSpecialNumber()
                     
-                    if let url = URL(string:  pokemon.sprites?.frontMale ?? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/2.png"){
-                        
+                    if let sprite = pokemon.sprites?.frontMale, let url = URL(string: sprite){
+                        self.imageButton.setTitle("", for: .normal)
+                        self.imageButton.isEnabled = true
                         GetImage.downloadImage(from: url, imageView: self.pokemonImage)
+                    }
+                    else {
+                        self.imageButton.setTitle("Nenhuma foto foi encontrada", for: .normal)
+                        self.imageButton.isEnabled = false
+                        self.pokemonImage.image = nil
                     }
                     
                     self.type1label.text = TypePortuguese.getTypePortuguese(name: pokemon.types?[0].type?.name ?? "Erro", self.type1label)
@@ -231,7 +250,7 @@ class PokemonDetailsViewController: UIViewController {
                         self.type2Label.text = ""
                     }
                 }
-                //MARK: -Varieties
+                //MARK: - Varieties
                 if let forms = success.varieties, forms.count > 0 {
                     self.forms.accept(forms)
                     
@@ -241,6 +260,16 @@ class PokemonDetailsViewController: UIViewController {
             }
             
         }
+        DispatchQueue.main.async {
+            self.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            for id in Favorites.favoritePokemon.value {
+                if id == self.id {
+                    self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                }
+            }
+        }
+        
+        self.frontImage.accept(true)
         
         //MARK: - SETUP GENDER
         guard let _ = pokemon.sprites?.frontFemale else {
@@ -269,6 +298,15 @@ class PokemonDetailsViewController: UIViewController {
         }
     }
     
+    //MARK: - Status bar color
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.genderColor.accept(self.genderColor.value == .black ? .white : .black )
+    }
+    
+    //MARK: - Actions
+    
     @IBAction func didTapFirstStage(_ sender: UIButton) {
         self.delegate?.otherPokemon(to: sender.currentTitle ?? "", viewController: self)
     }
@@ -287,12 +325,42 @@ class PokemonDetailsViewController: UIViewController {
         self.gender.accept(.female)
     }
     
+    @IBAction func didTapImage(_ sender: UIButton) {
+        self.frontImage.accept(!self.frontImage.value)
+    }
+    
     @IBAction func didTapMale(_ sender: UIButton) {
         self.gender.accept(.male)
     }
+    
+    @IBAction func didTapHeart(_ sender: UIButton) {
+        if self.id == 0 {return}
+        var favorites = Favorites.favoritePokemon.value
+        var added = false
+        for id in favorites {
+            if id == self.id {
+                added = true
+                sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                favorites.removeAll { ids in
+                    if ids == id {
+                        return true
+                    }
+                    return false
+                }
+            }
+        }
+        if !added {
+            sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            favorites.append(self.id)
+        }
+        favorites.sort()
+        
+        self.viewModel.saveUserDefatuls(value: favorites, for: Favorites.favoritePokemonKey)
+        Favorites.favoritePokemon.accept(favorites)
+    }
 }
 
-
+//MARK: - ENUM
 enum PokemonGender {
     case male
     case female

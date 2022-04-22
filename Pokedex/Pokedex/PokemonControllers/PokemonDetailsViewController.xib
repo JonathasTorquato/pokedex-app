@@ -13,7 +13,9 @@
                 <outlet property="descriptionLabel" destination="qkG-NE-ihn" id="6h2-qV-tcX"/>
                 <outlet property="femalePokemonButton" destination="NS1-Ct-HI8" id="ONB-VM-Lt2"/>
                 <outlet property="firstEvolution" destination="YLM-Ej-tYA" id="q4H-V5-hSJ"/>
+                <outlet property="imageButton" destination="B1h-ca-9lJ" id="7Vl-uX-I0C"/>
                 <outlet property="leftButton" destination="H7D-e7-1HH" id="e1X-hP-Gla"/>
+                <outlet property="likeButton" destination="hJL-a9-BaL" id="LLm-gb-jVy"/>
                 <outlet property="malePokemonButton" destination="opB-Iy-HL4" id="mPe-Wy-cve"/>
                 <outlet property="nameLabel" destination="7vN-fa-2eL" id="Ejq-nn-YAe"/>
                 <outlet property="otherFormsTableView" destination="XCA-wo-WFf" id="CQa-6N-Knf"/>
@@ -46,13 +48,34 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c2m-CZ-f2E">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VyH-7n-GNj">
                                             <rect key="frame" x="91" y="0.0" width="200" height="200"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c2m-CZ-f2E">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1h-ca-9lJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain"/>
+                                                    <connections>
+                                                        <action selector="didTapImage:" destination="-1" eventType="touchUpInside" id="uvO-0P-tP0"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="Eyg-2k-FeJ"/>
-                                                <constraint firstAttribute="width" secondItem="c2m-CZ-f2E" secondAttribute="height" multiplier="100:100" id="dAC-oW-k0D"/>
+                                                <constraint firstItem="B1h-ca-9lJ" firstAttribute="leading" secondItem="VyH-7n-GNj" secondAttribute="leading" id="1jG-9X-AZD"/>
+                                                <constraint firstItem="c2m-CZ-f2E" firstAttribute="centerY" secondItem="VyH-7n-GNj" secondAttribute="centerY" id="7HO-cb-MUs"/>
+                                                <constraint firstAttribute="bottom" secondItem="B1h-ca-9lJ" secondAttribute="bottom" id="7hN-3H-gfa"/>
+                                                <constraint firstItem="c2m-CZ-f2E" firstAttribute="height" secondItem="VyH-7n-GNj" secondAttribute="height" id="ADH-32-S2c"/>
+                                                <constraint firstAttribute="width" constant="200" id="Cd6-jd-iT3"/>
+                                                <constraint firstItem="c2m-CZ-f2E" firstAttribute="centerX" secondItem="VyH-7n-GNj" secondAttribute="centerX" id="aCp-b8-Cfu"/>
+                                                <constraint firstItem="c2m-CZ-f2E" firstAttribute="width" secondItem="VyH-7n-GNj" secondAttribute="width" id="e7S-bY-yIy"/>
+                                                <constraint firstItem="B1h-ca-9lJ" firstAttribute="top" secondItem="VyH-7n-GNj" secondAttribute="top" id="q1P-c3-T9L"/>
+                                                <constraint firstAttribute="trailing" secondItem="B1h-ca-9lJ" secondAttribute="trailing" id="x11-07-EY3"/>
                                             </constraints>
-                                        </imageView>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSh-sy-EWF">
                                             <rect key="frame" x="291" y="0.0" width="91" height="200"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -62,23 +85,32 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="95a-LJ-bag"/>
-                                        <constraint firstItem="c2m-CZ-f2E" firstAttribute="centerX" secondItem="j3y-3a-mEc" secondAttribute="centerX" id="XjL-q8-NkW"/>
-                                        <constraint firstItem="c2m-CZ-f2E" firstAttribute="centerY" secondItem="j3y-3a-mEc" secondAttribute="centerY" id="osC-XA-FaF"/>
+                                        <constraint firstItem="VyH-7n-GNj" firstAttribute="centerX" secondItem="j3y-3a-mEc" secondAttribute="centerX" id="UfM-ow-KPZ"/>
+                                        <constraint firstItem="VyH-7n-GNj" firstAttribute="centerY" secondItem="j3y-3a-mEc" secondAttribute="centerY" id="XOD-tf-5bd"/>
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ShY-MA-OAB">
                                     <rect key="frame" x="0.0" y="210" width="382" height="31"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opB-Iy-HL4">
-                                            <rect key="frame" x="0.0" y="0.0" width="191" height="31"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="127.5" height="31"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="🚹"/>
                                             <connections>
                                                 <action selector="didTapMale:" destination="-1" eventType="touchUpInside" id="fNZ-YC-TvI"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJL-a9-BaL">
+                                            <rect key="frame" x="127.5" y="0.0" width="127" height="31"/>
+                                            <color key="tintColor" systemColor="labelColor"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                                            <connections>
+                                                <action selector="didTapHeart:" destination="-1" eventType="touchUpInside" id="nPG-on-YoK"/>
+                                            </connections>
+                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NS1-Ct-HI8">
-                                            <rect key="frame" x="191" y="0.0" width="191" height="31"/>
+                                            <rect key="frame" x="254.5" y="0.0" width="127.5" height="31"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="🚺"/>
                                             <connections>
@@ -197,6 +229,7 @@
     <resources>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

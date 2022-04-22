@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
+     
+        self.navigationController?.navigationBar.barStyle = .black
         range = .range(start: 0, count: numberOfCells)
         super.viewDidLoad()
         tableView.delegate = self
@@ -27,9 +29,13 @@ class ViewController: UIViewController {
         tableView.register(UINib(nibName: "FooterTableCell", bundle: .main), forCellReuseIdentifier: "FooterCell")
         getCount()
         
+    
         
     }
-
+    
+    
+   
+    
     func getCount(){
         viewModel.getPokemonCount { count in
             self.size = count

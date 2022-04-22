@@ -13,24 +13,24 @@
             <objects>
                 <viewController storyboardIdentifier="Search" id="BYZ-38-t0r" customClass="ViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2022-03-02 at 13.20.01" translatesAutoresizingMaskIntoConstraints="NO" id="kyV-G0-iJb">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="l1i-BW-aPO">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="LBm-JW-wp1">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="sb0-f4-Cir"/>
                                         </connections>
                                     </searchBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SLp-zB-m7a">
-                                        <rect key="frame" x="0.0" y="51" width="414" height="674"/>
+                                        <rect key="frame" x="0.0" y="103" width="414" height="622"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
@@ -49,7 +49,23 @@
                             <constraint firstItem="l1i-BW-aPO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yvp-QI-usD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="DV5-7q-vKG"/>
+                    <navigationItem key="navigationItem" id="DV5-7q-vKG">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="ZMv-U8-aqd">
+                            <rect key="frame" x="207" y="22" width="0.0" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appstore" translatesAutoresizingMaskIntoConstraints="NO" id="agN-NS-UDY"/>
+                            </subviews>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="agN-NS-UDY" firstAttribute="top" secondItem="ZMv-U8-aqd" secondAttribute="top" id="Hr3-Ok-Ft5"/>
+                                <constraint firstAttribute="trailing" secondItem="agN-NS-UDY" secondAttribute="trailing" id="JFK-ad-QZR"/>
+                                <constraint firstAttribute="bottom" secondItem="agN-NS-UDY" secondAttribute="bottom" id="ema-Ji-Nhh"/>
+                                <constraint firstItem="agN-NS-UDY" firstAttribute="leading" secondItem="ZMv-U8-aqd" secondAttribute="leading" id="hsK-l8-9eI"/>
+                            </constraints>
+                        </view>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="SLp-zB-m7a" id="v0S-6E-Jez"/>
                     </connections>
@@ -63,50 +79,52 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="esi-Ny-dcP" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="g6V-zS-4xt">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="g6V-zS-4xt">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" systemColor="systemGray2Color"/>
-                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
-                        <color key="selectedImageTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="9mq-tG-E0Y" kind="relationship" relationship="viewControllers" id="rL2-g7-3Jq"/>
-                        <segue destination="3Dn-B7-Rio" kind="relationship" relationship="viewControllers" id="OYx-1u-pCc"/>
+                        <segue destination="qal-4p-Nem" kind="relationship" relationship="viewControllers" id="naj-hu-UnV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iWx-an-ZGz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5.7971014492753632" y="75.669642857142847"/>
         </scene>
-        <!--Items-->
-        <scene sceneID="f26-nm-G1I">
+        <!--Pokemon Favoritos-->
+        <scene sceneID="Pfa-5D-b4K">
             <objects>
-                <tableViewController id="3Dn-B7-Rio" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="r9u-oe-7L9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <viewController title="Pokemon Favoritos" id="Eqm-8L-Ldk" customClass="FavoritesTableViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gTn-OO-Xqa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DIQ-8i-id0">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IUa-hU-Uud"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ern-Hs-SnY">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ern-Hs-SnY" id="Isp-EK-ntD">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="3Dn-B7-Rio" id="FHt-mf-jRx"/>
-                            <outlet property="delegate" destination="3Dn-B7-Rio" id="9Jk-ra-jvb"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Items" image="hands.sparkles" catalog="system" id="dws-lQ-MlS"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Meb-bC-Nee" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="DIQ-8i-id0" firstAttribute="top" secondItem="IUa-hU-Uud" secondAttribute="top" id="2nr-ow-D0e"/>
+                            <constraint firstItem="DIQ-8i-id0" firstAttribute="leading" secondItem="IUa-hU-Uud" secondAttribute="leading" id="eCh-Ib-97T"/>
+                            <constraint firstItem="IUa-hU-Uud" firstAttribute="bottom" secondItem="DIQ-8i-id0" secondAttribute="bottom" id="hOY-Jd-wyD"/>
+                            <constraint firstItem="IUa-hU-Uud" firstAttribute="trailing" secondItem="DIQ-8i-id0" secondAttribute="trailing" id="pia-yU-ANz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Favoritos" id="PeZ-we-dJl"/>
+                    <connections>
+                        <outlet property="tableView" destination="DIQ-8i-id0" id="ImH-Pp-2Qe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AMi-7T-8QI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="796"/>
+            <point key="canvasLocation" x="915.94202898550736" y="830.35714285714278"/>
         </scene>
         <!-- Pokemons-->
         <scene sceneID="u0b-ey-LsQ">
@@ -114,9 +132,10 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9mq-tG-E0Y" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title=" Pokemons" image="rectangle.stack.person.crop" catalog="system" id="XEg-Dn-57A"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="D9y-aS-H8y">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="D9y-aS-H8y">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -127,16 +146,41 @@
             </objects>
             <point key="canvasLocation" x="915.94202898550736" y="75.669642857142847"/>
         </scene>
+        <!--Favoritos-->
+        <scene sceneID="GtC-AZ-Zv5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qal-4p-Nem" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favoritos" image="heart.fill" catalog="system" id="iBO-sn-nN8"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="CDZ-sG-2ao">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" systemColor="labelColor"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Eqm-8L-Ldk" kind="relationship" relationship="rootViewController" id="odT-4v-P2M"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Q5-cT-buX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5.7971014492753632" y="830.35714285714278"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Screen Shot 2022-03-02 at 13.20.01" width="189" height="352"/>
-        <image name="hands.sparkles" catalog="system" width="122" height="128"/>
+        <image name="appstore" width="341.33334350585938" height="341.33334350585938"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="rectangle.stack.person.crop" catalog="system" width="128" height="122"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

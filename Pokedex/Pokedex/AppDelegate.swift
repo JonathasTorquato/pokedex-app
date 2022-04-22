@@ -10,10 +10,13 @@ import DropDown
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    let defaults = UserDefaults.standard
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if let favorites = defaults.array(forKey: Favorites.favoritePokemonKey) as? [Int]{
+            Favorites.favoritePokemon.accept(favorites)
+        }
         DropDown.startListeningToKeyboard()
         return true
     }

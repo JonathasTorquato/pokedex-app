@@ -56,7 +56,7 @@ class TypePortuguese: TypePortugueseUseCase{
             label?.textColor = .green
             return "Planta"
         case "electric":
-            label?.textColor = .yellow
+            label?.textColor = UIColor(red: 255/255, green: 205/255, blue: 57/255, alpha: 1)
             return "Elétrico"
         case "psychic":
             label?.textColor = .magenta
