@@ -217,13 +217,14 @@ extension PokemonDetailsViewController {
                                 textEntry = flavorText
                             }
                         }
-                        textEntry.removeAll { ch in
+                        textEntry = textEntry.replacingOccurrences(of: "\n", with: " ")
+                        /*textEntry.removeAll { ch in
                             if ch == "\n"
                             {
                                 return true
                             }
                             return false
-                        }
+                        }*/
                         self.descriptionLabel.text = textEntry
                     }
                     self.nameLabel.text = pokemon.name?.capitalizingFirstLetter()

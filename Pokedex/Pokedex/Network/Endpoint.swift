@@ -21,4 +21,8 @@ struct Endpoint {
     struct CHAIN {
         static let chains = "/evolution-chain"
     }
+    
+    struct ITEM {
+        static let items = "/item"
+    }
 }

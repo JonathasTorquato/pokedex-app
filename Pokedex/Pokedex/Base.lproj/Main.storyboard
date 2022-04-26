@@ -50,7 +50,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DV5-7q-vKG">
-                        <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="ZMv-U8-aqd">
                             <rect key="frame" x="207" y="22" width="0.0" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -72,7 +71,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1826.0869565217392" y="75.669642857142847"/>
+            <point key="canvasLocation" x="2736.231884057971" y="75.669642857142847"/>
+        </scene>
+        <!--Itens-->
+        <scene sceneID="FkJ-G4-bCC">
+            <objects>
+                <viewController id="Gmw-Ch-Ut7" customClass="ListAllItemsViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F0a-U3-sUO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PlJ-ed-lo0">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="URR-er-Ywc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="URR-er-Ywc" firstAttribute="bottom" secondItem="PlJ-ed-lo0" secondAttribute="bottom" id="AFy-Ta-SmU"/>
+                            <constraint firstItem="PlJ-ed-lo0" firstAttribute="leading" secondItem="URR-er-Ywc" secondAttribute="leading" id="J77-xL-GZN"/>
+                            <constraint firstItem="PlJ-ed-lo0" firstAttribute="top" secondItem="URR-er-Ywc" secondAttribute="top" id="NMC-Xa-sfz"/>
+                            <constraint firstItem="URR-er-Ywc" firstAttribute="trailing" secondItem="PlJ-ed-lo0" secondAttribute="trailing" id="j9e-6g-7m3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Itens" id="2Wl-4M-Buc"/>
+                    <connections>
+                        <outlet property="itemsTableView" destination="PlJ-ed-lo0" id="bLp-Dn-ofT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YcN-lh-sib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2735" y="-628"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fRn-6T-QG0">
@@ -89,11 +119,12 @@
                     <connections>
                         <segue destination="9mq-tG-E0Y" kind="relationship" relationship="viewControllers" id="rL2-g7-3Jq"/>
                         <segue destination="qal-4p-Nem" kind="relationship" relationship="viewControllers" id="naj-hu-UnV"/>
+                        <segue destination="NtE-xf-qW7" kind="relationship" relationship="viewControllers" id="ki6-Z8-j9r"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iWx-an-ZGz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5.7971014492753632" y="75.669642857142847"/>
+            <point key="canvasLocation" x="915.94202898550736" y="75.669642857142847"/>
         </scene>
         <!--Pokemon Favoritos-->
         <scene sceneID="Pfa-5D-b4K">
@@ -124,13 +155,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AMi-7T-8QI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="915.94202898550736" y="830.35714285714278"/>
+            <point key="canvasLocation" x="2735" y="803"/>
         </scene>
         <!-- Pokemons-->
         <scene sceneID="u0b-ey-LsQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9mq-tG-E0Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title=" Pokemons" image="rectangle.stack.person.crop" catalog="system" id="XEg-Dn-57A"/>
+                    <tabBarItem key="tabBarItem" title=" Pokemons" image="circle.circle.fill" catalog="system" id="XEg-Dn-57A"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="D9y-aS-H8y">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -144,7 +175,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CY0-Xa-QEu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="915.94202898550736" y="75.669642857142847"/>
+            <point key="canvasLocation" x="1826.0869565217392" y="75.669642857142847"/>
         </scene>
         <!--Favoritos-->
         <scene sceneID="GtC-AZ-Zv5">
@@ -168,14 +199,34 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Q5-cT-buX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5.7971014492753632" y="830.35714285714278"/>
+            <point key="canvasLocation" x="1825" y="803"/>
+        </scene>
+        <!--Itens-->
+        <scene sceneID="WOj-QI-x97">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NtE-xf-qW7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Itens" image="tag.fill" catalog="system" id="8OU-rI-gEW"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="fw4-hI-V1V">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Gmw-Ch-Ut7" kind="relationship" relationship="rootViewController" id="vSS-Bi-IPc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DzF-jf-hmW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1826" y="-628"/>
         </scene>
     </scenes>
     <resources>
         <image name="Screen Shot 2022-03-02 at 13.20.01" width="189" height="352"/>
         <image name="appstore" width="341.33334350585938" height="341.33334350585938"/>
+        <image name="circle.circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <image name="rectangle.stack.person.crop" catalog="system" width="128" height="122"/>
+        <image name="tag.fill" catalog="system" width="128" height="119"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

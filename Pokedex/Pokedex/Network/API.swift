@@ -17,6 +17,8 @@ enum API {
     case pokedexEntry(idPokemon : Int)
     case chain(idChain : Int)
     case chainURL(url : String)
+    case items
+    case itemId(id : Int)
 }
 
 extension API: TargetType {
@@ -44,7 +46,7 @@ extension API: TargetType {
             var urlAux = url
             var count : Int = 0
             urlAux.removeAll { element in
-                if count < Endpoint.baseURL.count{
+                if count < Endpoint.baseURL.count {
                     count += 1;
                     return true
                 }
@@ -52,32 +54,19 @@ extension API: TargetType {
                 return false
             }
             return urlAux
+        case .items:
+            return Endpoint.ITEM.items
+        case .itemId(id: let id):
+            return Endpoint.ITEM.items + "/\(id)"
         }
     }
     
     var method: Moya.Method {
-        switch self {
-        case .type:
-            return .get
-        case .pokemonId:
-            return .get
-        case .pokemonName:
-            return .get
-        case .pokemon:
-            return .get
-        case .typeURL:
-            return .get
-        case .pokedexEntry:
-            return .get
-        case .chain:
-            return .get
-        case .chainURL:
-            return .get
-        }
+        return .get
     }
     
     var task: Task {
-        switch self {
+        /*switch self {
         case .type:
             return .requestPlain
         case .pokemonId:
@@ -94,7 +83,10 @@ extension API: TargetType {
             return .requestPlain
         case .chain:
             return .requestPlain
-        }
+        case .items:
+            return .requestPlain
+        case .itemId:*/
+        return .requestPlain
     }
     
     var headers: [String : String]? {
