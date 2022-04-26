@@ -17,7 +17,7 @@ class ItemsCell: UITableViewCell {
     let bag = DisposeBag()
     let item : PublishRelay<ItemDTO> = PublishRelay<ItemDTO>()
     
-    
+    var itemValue : ItemDTO?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +26,7 @@ class ItemsCell: UITableViewCell {
     
     func setupItem() {
         item.subscribe(onNext: { value in
+            self.itemValue = value
             self.itemName.text = value.name
             if let url = URL(string: value.sprites.defaultSprite){
                 GetImage.downloadImage(from: url, imageView: self.itemImageView)

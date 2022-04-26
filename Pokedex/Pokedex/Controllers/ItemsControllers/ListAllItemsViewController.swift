@@ -63,6 +63,8 @@ extension ListAllItemsViewController : UITableViewDelegate, UITableViewDataSourc
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as? ItemsCell{
             if indexPath.row < itemLimit {
                 self.viewModel.getItemId(id: indexPath.row + 1) { item in
+                    item.name = item.name.replacingOccurrences(of: "-", with: " ")
+                    item.name.capitalizeFirstLetter()
                     cell.item.accept(item)
                 }
             }
@@ -80,6 +82,18 @@ extension ListAllItemsViewController : UITableViewDelegate, UITableViewDataSourc
         if indexPath.row == itemLimit {
             itemLimit += 20
             tableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row < itemLimit {
+            let itemDescriptionVC = ItemDescriptionViewController()
+            itemDescriptionVC.modalTransitionStyle = .partialCurl
+            if let cell = tableView.cellForRow(at: indexPath) as? ItemsCell, let item = cell.itemValue {
+                itemDescriptionVC.item.accept(item)
+            }
+            self.navigationController?.pushViewController(itemDescriptionVC, animated: true)
+            
         }
     }
     
