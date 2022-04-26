@@ -7,36 +7,36 @@
 
 import UIKit
 
+//MARK: - Declarations
 class PokemonTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
     @IBOutlet weak var pokemonImageView: UIImageView!
-    
     @IBOutlet weak var activitView: UIActivityIndicatorView!
     @IBOutlet weak var type2Label: UILabel!
     @IBOutlet weak var type1Label: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    fileprivate var pokemon: PokemonDTO?
     
-    fileprivate func setPokemon(_ pokemon: PokemonDTO)
-    {
+    fileprivate var pokemon: PokemonDTO?
+}
+
+//MARK: - Methods
+extension PokemonTableViewCell {
+    
+    //MARK: - Pokemon Methods
+    fileprivate func setPokemon(_ pokemon: PokemonDTO) {
         self.pokemon = pokemon
-        if let url = URL(string:  pokemon.sprites?.frontMale ?? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/2.png"){
+        if let url = URL(string:  pokemon.sprites.frontMale ?? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/2.png"){
             
             GetImage.downloadImage(from: url, imageView: pokemonImageView)
         }
-        nameLabel.text = pokemon.name?.capitalizingFirstLetter() ?? "Erro!"
-        guard let number = pokemon.id?.numberToSpecialNumber() else {return}
-        numberLabel.text = "No." + number
+        nameLabel.text = pokemon.name.capitalizingFirstLetter().replacingOccurrences(of: "-", with: " ")
+        numberLabel.text = "No." + pokemon.id.numberToSpecialNumber()
         
-        type1Label.text = TypePortuguese.getTypePortuguese(name: pokemon.types?[0].type?.name ?? "Erro", type1Label)
-        if pokemon.types?.count == 2
+        type1Label.text = TypePortuguese.getTypePortuguese(name: pokemon.types[0].type.name, type1Label)
+        if pokemon.types.count == 2
         {
-            type2Label.text = TypePortuguese.getTypePortuguese(name: pokemon.types?[1].type?.name ?? "Erro", type2Label)
+            type2Label.text = TypePortuguese.getTypePortuguese(name: pokemon.types[1].type.name, type2Label)
         }
         else
         {
@@ -44,18 +44,8 @@ class PokemonTableViewCell: UITableViewCell {
         }
         self.setActivityView(active: false)
     }
-    
-    fileprivate func setActivityView(active: Bool)
-    {
-        self.activitView.isHidden = !active
-        self.activitView.startAnimating()
-        if !active{
-            self.activitView.stopAnimating()
-        }
-    }
-    
-    func setPokemon(_ id: Int)
-    {
+        
+    func setPokemon(_ id: Int) {
         setActivityView(active: true)
         Network.getPokemonID(id: id) { result in
             switch result{
@@ -70,47 +60,17 @@ class PokemonTableViewCell: UITableViewCell {
         }
     }
     
-    func setPokemon(_ name: String)
-    {
-        
-    }
-    
-    func getPokemon()->PokemonDTO?{
+    func getPokemon()->PokemonDTO? {
         return self.pokemon
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(false, animated: animated)
+    //MARK: - UI Actions
+    fileprivate func setActivityView(active: Bool) {
+        self.activitView.isHidden = !active
+        self.activitView.startAnimating()
+        if !active{
+            self.activitView.stopAnimating()
+        }
     }
     
-}
-extension String {
-    func capitalizingFirstLetter() -> String {
-        return prefix(1).capitalized + dropFirst()
-    }
-
-    mutating func capitalizeFirstLetter() {
-        self = self.capitalizingFirstLetter()
-    }
-}
-extension Int{
-    func numberToSpecialNumber() -> String
-    {
-        if(self >= 100)
-        {
-            return "\(self)"
-        }
-        else if (self >= 10)
-        {
-            return "0\(self)"
-        }
-        else if self > 0
-        {
-            return "00\(self)"
-        }
-        else
-        {
-            return "invalid number"
-        }
-    }
 }

@@ -9,17 +9,9 @@ import Foundation
 
 
 class PokemonDTO: Codable{
-    let name: String?
-    let id: Int?
-    let types: [TypeURLDTO2]?
-    let sprites: Sprites?
-    let species : TypeURLDTO?
-    
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case name = "name"
-        case types = "types"
-        case sprites = "sprites"
-        case species = "species"
-    }
+    let name: String
+    let id: Int
+    let types: [TypeURLDTO2]
+    let sprites: Sprites
+    let species : TypeURLDTO
 }

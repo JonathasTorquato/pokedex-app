@@ -8,15 +8,12 @@
 import Foundation
 import UIKit
 
-protocol TypePortugueseUseCase{
+protocol TypePortugueseUseCase {
     static func getTypePortuguese(name: String,_ label: UILabel?) -> String
 }
 
-class TypePortuguese: TypePortugueseUseCase{
-    
-    init(){}
-    
-    static func getTypePortuguese(name: String,_ label: UILabel?) -> String
+class TypePortuguese: TypePortugueseUseCase {
+    static func getTypePortuguese(name: String,_ label: UILabel? = nil) -> String
     {
         switch name{
         case "bug":

@@ -7,12 +7,7 @@
 
 import Foundation
 class TypeURLDTO2: Codable{
-    let slot: Int?
-    let type: TypeURLDTO?
-    
-    enum CodingKeys: String, CodingKey {
-        case slot = "slot"
-        case type = "type"
-    }
+    let slot: Int
+    let type: TypeURLDTO
     
 }

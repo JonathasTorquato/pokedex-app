@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import DropDown
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let favorites = defaults.array(forKey: Favorites.favoritePokemonKey) as? [Int]{
             Favorites.favoritePokemon.accept(favorites)
         }
-        DropDown.startListeningToKeyboard()
         return true
     }
 

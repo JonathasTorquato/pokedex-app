@@ -9,9 +9,13 @@ import Foundation
 import UIKit
 
 class GetImage{
+    
+    //MARK: - Retrieve data from URL
     static func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
+    
+    //MARK: - Download image
     static func downloadImage(from url: URL, imageView: UIImageView) {
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }

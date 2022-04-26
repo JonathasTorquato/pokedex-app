@@ -8,11 +8,9 @@
 import Foundation
 
 struct EvolutionChainDTO : Codable{
-    //var id : Int?
     var chain : Chain?
 }
 class Chain : Codable {
-    
     var evolves_to : [Chain]?
     var species : TypeURLDTO?
 }

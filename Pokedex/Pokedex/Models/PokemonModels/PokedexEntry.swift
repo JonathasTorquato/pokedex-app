@@ -8,17 +8,17 @@
 import Foundation
 
 class PokedexEntry : Codable{
-    var flavor_text_entries : [Entry]?
+    var flavor_text_entries : [Entry]
     var evolution_chain : EvolutionChain?
     var varieties : [Forms]?
 }
 class Entry : Codable
 {
-    var flavor_text : String?
-    var language : Language?
+    var flavor_text : String
+    var language : Language
 }
 struct Language : Codable{
-    var name : String?
+    var name : String
 }
 struct EvolutionChain : Codable {
     var url : String?

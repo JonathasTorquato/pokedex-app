@@ -9,34 +9,38 @@ import UIKit
 import CloudKit
 import RxSwift
 import RxCocoa
-class ViewController: UIViewController {
 
-    let bag = DisposeBag()
-    var numberOfCells = 0
-    let viewModel: MainViewModel = MainViewModel()
-    var size:Int = 0
-    var range:Observable<Int> = Observable<Int>.range(start: 0, count: 0)
+//MARK: - Declarations
+class ViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    let bag = DisposeBag()
+    let viewModel : MainViewModel = MainViewModel()
+
+    var numberOfCells = 0
+    var size : Int = 0
+    var range : Observable<Int> = Observable<Int>.range(start: 0, count: 0)
+    
+    @IBOutlet weak var tableView : UITableView!
+}
+
+//MARK: - Methods
+extension ViewController {
     override func viewDidLoad() {
-     
-        self.navigationController?.navigationBar.barStyle = .black
-        range = .range(start: 0, count: numberOfCells)
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.barStyle = .black
+        
+        range = .range(start: 0, count: numberOfCells)
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "PokemonTableViewCell", bundle: .main), forCellReuseIdentifier: "PokemonTableCell")
         tableView.register(UINib(nibName: "FooterTableCell", bundle: .main), forCellReuseIdentifier: "FooterCell")
+        
         getCount()
-        
-    
-        
     }
     
-    
-   
-    
-    func getCount(){
+    func getCount() {
         viewModel.getPokemonCount { count in
             self.size = count
             self.numberOfCells = 15
@@ -44,8 +48,11 @@ class ViewController: UIViewController {
         }
     }
     
-    func showPokemonEntry(id: Int, animated: Bool = true){
+    
+    //MARK: - Navigation
+    func showPokemonEntry(id: Int, animated: Bool = true) {
         let vc = PokemonDetailsViewController()
+        
         vc.navigationItem.rightBarButtonItem = {
             let button = UIBarButtonItem(title: "Shiny", style: .plain, target: vc, action: #selector(vc.toggleShiny))
             return button
@@ -58,18 +65,19 @@ class ViewController: UIViewController {
     }
 
 }
-extension ViewController: UITableViewDelegate
-{
+
+//MARK: - TableViewDelegate
+extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row < numberOfCells{
             showPokemonEntry(id: indexPath.row + 1)
         }
     }
 }
-extension ViewController: UITableViewDataSource
-{
+
+//MARK: - TableViewDataSource
+extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
         if indexPath.row == numberOfCells{
             if let cell = cell as? FooterTableCell{
                 if numberOfCells >= size{
@@ -95,15 +103,13 @@ extension ViewController: UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row < numberOfCells
-        {
+        if indexPath.row < numberOfCells {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonTableCell", for: indexPath) as! PokemonTableViewCell
             cell.setPokemon(indexPath.row + 1)
             
             return cell
         }
-        else
-        {
+        else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FooterCell", for: indexPath) as! FooterTableCell
             cell.delegate = self
             
@@ -112,59 +118,39 @@ extension ViewController: UITableViewDataSource
         
     }
     
-    
 }
-extension ViewController: FooterTableCellDelegate
-{
-    func didTap()
-    {
+
+//MARK: - FooterTableCellDelegate
+extension ViewController: FooterTableCellDelegate {
+    func didTap() {
         numberOfCells += 15
         tableView.reloadData()
     }
 }
+
+//MARK: - SearchBarDelegate
 extension ViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let search = searchBar.text else{return}
-        if search.first?.isLetter ?? false{
-            Network.getPokemonName(name: search.lowercased()) { result in
-                switch result{
-                    
-                case .success(let result):
-                    self.showPokemonEntry(id: result.id ?? 1)
-                case .failure(_):
-                    self.numberOfCells = 0
-                    self.tableView.reloadData()
-                }
+        guard let search = searchBar.text else {return}
+        if search.first?.isLetter ?? false {
+            self.viewModel.getPokemonName(name: search.lowercased()) { result in
+                self.showPokemonEntry(id: result.id)
             }
-        }
-        let searched = (Int(search) ?? 0)
-        if search.first?.isNumber ?? false && searched <= 898 && searched > 0 {
-            Network.getPokemonID(id: searched) { result in
-                switch result{
-                    
-                case .success(let result):
-                    self.showPokemonEntry(id: result.id ?? 1)
-                case .failure(_):
-                    self.numberOfCells = 0
-                    self.tableView.reloadData()
-                }
+        } else if let searched = (Int(search)), searched <= 898 && searched > 0 {
+            self.viewModel.getPokemonId(id: searched) { result in
+                self.showPokemonEntry(id: result.id)
             }
         }
     }
 }
 
-
 //MARK: - Extension PokemonDetailsViewControllerDelegate
-
-extension ViewController : PokemonDetailsViewControllerDelegate{
+extension ViewController : PokemonDetailsViewControllerDelegate {
     func pokemonVariation(other name: String, completion: @escaping (Int) -> Void) {
         viewModel.getPokemonName(name: name) { pokemon in
-            completion(pokemon.id ?? 0)
+            completion(pokemon.id)
         }
     }
-    
-    
-    
     
     func otherPokemon(to name: String, viewController: PokemonDetailsViewController) {
         if name != "" {
@@ -181,8 +167,4 @@ extension ViewController : PokemonDetailsViewControllerDelegate{
             }
         }
     }
-    
-    
-    
-    
 }

@@ -10,13 +10,14 @@
 		C243D13F28084362008F3FED /* Evolution_Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243D13E28084362008F3FED /* Evolution_Chain.swift */; };
 		C2528853281814D700893E6C /* ItemDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2528851281814D700893E6C /* ItemDescriptionViewController.swift */; };
 		C2528854281814D700893E6C /* ItemDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2528852281814D700893E6C /* ItemDescriptionViewController.xib */; };
+		C2528857281853C100893E6C /* Int+SpecialNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2528856281853C100893E6C /* Int+SpecialNumber.swift */; };
+		C2528859281853FF00893E6C /* String+CapitalizingFirstLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2528858281853FF00893E6C /* String+CapitalizingFirstLetter.swift */; };
 		C26515C32812CEDC0088647C /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26515C22812CEDC0088647C /* FavoritesTableViewController.swift */; };
 		C26515C52812D5FA0088647C /* PokemonDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26515C42812D5FA0088647C /* PokemonDescriptionViewModel.swift */; };
 		C26515C72812E4F70088647C /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26515C62812E4F70088647C /* FavoritesViewModel.swift */; };
 		C27CA40E2806F7D50027EA7C /* PokedexEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27CA40D2806F7D50027EA7C /* PokedexEntry.swift */; };
 		C27CA411280708B10027EA7C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C27CA410280708B10027EA7C /* RxCocoa */; };
 		C27CA413280708B10027EA7C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C27CA412280708B10027EA7C /* RxSwift */; };
-		C28BAE4D27D137B40039F6E5 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BAE4C27D137B40039F6E5 /* Pokemon.swift */; };
 		C298AB0C2810510C003CA6CF /* AllPokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298AB0B2810510C003CA6CF /* AllPokemon.swift */; };
 		C298AB0F28106EAB003CA6CF /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298AB0E28106EAB003CA6CF /* Favorites.swift */; };
 		C298AB11281073E7003CA6CF /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298AB10281073E7003CA6CF /* MainTabController.swift */; };
@@ -29,7 +30,6 @@
 		C2CCA6932816D2C600808DBC /* AllItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CCA6922816D2C600808DBC /* AllItemsViewModel.swift */; };
 		C2CCA6972817170700808DBC /* ItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CCA6952817170700808DBC /* ItemsCell.swift */; };
 		C2CCA6982817170700808DBC /* ItemsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2CCA6962817170700808DBC /* ItemsCell.xib */; };
-		C2CD62B12807312C006E89E5 /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = C2CD62B02807312C006E89E5 /* DropDown */; };
 		C2DBE8AA27CFB1750065FE19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8A927CFB1750065FE19 /* AppDelegate.swift */; };
 		C2DBE8AC27CFB1750065FE19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8AB27CFB1750065FE19 /* SceneDelegate.swift */; };
 		C2DBE8AE27CFB1750065FE19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8AD27CFB1750065FE19 /* ViewController.swift */; };
@@ -81,11 +81,12 @@
 		C243D13E28084362008F3FED /* Evolution_Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evolution_Chain.swift; sourceTree = "<group>"; };
 		C2528851281814D700893E6C /* ItemDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDescriptionViewController.swift; sourceTree = "<group>"; };
 		C2528852281814D700893E6C /* ItemDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDescriptionViewController.xib; sourceTree = "<group>"; };
+		C2528856281853C100893E6C /* Int+SpecialNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+SpecialNumber.swift"; sourceTree = "<group>"; };
+		C2528858281853FF00893E6C /* String+CapitalizingFirstLetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CapitalizingFirstLetter.swift"; sourceTree = "<group>"; };
 		C26515C22812CEDC0088647C /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		C26515C42812D5FA0088647C /* PokemonDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDescriptionViewModel.swift; sourceTree = "<group>"; };
 		C26515C62812E4F70088647C /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		C27CA40D2806F7D50027EA7C /* PokedexEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexEntry.swift; sourceTree = "<group>"; };
-		C28BAE4C27D137B40039F6E5 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		C298AB0B2810510C003CA6CF /* AllPokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPokemon.swift; sourceTree = "<group>"; };
 		C298AB0E28106EAB003CA6CF /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		C298AB10281073E7003CA6CF /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
@@ -135,7 +136,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2DBE8E027CFB2C10065FE19 /* SnapKit in Frameworks */,
-				C2CD62B12807312C006E89E5 /* DropDown in Frameworks */,
 				C2DBE8DB27CFB2770065FE19 /* Moya in Frameworks */,
 				C27CA413280708B10027EA7C /* RxSwift in Frameworks */,
 				C27CA411280708B10027EA7C /* RxCocoa in Frameworks */,
@@ -160,6 +160,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2528855281853AA00893E6C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C2528856281853C100893E6C /* Int+SpecialNumber.swift */,
+				C2528858281853FF00893E6C /* String+CapitalizingFirstLetter.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C26515C9281309850088647C /* PokemonControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,7 +215,6 @@
 				C2DBE8F427CFEA1D0065FE19 /* Sprites.swift */,
 				C2DBE8F827CFF2640065FE19 /* TypeURLDTO.swift */,
 				C2DBE8FA27CFF2FE0065FE19 /* TypeURLDTO2.swift */,
-				C28BAE4C27D137B40039F6E5 /* Pokemon.swift */,
 				C2BF358127F47F42000A3149 /* PokemonCount.swift */,
 				C27CA40D2806F7D50027EA7C /* PokedexEntry.swift */,
 				C243D13E28084362008F3FED /* Evolution_Chain.swift */,
@@ -294,6 +302,7 @@
 		C2DBE8A827CFB1750065FE19 /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				C2528855281853AA00893E6C /* Extensions */,
 				C2CCA6892816C18700808DBC /* Controllers */,
 				C298AB0D28106E90003CA6CF /* Static Assets */,
 				C2BF358727F49C83000A3149 /* UseCase */,
@@ -381,7 +390,6 @@
 				C2DBE8DF27CFB2C10065FE19 /* SnapKit */,
 				C27CA410280708B10027EA7C /* RxCocoa */,
 				C27CA412280708B10027EA7C /* RxSwift */,
-				C2CD62B02807312C006E89E5 /* DropDown */,
 			);
 			productName = Pokedex;
 			productReference = C2DBE8A627CFB1750065FE19 /* Pokedex.app */;
@@ -459,7 +467,6 @@
 				C2DBE8D927CFB2770065FE19 /* XCRemoteSwiftPackageReference "Moya" */,
 				C2DBE8DE27CFB2C10065FE19 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				C27CA40F280708B10027EA7C /* XCRemoteSwiftPackageReference "RxSwift" */,
-				C2CD62AF2807312C006E89E5 /* XCRemoteSwiftPackageReference "DropDown" */,
 			);
 			productRefGroup = C2DBE8A727CFB1750065FE19 /* Products */;
 			projectDirPath = "";
@@ -516,12 +523,12 @@
 				C2CCA68B2816C8FE00808DBC /* ItemDTO.swift in Sources */,
 				C2CCA6932816D2C600808DBC /* AllItemsViewModel.swift in Sources */,
 				C2DBE8EC27CFE27B0065FE19 /* Endpoint.swift in Sources */,
+				C2528857281853C100893E6C /* Int+SpecialNumber.swift in Sources */,
 				C2DBE8FB27CFF2FE0065FE19 /* TypeURLDTO2.swift in Sources */,
 				C2DBE8E827CFDB150065FE19 /* Network.swift in Sources */,
 				C243D13F28084362008F3FED /* Evolution_Chain.swift in Sources */,
 				C2528853281814D700893E6C /* ItemDescriptionViewController.swift in Sources */,
 				C2DBE8F927CFF2640065FE19 /* TypeURLDTO.swift in Sources */,
-				C28BAE4D27D137B40039F6E5 /* Pokemon.swift in Sources */,
 				C2DBE8EE27CFE2C40065FE19 /* Enviroment.swift in Sources */,
 				C27CA40E2806F7D50027EA7C /* PokedexEntry.swift in Sources */,
 				C2E9785527D23EE400B16496 /* FooterTableCell.swift in Sources */,
@@ -536,6 +543,7 @@
 				C298AB0C2810510C003CA6CF /* AllPokemon.swift in Sources */,
 				C26515C72812E4F70088647C /* FavoritesViewModel.swift in Sources */,
 				C2CCA68D2816CBBD00808DBC /* ItemURL.swift in Sources */,
+				C2528859281853FF00893E6C /* String+CapitalizingFirstLetter.swift in Sources */,
 				C2E9785F27D2781100B16496 /* PokemonDetailsViewController.swift in Sources */,
 				C2DBE8AA27CFB1750065FE19 /* AppDelegate.swift in Sources */,
 				C2CCA68F2816D12E00808DBC /* ListAllItemsViewController.swift in Sources */,
@@ -918,14 +926,6 @@
 				minimumVersion = 6.5.0;
 			};
 		};
-		C2CD62AF2807312C006E89E5 /* XCRemoteSwiftPackageReference "DropDown" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AssistoLab/DropDown";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		C2DBE8D927CFB2770065FE19 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
@@ -954,11 +954,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C27CA40F280708B10027EA7C /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
-		};
-		C2CD62B02807312C006E89E5 /* DropDown */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C2CD62AF2807312C006E89E5 /* XCRemoteSwiftPackageReference "DropDown" */;
-			productName = DropDown;
 		};
 		C2DBE8DA27CFB2770065FE19 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;

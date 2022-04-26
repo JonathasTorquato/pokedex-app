@@ -8,5 +8,5 @@
 import Foundation
 
 struct PokemonCount: Codable{
-    let count: Int?
+    let count: Int
 }

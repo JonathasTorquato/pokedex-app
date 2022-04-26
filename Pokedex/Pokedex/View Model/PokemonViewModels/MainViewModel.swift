@@ -8,24 +8,24 @@
 import Foundation
 import SwiftUI
 
-class MainViewModel{
-    init(){
-    }
-    func getPokemonCount(completion: @escaping(Int)->Void)
-    {
+class MainViewModel {
+    init() {}
+    
+    //MARK: - Get Methods
+    func getPokemonCount(completion: @escaping(Int)->Void) {
         Network.getPokemonCount { result in
             switch result
             {
             case .success(let response):
-                completion(response.count ?? 0)
+                completion(response.count)
             case .failure(let error):
                 print(error.localizedDescription)
                 completion(0)
             }
         }
     }
-    func getPokemonId(id: Int, completion: @escaping(PokemonDTO)->Void)
-    {
+    
+    func getPokemonId(id: Int, completion: @escaping(PokemonDTO)->Void) {
         Network.getPokemonID(id: id){ result in
             switch result
             {
@@ -37,7 +37,8 @@ class MainViewModel{
             }
         }
     }
-    func getPokemonName(name: String, completion: @escaping(PokemonDTO)->Void){
+    
+    func getPokemonName(name: String, completion: @escaping(PokemonDTO)->Void) {
         Network.getPokemonName(name: name) { result in
             switch result {
                 

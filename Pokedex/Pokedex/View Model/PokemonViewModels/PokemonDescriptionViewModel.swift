@@ -7,11 +7,18 @@
 
 import Foundation
 
+//MARK: - Declarations
 class PokemonDescriptionViewModel {
     fileprivate let defaults = UserDefaults.standard
-    init(){}
     
-    func saveUserDefatuls(value : Any, for key: String){
+    init(){}
+}
+
+//MARK: - Methods
+extension PokemonDescriptionViewModel {
+    
+    //MARK: - User Defaults
+    func saveUserDefatuls(value : Any, for key: String) {
         defaults.set(value, forKey: key)
     }
     

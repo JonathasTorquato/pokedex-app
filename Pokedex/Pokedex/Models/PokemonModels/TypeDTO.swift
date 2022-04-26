@@ -8,14 +8,14 @@
 import Foundation
 
 class TypeDTO: Codable{
-    let name: String?
-    let id: Int?
-    let doubleDamageFrom: [TypeDTO]?
-    let halfDamageFrom: [TypeDTO]?
-    let halfDamageTo: [TypeDTO]?
-    let doubleDamageTo: [TypeDTO]?
-    let noDamageTo: [TypeDTO]?
-    let noDamageFrom: [TypeDTO]?
+    let name: String
+    let id: Int
+    let doubleDamageFrom: [TypeDTO]
+    let halfDamageFrom: [TypeDTO]
+    let halfDamageTo: [TypeDTO]
+    let doubleDamageTo: [TypeDTO]
+    let noDamageTo: [TypeDTO]
+    let noDamageFrom: [TypeDTO]
     
     
     

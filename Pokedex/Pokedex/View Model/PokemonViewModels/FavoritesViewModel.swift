@@ -10,8 +10,9 @@ import Foundation
 class FavoritesViewModel {
     init(){}
     
-    func getPokemonId(id: Int, completion: @escaping(PokemonDTO)->Void)
-    {
+    //MARK: - Get Pokemon Methods
+    
+    func getPokemonId(id: Int, completion: @escaping(PokemonDTO)->Void) {
         Network.getPokemonID(id: id){ result in
             switch result
             {
@@ -24,7 +25,7 @@ class FavoritesViewModel {
         }
     }
     
-    func getPokemonName(name: String, completion: @escaping(PokemonDTO)->Void){
+    func getPokemonName(name: String, completion: @escaping(PokemonDTO)->Void) {
         Network.getPokemonName(name: name) { result in
             switch result {
                 

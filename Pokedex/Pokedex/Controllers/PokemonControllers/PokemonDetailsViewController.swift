@@ -144,7 +144,7 @@ extension PokemonDetailsViewController {
             .subscribe(onNext:{ valueShiny, valueGender, valueFront in
                 if valueShiny{
                     if valueGender != .female {
-                        if let image = valueFront ? self.pokemon?.sprites?.frontMaleShiny : self.pokemon?.sprites?.backMaleShiny, let imageURL = URL(string: image) {
+                        if let image = valueFront ? self.pokemon?.sprites.frontMaleShiny : self.pokemon?.sprites.backMaleShiny, let imageURL = URL(string: image) {
                             
                             DispatchQueue.main.async{
                                 GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
@@ -153,7 +153,7 @@ extension PokemonDetailsViewController {
                         }
                     }
                     else {
-                        if let image = valueFront ? self.pokemon?.sprites?.frontFemaleShiny : self.pokemon?.sprites?.backFemaleShiny, let imageURL = URL(string: image) {
+                        if let image = valueFront ? self.pokemon?.sprites.frontFemaleShiny : self.pokemon?.sprites.backFemaleShiny, let imageURL = URL(string: image) {
                             
                             DispatchQueue.main.async{
                                 GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
@@ -164,7 +164,7 @@ extension PokemonDetailsViewController {
                 }
                 else {
                     if valueGender != .female{
-                        if let image = valueFront ? self.pokemon?.sprites?.frontMale : self.pokemon?.sprites?.backMale, let imageURL = URL(string: image) {
+                        if let image = valueFront ? self.pokemon?.sprites.frontMale : self.pokemon?.sprites.backMale, let imageURL = URL(string: image) {
                             DispatchQueue.main.async{
                                 GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
                                 self.navigationItem.rightBarButtonItem?.title = "Shiny"
@@ -172,7 +172,7 @@ extension PokemonDetailsViewController {
                         }
                     }
                     else {
-                        if let image = valueFront ? self.pokemon?.sprites?.frontFemale : self.pokemon?.sprites?.backFemale, let imageURL = URL(string: image) {
+                        if let image = valueFront ? self.pokemon?.sprites.frontFemale : self.pokemon?.sprites.backFemale, let imageURL = URL(string: image) {
                             DispatchQueue.main.async{
                                 GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
                                 self.navigationItem.rightBarButtonItem?.title = "Shiny"
@@ -208,29 +208,20 @@ extension PokemonDetailsViewController {
                 }
                 //MARK: - Entry
                 DispatchQueue.main.async{
-                    if let entry = success.flavor_text_entries {
-                        var textEntry: String = ""
-                        for flavor in entry
+                    var textEntry: String = ""
+                    for flavor in success.flavor_text_entries
+                    {
+                        if flavor.language.name == "en"
                         {
-                            if let flavorText = flavor.flavor_text, flavor.language?.name == "en"
-                            {
-                                textEntry = flavorText
-                            }
+                            textEntry = flavor.flavor_text
                         }
-                        textEntry = textEntry.replacingOccurrences(of: "\n", with: " ")
-                        /*textEntry.removeAll { ch in
-                            if ch == "\n"
-                            {
-                                return true
-                            }
-                            return false
-                        }*/
-                        self.descriptionLabel.text = textEntry
                     }
-                    self.nameLabel.text = pokemon.name?.capitalizingFirstLetter()
+                    textEntry = textEntry.replacingOccurrences(of: "\n", with: " ")
+                    self.descriptionLabel.text = textEntry
+                    self.nameLabel.text = pokemon.name.capitalizingFirstLetter()
                     self.title = "No. " + self.id.numberToSpecialNumber()
                     
-                    if let sprite = pokemon.sprites?.frontMale, let url = URL(string: sprite){
+                    if let sprite = pokemon.sprites.frontMale, let url = URL(string: sprite){
                         self.imageButton.setTitle("", for: .normal)
                         self.imageButton.isEnabled = true
                         GetImage.downloadImage(from: url, imageView: self.pokemonImage)
@@ -241,10 +232,10 @@ extension PokemonDetailsViewController {
                         self.pokemonImage.image = nil
                     }
                     
-                    self.type1label.text = TypePortuguese.getTypePortuguese(name: pokemon.types?[0].type?.name ?? "Erro", self.type1label)
-                    if pokemon.types?.count == 2
+                    self.type1label.text = TypePortuguese.getTypePortuguese(name: pokemon.types[0].type.name, self.type1label)
+                    if pokemon.types.count == 2
                     {
-                        self.type2Label.text = TypePortuguese.getTypePortuguese(name: pokemon.types?[1].type?.name ?? "Erro", self.type2Label)
+                        self.type2Label.text = TypePortuguese.getTypePortuguese(name: pokemon.types[1].type.name, self.type2Label)
                     }
                     else
                     {
@@ -273,7 +264,7 @@ extension PokemonDetailsViewController {
         self.frontImage.accept(true)
         
         //MARK: - SETUP GENDER
-        guard let _ = pokemon.sprites?.frontFemale else {
+        guard let _ = pokemon.sprites.frontFemale else {
             self.gender.accept(.none)
             return
         }
@@ -281,10 +272,10 @@ extension PokemonDetailsViewController {
         
     }
     func setPokemon(pokemon: PokemonDTO){
-        self.id = pokemon.id ?? 0
+        self.id = pokemon.id
         self.shiny.accept(false)
         if self.id >= 899 {
-            self.delegate?.pokemonVariation(other: pokemon.species?.name ?? ""){ identifier in
+            self.delegate?.pokemonVariation(other: pokemon.species.name){ identifier in
                 self.id = identifier
                 self.pokemon = pokemon
                 DispatchQueue.main.async {

@@ -8,36 +8,50 @@
 import UIKit
 import RxSwift
 import RxCocoa
+
+//MARK: - Declarations
 class FavoritesTableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let bag = DisposeBag()
     let viewModel = FavoritesViewModel()
+}
+
+//MARK: - Methods
+
+extension FavoritesTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.register(UINib(nibName: "PokemonTableViewCell", bundle: .main), forCellReuseIdentifier: "PokemonTableCell")
+        
         setupTable()
     }
     
+    //MARK: - Rx Setup
     fileprivate func setupTable() {
-        self.tableView.register(UINib(nibName: "PokemonTableViewCell", bundle: .main), forCellReuseIdentifier: "PokemonTableCell")
-        Favorites.favoritePokemon.bind(to: self.tableView.rx.items(cellIdentifier: "PokemonTableCell")){ row,pokemonId,cell in
+        
+        Favorites.favoritePokemon.bind(to: self.tableView.rx.items(cellIdentifier: "PokemonTableCell")) { row,pokemonId,cell in
             if let cell = cell as? PokemonTableViewCell{
                 cell.setPokemon(pokemonId)
             }
         }.disposed(by: bag)
-        self.tableView.rx.modelSelected(Int.self).subscribe(onNext:{[unowned self] value in
+        self.tableView.rx.modelSelected(Int.self).subscribe(onNext: { [unowned self] value in
             self.showPokemonEntry(id: value)
             
         }).disposed(by: bag)
     }
     
+    //MARK: - Navigation
     func showPokemonEntry(id: Int, animated: Bool = true) {
         let vc = PokemonDetailsViewController()
+        //MARK: - New View Controller NavBarButton Definition
         vc.navigationItem.rightBarButtonItem = {
             let button = UIBarButtonItem(title: "Shiny", style: .plain, target: vc, action: #selector(vc.toggleShiny))
             return button
         }()
+        
         vc.delegate = self
         viewModel.getPokemonId(id: id) { pokemon in
             vc.setPokemon(pokemon: pokemon)
@@ -49,9 +63,10 @@ class FavoritesTableViewController: UIViewController {
 
 //MARK: -PokemonDetailsDelegate Extension
 extension FavoritesTableViewController : PokemonDetailsViewControllerDelegate {
+    
     func pokemonVariation(other name: String, completion: @escaping (Int) -> Void) {
         viewModel.getPokemonName(name: name) { pokemon in
-            completion(pokemon.id ?? 0)
+            completion(pokemon.id)
         }
     }
     
