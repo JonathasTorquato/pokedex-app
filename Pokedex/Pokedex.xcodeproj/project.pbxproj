@@ -7,11 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C23EDD002819748500E9B946 /* grassType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCEF2819747B00E9B946 /* grassType.mp4 */; };
+		C23EDD012819748500E9B946 /* flyingType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCF02819747B00E9B946 /* flyingType.mp4 */; };
+		C23EDD022819748500E9B946 /* groundType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCF12819747C00E9B946 /* groundType.mp4 */; };
+		C23EDD032819748500E9B946 /* electricType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCF22819747C00E9B946 /* electricType.mp4 */; };
+		C23EDD042819748500E9B946 /* ghostType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCF32819747D00E9B946 /* ghostType.mp4 */; };
+		C23EDD052819748500E9B946 /* poisonType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCF42819747F00E9B946 /* poisonType.mp4 */; };
+		C23EDD062819748500E9B946 /* fightingType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCF52819748000E9B946 /* fightingType.mp4 */; };
+		C23EDD072819748500E9B946 /* rockType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCF62819748100E9B946 /* rockType.mp4 */; };
+		C23EDD082819748500E9B946 /* bugType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCF72819748200E9B946 /* bugType.mp4 */; };
+		C23EDD092819748500E9B946 /* normalType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCF82819748200E9B946 /* normalType.mp4 */; };
+		C23EDD0A2819748500E9B946 /* fireType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCF92819748200E9B946 /* fireType.mp4 */; };
+		C23EDD0B2819748500E9B946 /* dragonType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCFA2819748400E9B946 /* dragonType.mp4 */; };
+		C23EDD0C2819748500E9B946 /* fairyType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCFB2819748400E9B946 /* fairyType.mp4 */; };
+		C23EDD0E2819748500E9B946 /* waterType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCFD2819748400E9B946 /* waterType.mp4 */; };
+		C23EDD0F2819748500E9B946 /* steelType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDCFE2819748500E9B946 /* steelType.mp4 */; };
+		C23EDD112819818900E9B946 /* iceType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDD102819818900E9B946 /* iceType.mp4 */; };
+		C23EDD13281982AE00E9B946 /* darkType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDD12281982AE00E9B946 /* darkType.mp4 */; };
+		C23EDD162819891B00E9B946 /* TypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23EDD142819891B00E9B946 /* TypeTableViewCell.swift */; };
+		C23EDD172819891B00E9B946 /* TypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C23EDD152819891B00E9B946 /* TypeTableViewCell.xib */; };
+		C23EDD1D2819AFCF00E9B946 /* psychicType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDD1C2819AFCF00E9B946 /* psychicType.mp4 */; };
 		C243D13F28084362008F3FED /* Evolution_Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243D13E28084362008F3FED /* Evolution_Chain.swift */; };
 		C2528853281814D700893E6C /* ItemDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2528851281814D700893E6C /* ItemDescriptionViewController.swift */; };
 		C2528854281814D700893E6C /* ItemDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2528852281814D700893E6C /* ItemDescriptionViewController.xib */; };
 		C2528857281853C100893E6C /* Int+SpecialNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2528856281853C100893E6C /* Int+SpecialNumber.swift */; };
 		C2528859281853FF00893E6C /* String+CapitalizingFirstLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2528858281853FF00893E6C /* String+CapitalizingFirstLetter.swift */; };
+		C252885D2818622E00893E6C /* TypeDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C252885B2818622E00893E6C /* TypeDescriptionViewController.swift */; };
+		C252885E2818622E00893E6C /* TypeDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C252885C2818622E00893E6C /* TypeDescriptionViewController.xib */; };
 		C26515C32812CEDC0088647C /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26515C22812CEDC0088647C /* FavoritesTableViewController.swift */; };
 		C26515C52812D5FA0088647C /* PokemonDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26515C42812D5FA0088647C /* PokemonDescriptionViewModel.swift */; };
 		C26515C72812E4F70088647C /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26515C62812E4F70088647C /* FavoritesViewModel.swift */; };
@@ -78,11 +100,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C23EDCEF2819747B00E9B946 /* grassType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = grassType.mp4; path = ../../../../../../Downloads/grassType.mp4; sourceTree = "<group>"; };
+		C23EDCF02819747B00E9B946 /* flyingType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = flyingType.mp4; path = ../../../../../../Downloads/flyingType.mp4; sourceTree = "<group>"; };
+		C23EDCF12819747C00E9B946 /* groundType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = groundType.mp4; sourceTree = "<group>"; };
+		C23EDCF22819747C00E9B946 /* electricType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = electricType.mp4; path = ../../../../../../Downloads/electricType.mp4; sourceTree = "<group>"; };
+		C23EDCF32819747D00E9B946 /* ghostType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ghostType.mp4; sourceTree = "<group>"; };
+		C23EDCF42819747F00E9B946 /* poisonType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = poisonType.mp4; sourceTree = "<group>"; };
+		C23EDCF52819748000E9B946 /* fightingType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = fightingType.mp4; sourceTree = "<group>"; };
+		C23EDCF62819748100E9B946 /* rockType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rockType.mp4; sourceTree = "<group>"; };
+		C23EDCF72819748200E9B946 /* bugType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = bugType.mp4; sourceTree = "<group>"; };
+		C23EDCF82819748200E9B946 /* normalType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = normalType.mp4; sourceTree = "<group>"; };
+		C23EDCF92819748200E9B946 /* fireType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = fireType.mp4; path = ../../../../../../Downloads/fireType.mp4; sourceTree = "<group>"; };
+		C23EDCFA2819748400E9B946 /* dragonType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = dragonType.mp4; sourceTree = "<group>"; };
+		C23EDCFB2819748400E9B946 /* fairyType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = fairyType.mp4; path = ../../../../../../Downloads/fairyType.mp4; sourceTree = "<group>"; };
+		C23EDCFD2819748400E9B946 /* waterType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = waterType.mp4; path = ../../../../../../Downloads/waterType.mp4; sourceTree = "<group>"; };
+		C23EDCFE2819748500E9B946 /* steelType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = steelType.mp4; sourceTree = "<group>"; };
+		C23EDD102819818900E9B946 /* iceType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = iceType.mp4; sourceTree = "<group>"; };
+		C23EDD12281982AE00E9B946 /* darkType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = darkType.mp4; sourceTree = "<group>"; };
+		C23EDD142819891B00E9B946 /* TypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTableViewCell.swift; sourceTree = "<group>"; };
+		C23EDD152819891B00E9B946 /* TypeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeTableViewCell.xib; sourceTree = "<group>"; };
+		C23EDD1C2819AFCF00E9B946 /* psychicType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = psychicType.mp4; path = ../../../../../../Downloads/psychicType.mp4; sourceTree = "<group>"; };
 		C243D13E28084362008F3FED /* Evolution_Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evolution_Chain.swift; sourceTree = "<group>"; };
 		C2528851281814D700893E6C /* ItemDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDescriptionViewController.swift; sourceTree = "<group>"; };
 		C2528852281814D700893E6C /* ItemDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDescriptionViewController.xib; sourceTree = "<group>"; };
 		C2528856281853C100893E6C /* Int+SpecialNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+SpecialNumber.swift"; sourceTree = "<group>"; };
 		C2528858281853FF00893E6C /* String+CapitalizingFirstLetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CapitalizingFirstLetter.swift"; sourceTree = "<group>"; };
+		C252885B2818622E00893E6C /* TypeDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDescriptionViewController.swift; sourceTree = "<group>"; };
+		C252885C2818622E00893E6C /* TypeDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeDescriptionViewController.xib; sourceTree = "<group>"; };
 		C26515C22812CEDC0088647C /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		C26515C42812D5FA0088647C /* PokemonDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDescriptionViewModel.swift; sourceTree = "<group>"; };
 		C26515C62812E4F70088647C /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
@@ -169,6 +213,42 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C252885A2818613800893E6C /* TypeControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C252885B2818622E00893E6C /* TypeDescriptionViewController.swift */,
+				C252885C2818622E00893E6C /* TypeDescriptionViewController.xib */,
+				C23EDD142819891B00E9B946 /* TypeTableViewCell.swift */,
+				C23EDD152819891B00E9B946 /* TypeTableViewCell.xib */,
+			);
+			path = TypeControllers;
+			sourceTree = "<group>";
+		};
+		C252885F281866C600893E6C /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				C23EDCF72819748200E9B946 /* bugType.mp4 */,
+				C23EDCFA2819748400E9B946 /* dragonType.mp4 */,
+				C23EDD12281982AE00E9B946 /* darkType.mp4 */,
+				C23EDCF22819747C00E9B946 /* electricType.mp4 */,
+				C23EDCFB2819748400E9B946 /* fairyType.mp4 */,
+				C23EDCF52819748000E9B946 /* fightingType.mp4 */,
+				C23EDCF92819748200E9B946 /* fireType.mp4 */,
+				C23EDCF02819747B00E9B946 /* flyingType.mp4 */,
+				C23EDD1C2819AFCF00E9B946 /* psychicType.mp4 */,
+				C23EDCF32819747D00E9B946 /* ghostType.mp4 */,
+				C23EDCEF2819747B00E9B946 /* grassType.mp4 */,
+				C23EDCF12819747C00E9B946 /* groundType.mp4 */,
+				C23EDD102819818900E9B946 /* iceType.mp4 */,
+				C23EDCFE2819748500E9B946 /* steelType.mp4 */,
+				C23EDCF82819748200E9B946 /* normalType.mp4 */,
+				C23EDCF42819747F00E9B946 /* poisonType.mp4 */,
+				C23EDCF62819748100E9B946 /* rockType.mp4 */,
+				C23EDCFD2819748400E9B946 /* waterType.mp4 */,
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
 		C26515C9281309850088647C /* PokemonControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +326,7 @@
 		C2CCA6892816C18700808DBC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C252885A2818613800893E6C /* TypeControllers */,
 				C2CCA6882816C17300808DBC /* ItemsControllers */,
 				C26515C9281309850088647C /* PokemonControllers */,
 			);
@@ -302,11 +383,12 @@
 		C2DBE8A827CFB1750065FE19 /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				C252885F281866C600893E6C /* Videos */,
 				C2528855281853AA00893E6C /* Extensions */,
 				C2CCA6892816C18700808DBC /* Controllers */,
 				C298AB0D28106E90003CA6CF /* Static Assets */,
-				C2BF358727F49C83000A3149 /* UseCase */,
 				C2DBE8EF27CFE60F0065FE19 /* Models */,
+				C2BF358727F49C83000A3149 /* UseCase */,
 				C2BF358427F48086000A3149 /* View Model */,
 				C2DBE8E627CFDAF20065FE19 /* Network */,
 				C2DBE8A927CFB1750065FE19 /* AppDelegate.swift */,
@@ -484,14 +566,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C23EDD0B2819748500E9B946 /* dragonType.mp4 in Resources */,
+				C23EDD0C2819748500E9B946 /* fairyType.mp4 in Resources */,
 				C2CCA6982817170700808DBC /* ItemsCell.xib in Resources */,
 				C2E9786027D2781100B16496 /* PokemonDetailsViewController.xib in Resources */,
 				C2DBE8B627CFB18B0065FE19 /* LaunchScreen.storyboard in Resources */,
+				C23EDD002819748500E9B946 /* grassType.mp4 in Resources */,
+				C23EDD172819891B00E9B946 /* TypeTableViewCell.xib in Resources */,
+				C23EDD012819748500E9B946 /* flyingType.mp4 in Resources */,
+				C23EDD082819748500E9B946 /* bugType.mp4 in Resources */,
 				C2DBE8E527CFD1DA0065FE19 /* PokemonTableViewCell.xib in Resources */,
 				C2528854281814D700893E6C /* ItemDescriptionViewController.xib in Resources */,
+				C23EDD0E2819748500E9B946 /* waterType.mp4 in Resources */,
+				C23EDD052819748500E9B946 /* poisonType.mp4 in Resources */,
+				C23EDD072819748500E9B946 /* rockType.mp4 in Resources */,
 				C2DBE8B327CFB18B0065FE19 /* Assets.xcassets in Resources */,
+				C23EDD032819748500E9B946 /* electricType.mp4 in Resources */,
+				C23EDD092819748500E9B946 /* normalType.mp4 in Resources */,
+				C23EDD13281982AE00E9B946 /* darkType.mp4 in Resources */,
+				C23EDD062819748500E9B946 /* fightingType.mp4 in Resources */,
+				C252885E2818622E00893E6C /* TypeDescriptionViewController.xib in Resources */,
+				C23EDD0A2819748500E9B946 /* fireType.mp4 in Resources */,
 				C2E9785627D23EE400B16496 /* FooterTableCell.xib in Resources */,
+				C23EDD042819748500E9B946 /* ghostType.mp4 in Resources */,
+				C23EDD1D2819AFCF00E9B946 /* psychicType.mp4 in Resources */,
+				C23EDD0F2819748500E9B946 /* steelType.mp4 in Resources */,
+				C23EDD112819818900E9B946 /* iceType.mp4 in Resources */,
 				C2DBE8B127CFB1750065FE19 /* Main.storyboard in Resources */,
+				C23EDD022819748500E9B946 /* groundType.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,9 +618,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C23EDD162819891B00E9B946 /* TypeTableViewCell.swift in Sources */,
 				C2DBE8F127CFE62D0065FE19 /* PokemonDTO.swift in Sources */,
 				C26515C32812CEDC0088647C /* FavoritesTableViewController.swift in Sources */,
 				C26515C52812D5FA0088647C /* PokemonDescriptionViewModel.swift in Sources */,
+				C252885D2818622E00893E6C /* TypeDescriptionViewController.swift in Sources */,
 				C2BF358227F47F42000A3149 /* PokemonCount.swift in Sources */,
 				C2CCA68B2816C8FE00808DBC /* ItemDTO.swift in Sources */,
 				C2CCA6932816D2C600808DBC /* AllItemsViewModel.swift in Sources */,

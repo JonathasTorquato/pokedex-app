@@ -24,8 +24,8 @@ class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var femalePokemonButton: UIButton!
     @IBOutlet weak var malePokemonButton: UIButton!
-    @IBOutlet weak var type2Label: UILabel!
-    @IBOutlet weak var type1label: UILabel!
+    @IBOutlet weak var type2Label: UIButton!
+    @IBOutlet weak var type1label: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -49,13 +49,15 @@ class PokemonDetailsViewController: UIViewController {
     var pokemon : PokemonDTO?
     var id = 0
     var delegate: PokemonDetailsViewControllerDelegate?
-    
+    var urlType1 : TypeURLDTO?
+    var urlType2 : TypeURLDTO?
 }
 
 //MARK: - Functions
 extension PokemonDetailsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barStyle = .black
         if self.traitCollection.userInterfaceStyle == .dark {
             self.genderColor.accept(.white)
         }
@@ -231,15 +233,19 @@ extension PokemonDetailsViewController {
                         self.imageButton.isEnabled = false
                         self.pokemonImage.image = nil
                     }
-                    
-                    self.type1label.text = TypePortuguese.getTypePortuguese(name: pokemon.types[0].type.name, self.type1label)
+                    self.type1label.setTitle(TypePortuguese.getTypePortuguese(name: pokemon.types[0].type.name, self.type1label.titleLabel), for: .normal)
+                    self.type1label.setTitleColor(self.type1label.titleLabel?.textColor, for: .normal)
+                    self.urlType1 = pokemon.types[0].type
                     if pokemon.types.count == 2
                     {
-                        self.type2Label.text = TypePortuguese.getTypePortuguese(name: pokemon.types[1].type.name, self.type2Label)
+                        self.type2Label.setTitle(TypePortuguese.getTypePortuguese(name: pokemon.types[1].type.name, self.type2Label.titleLabel), for: .normal)
+                        self.type2Label.setTitleColor(self.type2Label.titleLabel?.textColor, for: .normal)
+                        self.urlType2 = pokemon.types[1].type
                     }
                     else
                     {
-                        self.type2Label.text = ""
+                        self.type2Label.setTitle("", for: .normal)
+                        self.urlType2 = nil
                     }
                 }
                 //MARK: - Varieties
@@ -350,6 +356,30 @@ extension PokemonDetailsViewController {
         self.viewModel.saveUserDefatuls(value: favorites, for: Favorites.favoritePokemonKey)
         Favorites.favoritePokemon.accept(favorites)
     }
+    
+    @IBAction func didTapType(_ sender : UIButton) {
+        var url = ""
+        if let type1 = urlType1, sender.currentTitle == TypePortuguese.getTypePortuguese(name: type1.name) {
+            url = type1.url
+        }
+        else if let type2 = urlType2, sender.currentTitle == TypePortuguese.getTypePortuguese(name: type2.name) {
+            url = type2.url
+        }
+        if url != "" {
+            Network.getTypeURL(url: url) { result in
+                switch result {
+                    
+                case .success(let suc):
+                    let vc = TypeDescriptionViewController()
+                    vc.setupType(type: suc)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                case .failure(let err):
+                    print(err.localizedDescription)
+                }
+            }
+        }
+    }
+    
 }
 
 //MARK: - ENUM

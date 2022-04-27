@@ -71,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2736.231884057971" y="75.669642857142847"/>
+            <point key="canvasLocation" x="2735" y="803"/>
         </scene>
         <!--Itens-->
         <scene sceneID="FkJ-G4-bCC">
@@ -155,7 +155,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AMi-7T-8QI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2735" y="803"/>
+            <point key="canvasLocation" x="2735" y="76"/>
+        </scene>
+        <!-- Pokemons-->
+        <scene sceneID="u0b-ey-LsQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9mq-tG-E0Y" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title=" Pokemons" image="circle.circle.fill" catalog="system" id="XEg-Dn-57A"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="D9y-aS-H8y">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="HnL-Bf-d7Y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CY0-Xa-QEu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1825" y="803"/>
         </scene>
         <!--Favoritos-->
         <scene sceneID="GtC-AZ-Zv5">
@@ -179,7 +199,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Q5-cT-buX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1825" y="803"/>
+            <point key="canvasLocation" x="1825" y="76"/>
         </scene>
         <!--Itens-->
         <scene sceneID="WOj-QI-x97">
@@ -199,26 +219,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DzF-jf-hmW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1826" y="-628"/>
-        </scene>
-        <!-- Pokemons-->
-        <scene sceneID="u0b-ey-LsQ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9mq-tG-E0Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title=" Pokemons" image="circle.circle.fill" catalog="system" id="XEg-Dn-57A"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="D9y-aS-H8y">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="HnL-Bf-d7Y"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CY0-Xa-QEu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1826.0869565217392" y="75.669642857142847"/>
         </scene>
     </scenes>
     <resources>

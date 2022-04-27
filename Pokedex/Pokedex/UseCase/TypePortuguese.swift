@@ -17,49 +17,49 @@ class TypePortuguese: TypePortugueseUseCase {
     {
         switch name{
         case "bug":
-            label?.textColor = .systemGreen
+            label?.textColor = .systemGreen //OK
             return "Inseto"
         case "water":
-            label?.textColor = .systemBlue
+            label?.textColor = .systemBlue   //OK
             return "Água"
         case "normal":
-            label?.textColor = .systemGray
+            label?.textColor = .systemGray  //OK
             return "Normal"
         case "fighting":
-            label?.textColor = .red
+            label?.textColor = .red     //OK
             return "Lutador"
         case "flying":
-            label?.textColor = .systemCyan
+            label?.textColor = .systemCyan  //OK
             return "Voador"
         case "poison":
-            label?.textColor = .systemPurple
+            label?.textColor = .systemPurple    //OK
             return "Venenoso"
         case "ground":
-            label?.textColor = .systemBrown
+            label?.textColor = .systemBrown //OK
             return "Terrestre"
         case "rock":
-            label?.textColor = .systemGray2
+            label?.textColor = .systemGray2 //OK
             return "Pedra"
         case "ghost":
-            label?.textColor = .purple
+            label?.textColor = .purple  //OK
             return "Fantasma"
         case "steel":
-            label?.textColor = .blue
+            label?.textColor = .blue //OK
             return "Metal"
         case "fire":
-            label?.textColor = .systemRed
+            label?.textColor = .systemRed   //OK
             return "Fogo"
         case "grass":
-            label?.textColor = .green
+            label?.textColor = .green   //OK
             return "Planta"
         case "electric":
-            label?.textColor = UIColor(red: 255/255, green: 205/255, blue: 57/255, alpha: 1)
+            label?.textColor = UIColor(red: 255/255, green: 205/255, blue: 57/255, alpha: 1)    //OK
             return "Elétrico"
         case "psychic":
-            label?.textColor = .magenta
+            label?.textColor = .magenta   //OK
             return "Psíquico"
         case "ice":
-            label?.textColor = .cyan
+            label?.textColor = .cyan    //OK
             return "Gelo"
         case "dragon":
             label?.textColor = .orange

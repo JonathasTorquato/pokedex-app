@@ -23,8 +23,8 @@
                 <outlet property="rightButton" destination="JPA-kt-rn7" id="1Yh-rg-I2O"/>
                 <outlet property="secondEvolutionTable" destination="cpR-RB-9HK" id="uTA-co-bxa"/>
                 <outlet property="thirdEvolutionTableView" destination="hTh-tQ-WIh" id="M6j-lE-xn0"/>
-                <outlet property="type1label" destination="AG7-sJ-v18" id="dPx-Nx-Vpu"/>
-                <outlet property="type2Label" destination="SSh-sy-EWF" id="U0U-Hg-Qcm"/>
+                <outlet property="type1label" destination="GeZ-oT-Q6A" id="BwN-Sb-1pc"/>
+                <outlet property="type2Label" destination="1w2-2P-PDA" id="lKx-hf-G35"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -42,12 +42,14 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3y-3a-mEc">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="200"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AG7-sJ-v18">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GeZ-oT-Q6A">
                                             <rect key="frame" x="0.0" y="0.0" width="91" height="200"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Type"/>
+                                            <connections>
+                                                <action selector="didTapType:" destination="-1" eventType="touchUpInside" id="4DN-Du-XBM"/>
+                                            </connections>
+                                        </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VyH-7n-GNj">
                                             <rect key="frame" x="91" y="0.0" width="200" height="200"/>
                                             <subviews>
@@ -76,12 +78,14 @@
                                                 <constraint firstAttribute="trailing" secondItem="B1h-ca-9lJ" secondAttribute="trailing" id="x11-07-EY3"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSh-sy-EWF">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1w2-2P-PDA">
                                             <rect key="frame" x="291" y="0.0" width="91" height="200"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Type"/>
+                                            <connections>
+                                                <action selector="didTapType:" destination="-1" eventType="touchUpInside" id="VTg-om-rV4"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="95a-LJ-bag"/>
