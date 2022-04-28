@@ -49,8 +49,6 @@ class PokemonDetailsViewController: UIViewController {
     var pokemon : PokemonDTO?
     var id = 0
     var delegate: PokemonDetailsViewControllerDelegate?
-    var urlType1 : TypeURLDTO?
-    var urlType2 : TypeURLDTO?
 }
 
 //MARK: - Functions
@@ -235,17 +233,17 @@ extension PokemonDetailsViewController {
                     }
                     self.type1label.setTitle(TypePortuguese.getTypePortuguese(name: pokemon.types[0].type.name, self.type1label.titleLabel), for: .normal)
                     self.type1label.setTitleColor(self.type1label.titleLabel?.textColor, for: .normal)
-                    self.urlType1 = pokemon.types[0].type
+                    self.viewModel.urlType1 = pokemon.types[0].type
                     if pokemon.types.count == 2
                     {
                         self.type2Label.setTitle(TypePortuguese.getTypePortuguese(name: pokemon.types[1].type.name, self.type2Label.titleLabel), for: .normal)
                         self.type2Label.setTitleColor(self.type2Label.titleLabel?.textColor, for: .normal)
-                        self.urlType2 = pokemon.types[1].type
+                        self.viewModel.urlType2 = pokemon.types[1].type
                     }
                     else
                     {
                         self.type2Label.setTitle("", for: .normal)
-                        self.urlType2 = nil
+                        self.viewModel.urlType2 = nil
                     }
                 }
                 //MARK: - Varieties
@@ -358,26 +356,14 @@ extension PokemonDetailsViewController {
     }
     
     @IBAction func didTapType(_ sender : UIButton) {
-        var url = ""
-        if let type1 = urlType1, sender.currentTitle == TypePortuguese.getTypePortuguese(name: type1.name) {
-            url = type1.url
+        self.viewModel.typeURL(name: sender.currentTitle ?? "") { type in
+            let vc = TypeDescriptionViewController()
+            vc.tipo.accept(type)
+            self.navigationController?.pushViewController(vc, animated: true)
+            
         }
-        else if let type2 = urlType2, sender.currentTitle == TypePortuguese.getTypePortuguese(name: type2.name) {
-            url = type2.url
-        }
-        if url != "" {
-            Network.getTypeURL(url: url) { result in
-                switch result {
-                    
-                case .success(let suc):
-                    let vc = TypeDescriptionViewController()
-                    vc.setupType(type: suc)
-                    self.navigationController?.pushViewController(vc, animated: true)
-                case .failure(let err):
-                    print(err.localizedDescription)
-                }
-            }
-        }
+        
+        
     }
     
 }

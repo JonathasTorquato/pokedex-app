@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 protocol TypeTableViewCellDelegate {
-    func selectedType(type : TypeDTO)
+    func selectedType(type : TypeModel)
 }
 
 class TypeTableViewCell: UITableViewCell {
@@ -20,6 +20,7 @@ class TypeTableViewCell: UITableViewCell {
     
     let bag = DisposeBag()
     let tipos: PublishRelay<[TypeURLDTO]> = PublishRelay<[TypeURLDTO]>()
+    let viewModel = TypeTableViewCellViewModel()
     
     var delegate : TypeTableViewCellDelegate?
     
@@ -35,14 +36,8 @@ class TypeTableViewCell: UITableViewCell {
         }.disposed(by: bag)
         relationsTableView.rx.modelSelected(TypeURLDTO.self).subscribe{ type in
             guard let url = type.element?.url else {return}
-            Network.getTypeURL(url: url) { result in
-                switch result {
-                    
-                case .success(let success):
-                    self.delegate?.selectedType(type: success)
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
+            self.viewModel.retrieveType(url: url) { typeM in
+                self.delegate?.selectedType(type: typeM)
             }
         }.disposed(by: bag)
     }
