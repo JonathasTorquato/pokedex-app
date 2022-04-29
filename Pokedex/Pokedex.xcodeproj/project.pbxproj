@@ -28,6 +28,10 @@
 		C23EDD172819891B00E9B946 /* TypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C23EDD152819891B00E9B946 /* TypeTableViewCell.xib */; };
 		C23EDD1D2819AFCF00E9B946 /* psychicType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C23EDD1C2819AFCF00E9B946 /* psychicType.mp4 */; };
 		C243D13F28084362008F3FED /* Evolution_Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243D13E28084362008F3FED /* Evolution_Chain.swift */; };
+		C248AB5E281C202000D321BC /* unknownType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C248AB5D281C202000D321BC /* unknownType.mp4 */; };
+		C248AB60281C21D700D321BC /* shadowType.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C248AB5F281C21D700D321BC /* shadowType.mp4 */; };
+		C248AB63281C2D0400D321BC /* TypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C248AB61281C2D0400D321BC /* TypeCollectionViewCell.swift */; };
+		C248AB64281C2D0400D321BC /* TypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C248AB62281C2D0400D321BC /* TypeCollectionViewCell.xib */; };
 		C2528853281814D700893E6C /* ItemDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2528851281814D700893E6C /* ItemDescriptionViewController.swift */; };
 		C2528854281814D700893E6C /* ItemDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2528852281814D700893E6C /* ItemDescriptionViewController.xib */; };
 		C2528857281853C100893E6C /* Int+SpecialNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2528856281853C100893E6C /* Int+SpecialNumber.swift */; };
@@ -46,6 +50,8 @@
 		C2B057B0281AB1AE003A95BC /* TypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B057AF281AB1AE003A95BC /* TypeModel.swift */; };
 		C2B057B2281AC4E3003A95BC /* TypeMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B057B1281AC4E3003A95BC /* TypeMapping.swift */; };
 		C2B057B5281AC749003A95BC /* TypeTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B057B4281AC749003A95BC /* TypeTableViewCellViewModel.swift */; };
+		C2B057B7281AFB7D003A95BC /* AllTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B057B6281AFB7D003A95BC /* AllTypesViewController.swift */; };
+		C2B057B9281B0960003A95BC /* AllTypesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B057B8281B0960003A95BC /* AllTypesViewModel.swift */; };
 		C2BF358227F47F42000A3149 /* PokemonCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BF358127F47F42000A3149 /* PokemonCount.swift */; };
 		C2BF358627F480B0000A3149 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BF358527F480B0000A3149 /* MainViewModel.swift */; };
 		C2BF358927F49C94000A3149 /* TypePortuguese.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BF358827F49C94000A3149 /* TypePortuguese.swift */; };
@@ -124,6 +130,10 @@
 		C23EDD152819891B00E9B946 /* TypeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeTableViewCell.xib; sourceTree = "<group>"; };
 		C23EDD1C2819AFCF00E9B946 /* psychicType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = psychicType.mp4; path = ../../../../../../Downloads/psychicType.mp4; sourceTree = "<group>"; };
 		C243D13E28084362008F3FED /* Evolution_Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evolution_Chain.swift; sourceTree = "<group>"; };
+		C248AB5D281C202000D321BC /* unknownType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = unknownType.mp4; sourceTree = "<group>"; };
+		C248AB5F281C21D700D321BC /* shadowType.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = shadowType.mp4; sourceTree = "<group>"; };
+		C248AB61281C2D0400D321BC /* TypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		C248AB62281C2D0400D321BC /* TypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		C2528851281814D700893E6C /* ItemDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDescriptionViewController.swift; sourceTree = "<group>"; };
 		C2528852281814D700893E6C /* ItemDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDescriptionViewController.xib; sourceTree = "<group>"; };
 		C2528856281853C100893E6C /* Int+SpecialNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+SpecialNumber.swift"; sourceTree = "<group>"; };
@@ -140,6 +150,8 @@
 		C2B057AF281AB1AE003A95BC /* TypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeModel.swift; sourceTree = "<group>"; };
 		C2B057B1281AC4E3003A95BC /* TypeMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeMapping.swift; sourceTree = "<group>"; };
 		C2B057B4281AC749003A95BC /* TypeTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		C2B057B6281AFB7D003A95BC /* AllTypesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTypesViewController.swift; sourceTree = "<group>"; };
+		C2B057B8281B0960003A95BC /* AllTypesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTypesViewModel.swift; sourceTree = "<group>"; };
 		C2BF358127F47F42000A3149 /* PokemonCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCount.swift; sourceTree = "<group>"; };
 		C2BF358527F480B0000A3149 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		C2BF358827F49C94000A3149 /* TypePortuguese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePortuguese.swift; sourceTree = "<group>"; };
@@ -226,6 +238,9 @@
 				C252885C2818622E00893E6C /* TypeDescriptionViewController.xib */,
 				C23EDD142819891B00E9B946 /* TypeTableViewCell.swift */,
 				C23EDD152819891B00E9B946 /* TypeTableViewCell.xib */,
+				C2B057B6281AFB7D003A95BC /* AllTypesViewController.swift */,
+				C248AB61281C2D0400D321BC /* TypeCollectionViewCell.swift */,
+				C248AB62281C2D0400D321BC /* TypeCollectionViewCell.xib */,
 			);
 			path = TypeControllers;
 			sourceTree = "<group>";
@@ -242,6 +257,7 @@
 				C23EDCF92819748200E9B946 /* fireType.mp4 */,
 				C23EDCF02819747B00E9B946 /* flyingType.mp4 */,
 				C23EDD1C2819AFCF00E9B946 /* psychicType.mp4 */,
+				C248AB5D281C202000D321BC /* unknownType.mp4 */,
 				C23EDCF32819747D00E9B946 /* ghostType.mp4 */,
 				C23EDCEF2819747B00E9B946 /* grassType.mp4 */,
 				C23EDCF12819747C00E9B946 /* groundType.mp4 */,
@@ -249,6 +265,7 @@
 				C23EDCFE2819748500E9B946 /* steelType.mp4 */,
 				C23EDCF82819748200E9B946 /* normalType.mp4 */,
 				C23EDCF42819747F00E9B946 /* poisonType.mp4 */,
+				C248AB5F281C21D700D321BC /* shadowType.mp4 */,
 				C23EDCF62819748100E9B946 /* rockType.mp4 */,
 				C23EDCFD2819748400E9B946 /* waterType.mp4 */,
 			);
@@ -292,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				C2B057B4281AC749003A95BC /* TypeTableViewCellViewModel.swift */,
+				C2B057B8281B0960003A95BC /* AllTypesViewModel.swift */,
 			);
 			path = TypeViewModels;
 			sourceTree = "<group>";
@@ -594,10 +612,12 @@
 				C23EDD0B2819748500E9B946 /* dragonType.mp4 in Resources */,
 				C23EDD0C2819748500E9B946 /* fairyType.mp4 in Resources */,
 				C2CCA6982817170700808DBC /* ItemsCell.xib in Resources */,
+				C248AB60281C21D700D321BC /* shadowType.mp4 in Resources */,
 				C2E9786027D2781100B16496 /* PokemonDetailsViewController.xib in Resources */,
 				C2DBE8B627CFB18B0065FE19 /* LaunchScreen.storyboard in Resources */,
 				C23EDD002819748500E9B946 /* grassType.mp4 in Resources */,
 				C23EDD172819891B00E9B946 /* TypeTableViewCell.xib in Resources */,
+				C248AB5E281C202000D321BC /* unknownType.mp4 in Resources */,
 				C23EDD012819748500E9B946 /* flyingType.mp4 in Resources */,
 				C23EDD082819748500E9B946 /* bugType.mp4 in Resources */,
 				C2DBE8E527CFD1DA0065FE19 /* PokemonTableViewCell.xib in Resources */,
@@ -615,6 +635,7 @@
 				C2E9785627D23EE400B16496 /* FooterTableCell.xib in Resources */,
 				C23EDD042819748500E9B946 /* ghostType.mp4 in Resources */,
 				C23EDD1D2819AFCF00E9B946 /* psychicType.mp4 in Resources */,
+				C248AB64281C2D0400D321BC /* TypeCollectionViewCell.xib in Resources */,
 				C23EDD0F2819748500E9B946 /* steelType.mp4 in Resources */,
 				C23EDD112819818900E9B946 /* iceType.mp4 in Resources */,
 				C2DBE8B127CFB1750065FE19 /* Main.storyboard in Resources */,
@@ -663,6 +684,7 @@
 				C27CA40E2806F7D50027EA7C /* PokedexEntry.swift in Sources */,
 				C2E9785527D23EE400B16496 /* FooterTableCell.swift in Sources */,
 				C2DBE8AE27CFB1750065FE19 /* ViewController.swift in Sources */,
+				C2B057B9281B0960003A95BC /* AllTypesViewModel.swift in Sources */,
 				C2DBE8F327CFE6490065FE19 /* TypeDTO.swift in Sources */,
 				C2DBE8E427CFD1DA0065FE19 /* PokemonTableViewCell.swift in Sources */,
 				C2BF358927F49C94000A3149 /* TypePortuguese.swift in Sources */,
@@ -672,6 +694,7 @@
 				C298AB11281073E7003CA6CF /* MainTabController.swift in Sources */,
 				C2DBE8F727CFEDCE0065FE19 /* GetImage.swift in Sources */,
 				C298AB0C2810510C003CA6CF /* AllPokemon.swift in Sources */,
+				C2B057B7281AFB7D003A95BC /* AllTypesViewController.swift in Sources */,
 				C2B057B0281AB1AE003A95BC /* TypeModel.swift in Sources */,
 				C26515C72812E4F70088647C /* FavoritesViewModel.swift in Sources */,
 				C2CCA68D2816CBBD00808DBC /* ItemURL.swift in Sources */,
@@ -680,6 +703,7 @@
 				C2DBE8AA27CFB1750065FE19 /* AppDelegate.swift in Sources */,
 				C2CCA68F2816D12E00808DBC /* ListAllItemsViewController.swift in Sources */,
 				C2CCA6972817170700808DBC /* ItemsCell.swift in Sources */,
+				C248AB63281C2D0400D321BC /* TypeCollectionViewCell.swift in Sources */,
 				C298AB0F28106EAB003CA6CF /* Favorites.swift in Sources */,
 				C2DBE8EA27CFE25F0065FE19 /* API.swift in Sources */,
 				C2DBE8AC27CFB1750065FE19 /* SceneDelegate.swift in Sources */,

@@ -39,7 +39,8 @@ extension TypeDescriptionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         contentView.clipsToBounds = true
-        contentView.layer.cornerRadius = 10
+        contentView.layer.cornerRadius = 5
+        contentView.backgroundColor = .systemBackground.withAlphaComponent(0.8)
         contentTableView.register(UINib(nibName: "TypeTableViewCell", bundle: .main), forCellReuseIdentifier: "TypeTableViewCell")
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.1).cgColor, UIColor(red: 0, green: 0, blue: 0, alpha: 0.8).cgColor]

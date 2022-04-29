@@ -50,4 +50,40 @@ class MainViewModel {
         }
     }
     
+    func getAllTypes(completion : @escaping([TypeURLDTO])->Void) {
+        Network.getAllTypes { result in
+            switch result {
+                
+            case .success(let suc):
+                completion(suc.results)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getSelectedType(in url : String, completion : @escaping([PokemonsByType])->Void) {
+        Network.getTypeURL(url: url) { result in
+            switch result {
+                
+            case .success(let suc):
+                completion(suc.pokemon)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getPokemonsType(url : String, completion : @escaping([PokemonsByType])->Void) {
+        Network.getTypeURL(url: url) { result in
+            switch result {
+                
+            case .success(let suc):
+                completion(suc.pokemon)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
 }

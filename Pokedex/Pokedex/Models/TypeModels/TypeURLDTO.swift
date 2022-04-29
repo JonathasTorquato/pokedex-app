@@ -12,3 +12,7 @@ class TypeURLDTO: Codable{
     let name: String
     
 }
+
+class AllTypes : Codable {
+    let results : [TypeURLDTO]
+}

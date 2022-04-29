@@ -10,6 +10,7 @@ import Foundation
 class TypeDTO: Codable{
     let name: String
     var damage_relations : DamageRelations
+    var pokemon : [PokemonsByType]
 }
 struct DamageRelations : Codable {
     let doubleDamageFrom: [TypeURLDTO]
@@ -27,4 +28,7 @@ struct DamageRelations : Codable {
         case noDamageFrom = "no_damage_from"
         case noDamageTo = "no_damage_to"
     }
+}
+struct PokemonsByType : Codable {
+    var pokemon : TypeURLDTO
 }

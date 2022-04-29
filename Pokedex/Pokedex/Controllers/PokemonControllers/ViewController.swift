@@ -14,12 +14,17 @@ import RxCocoa
 class ViewController: UIViewController {
     
     let bag = DisposeBag()
+    let types : BehaviorRelay <[TypeURLDTO]> = BehaviorRelay(value: [])
+    let pokemonsType : PublishRelay <[PokemonsByType]> = PublishRelay <[PokemonsByType]>()
     let viewModel : MainViewModel = MainViewModel()
 
     var numberOfCells = 0
     var size : Int = 0
     var range : Observable<Int> = Observable<Int>.range(start: 0, count: 0)
+    var typeSelected : String = ""
     
+    @IBOutlet weak var pokemonTypeTableView: UITableView!
+    @IBOutlet weak var typesCollection: UICollectionView!
     @IBOutlet weak var tableView : UITableView!
 }
 
@@ -27,18 +32,62 @@ class ViewController: UIViewController {
 extension ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        self.typesCollection.register(UINib(nibName: "TypeCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "TypeCollectionCell")
+        setupCollection()
+        self.viewModel.getAllTypes { types in
+            self.types.accept(types)
+        }
         self.navigationController?.navigationBar.barStyle = .black
         self.navigationController?.navigationBar.tintColor = .white
         range = .range(start: 0, count: numberOfCells)
         
+        //typesCollection.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "PokemonTableViewCell", bundle: .main), forCellReuseIdentifier: "PokemonTableCell")
         tableView.register(UINib(nibName: "FooterTableCell", bundle: .main), forCellReuseIdentifier: "FooterCell")
         
+        pokemonTypeTableView.register(UINib(nibName: "PokemonTableViewCell", bundle: .main), forCellReuseIdentifier: "PokemonTableCell")
         getCount()
+    }
+    
+    fileprivate func setupCollection() {
+        self.types.bind(to: self.typesCollection.rx.items(cellIdentifier: "TypeCollectionCell")){ row, type, cell in
+            if let cell = cell as? TypeCollectionViewCell {
+                cell.typeImageView.image = UIImage(named: type.name)
+                
+                cell.upperView.alpha = type.name == self.typeSelected ? 0.5 : 0
+            }
+        }.disposed(by: bag)
+        self.typesCollection.rx.modelSelected(TypeURLDTO.self).subscribe { model in
+            
+            if self.typeSelected != model.element?.name {
+                self.typeSelected = model.element!.name
+                self.tableView.isHidden = true
+                self.pokemonTypeTableView.isHidden = false
+                self.viewModel.getPokemonsType(url: model.element?.url ?? "") { pokemons in
+                    self.pokemonsType.accept(pokemons)
+                }
+            } else {
+                self.typeSelected = ""
+                self.tableView.isHidden = false
+                self.pokemonTypeTableView.isHidden = true
+            }
+            self.types.accept(self.types.value)
+        }.disposed(by: bag)
+        self.pokemonsType.bind(to: pokemonTypeTableView.rx.items(cellIdentifier: "PokemonTableCell", cellType: PokemonTableViewCell.self)){ row, pokemon, cell in
+            
+            self.viewModel.getPokemonName(name: pokemon.pokemon.name) { pokemonDTO in
+                cell.setPokemonDTO(pokemonDTO)
+            }
+            
+        }.disposed(by: bag)
+        
+        self.pokemonTypeTableView.rx.modelSelected(PokemonsByType.self).subscribe { model in
+            if let pokemon = model.element?.pokemon {
+                self.showPokemonEntryName(name: pokemon.name)
+            }
+        }.disposed(by: bag)
     }
     
     func getCount() {
@@ -60,6 +109,20 @@ extension ViewController {
         }()
         vc.delegate = self
         viewModel.getPokemonId(id: id) { pokemon in
+            vc.setPokemon(pokemon: pokemon)
+            self.navigationController?.pushViewController(vc, animated: animated)
+        }
+    }
+    
+    func showPokemonEntryName(name: String, animated: Bool = true) {
+        let vc = PokemonDetailsViewController()
+        
+        vc.navigationItem.rightBarButtonItem = {
+            let button = UIBarButtonItem(title: "Shiny", style: .plain, target: vc, action: #selector(vc.toggleShiny))
+            return button
+        }()
+        vc.delegate = self
+        viewModel.getPokemonName(name: name) { pokemon in
             vc.setPokemon(pokemon: pokemon)
             self.navigationController?.pushViewController(vc, animated: animated)
         }
@@ -167,5 +230,11 @@ extension ViewController : PokemonDetailsViewControllerDelegate {
                 viewController.setPokemon(pokemon: pokemon)
             }
         }
+    }
+}
+
+extension ViewController : UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected")
     }
 }

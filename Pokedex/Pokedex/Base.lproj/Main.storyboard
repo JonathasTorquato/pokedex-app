@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,15 +24,42 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="LBm-JW-wp1">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="101"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="sb0-f4-Cir"/>
                                         </connections>
                                     </searchBar>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xk4-dQ-DoN">
+                                        <rect key="frame" x="0.0" y="101" width="414" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="pvX-bj-kpb"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lvv-KA-TKp">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell" id="lPt-FJ-MsG">
+                                                <rect key="frame" x="0.0" y="-39" width="128" height="128"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="R9T-tJ-Kyk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SLp-zB-m7a">
-                                        <rect key="frame" x="0.0" y="103" width="414" height="622"/>
+                                        <rect key="frame" x="0.0" y="151" width="414" height="574"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ciM-BD-ggf">
+                                        <rect key="frame" x="0.0" y="725" width="414" height="0.0"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
                             </stackView>
@@ -66,7 +94,9 @@
                         </view>
                     </navigationItem>
                     <connections>
+                        <outlet property="pokemonTypeTableView" destination="ciM-BD-ggf" id="q3j-hm-0rj"/>
                         <outlet property="tableView" destination="SLp-zB-m7a" id="v0S-6E-Jez"/>
+                        <outlet property="typesCollection" destination="Xk4-dQ-DoN" id="NN1-30-C6a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -120,6 +150,7 @@
                         <segue destination="qal-4p-Nem" kind="relationship" relationship="viewControllers" id="naj-hu-UnV"/>
                         <segue destination="9mq-tG-E0Y" kind="relationship" relationship="viewControllers" id="rL2-g7-3Jq"/>
                         <segue destination="NtE-xf-qW7" kind="relationship" relationship="viewControllers" id="ki6-Z8-j9r"/>
+                        <segue destination="LIs-xH-GeY" kind="relationship" relationship="viewControllers" id="jfJ-GN-nUl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iWx-an-ZGz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -177,6 +208,37 @@
             </objects>
             <point key="canvasLocation" x="1825" y="803"/>
         </scene>
+        <!--Tipo-->
+        <scene sceneID="lGq-SS-pA7">
+            <objects>
+                <viewController title="Tipo" id="gS6-3a-mkR" customClass="AllTypesViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MMd-E0-adg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="O6S-jO-Z0b">
+                                <rect key="frame" x="0.0" y="16" width="414" height="797"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MLX-us-u2v"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MLX-us-u2v" firstAttribute="trailing" secondItem="O6S-jO-Z0b" secondAttribute="trailing" id="D66-6h-sM0"/>
+                            <constraint firstItem="O6S-jO-Z0b" firstAttribute="leading" secondItem="MLX-us-u2v" secondAttribute="leading" id="FXU-Ft-rYe"/>
+                            <constraint firstItem="O6S-jO-Z0b" firstAttribute="top" secondItem="MMd-E0-adg" secondAttribute="top" constant="16" id="X0n-Ca-6lN"/>
+                            <constraint firstItem="MLX-us-u2v" firstAttribute="bottom" secondItem="O6S-jO-Z0b" secondAttribute="bottom" id="jkP-be-fjw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tipos" id="FIY-w6-uWq"/>
+                    <connections>
+                        <outlet property="typesTableView" destination="O6S-jO-Z0b" id="W1z-GC-WGc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aBX-2O-iul" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="916" y="1538"/>
+        </scene>
         <!--Favoritos-->
         <scene sceneID="GtC-AZ-Zv5">
             <objects>
@@ -220,12 +282,39 @@
             </objects>
             <point key="canvasLocation" x="1826" y="-628"/>
         </scene>
+        <!--Tipo-->
+        <scene sceneID="9ib-pW-H8t">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LIs-xH-GeY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Tipo" image="rosette" catalog="system" id="FLO-fU-as5"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="rRK-2V-P9T">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gS6-3a-mkR" kind="relationship" relationship="rootViewController" id="Ihv-ZS-hdH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wns-gA-5ww" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="915.94202898550736" y="802.90178571428567"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Screen Shot 2022-03-02 at 13.20.01" width="189" height="352"/>
         <image name="appstore" width="341.33334350585938" height="341.33334350585938"/>
         <image name="circle.circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="rosette" catalog="system" width="106" height="128"/>
         <image name="tag.fill" catalog="system" width="128" height="119"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

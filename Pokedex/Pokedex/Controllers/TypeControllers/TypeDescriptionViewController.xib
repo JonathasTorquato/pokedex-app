@@ -30,28 +30,29 @@
                     <rect key="frame" x="60" y="144" width="294" height="618"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="g6V-l4-9YV">
-                            <rect key="frame" x="16" y="16" width="262" height="586"/>
+                            <rect key="frame" x="8" y="16" width="278" height="586"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="psychic" translatesAutoresizingMaskIntoConstraints="NO" id="yPl-EP-Z3e">
-                                    <rect key="frame" x="0.0" y="0.0" width="262" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="278" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="1MO-Vs-3JQ"/>
                                         <constraint firstAttribute="height" constant="50" id="ILP-QQ-uSD"/>
                                     </constraints>
                                 </imageView>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4cw-Kx-nST">
-                                    <rect key="frame" x="0.0" y="58" width="262" height="528"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4cw-Kx-nST">
+                                    <rect key="frame" x="0.0" y="58" width="278" height="528"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableView>
                             </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="g6V-l4-9YV" secondAttribute="trailing" constant="16" id="ZXE-b1-6Bx"/>
+                        <constraint firstAttribute="trailing" secondItem="g6V-l4-9YV" secondAttribute="trailing" constant="8" id="ZXE-b1-6Bx"/>
                         <constraint firstItem="g6V-l4-9YV" firstAttribute="top" secondItem="T1U-jS-b9A" secondAttribute="top" constant="16" id="sp6-q0-Qbn"/>
                         <constraint firstAttribute="bottom" secondItem="g6V-l4-9YV" secondAttribute="bottom" constant="16" id="tFf-4e-8Do"/>
-                        <constraint firstItem="g6V-l4-9YV" firstAttribute="leading" secondItem="T1U-jS-b9A" secondAttribute="leading" constant="16" id="yLH-7n-Jir"/>
+                        <constraint firstItem="g6V-l4-9YV" firstAttribute="leading" secondItem="T1U-jS-b9A" secondAttribute="leading" constant="8" id="yLH-7n-Jir"/>
                     </constraints>
                 </view>
             </subviews>

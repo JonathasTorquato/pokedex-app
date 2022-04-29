@@ -11,6 +11,7 @@ import Moya
 enum API {
     case typeURL(url : String)
     case type(idType : Int)
+    case types
     case pokemonId(idPokemon : Int)
     case pokemonName(pokemonName : String)
     case pokemon
@@ -58,6 +59,8 @@ extension API: TargetType {
             return Endpoint.ITEM.items
         case .itemId(id: let id):
             return Endpoint.ITEM.items + "/\(id)"
+        case .types:
+            return Endpoint.TYPE.types
         }
     }
     

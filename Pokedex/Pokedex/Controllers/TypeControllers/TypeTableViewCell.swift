@@ -32,7 +32,8 @@ class TypeTableViewCell: UITableViewCell {
     
     fileprivate func setupTable() {
         tipos.bind(to: relationsTableView.rx.items(cellIdentifier: "cell")){row,tipo,cell in
-            cell.textLabel?.text = TypePortuguese.getTypePortuguese(name: tipo.name, cell.textLabel)
+            cell.backgroundColor = .clear
+            cell.imageView?.image = UIImage(named: tipo.name)
         }.disposed(by: bag)
         relationsTableView.rx.modelSelected(TypeURLDTO.self).subscribe{ type in
             guard let url = type.element?.url else {return}

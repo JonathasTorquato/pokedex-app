@@ -24,7 +24,7 @@ class PokemonTableViewCell: UITableViewCell {
 extension PokemonTableViewCell {
     
     //MARK: - Pokemon Methods
-    fileprivate func setPokemon(_ pokemon: PokemonDTO) {
+    func setPokemonDTO(_ pokemon: PokemonDTO) {
         self.pokemon = pokemon
         if let url = URL(string:  pokemon.sprites.frontMale ?? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/2.png"){
             
@@ -52,7 +52,7 @@ extension PokemonTableViewCell {
                 
             case .success(let pokemon):
                 DispatchQueue.main.async {
-                    self.setPokemon(pokemon)
+                    self.setPokemonDTO(pokemon)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
