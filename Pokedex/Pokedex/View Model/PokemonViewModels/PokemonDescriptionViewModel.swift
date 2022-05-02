@@ -23,6 +23,30 @@ extension PokemonDescriptionViewModel {
         defaults.set(value, forKey: key)
     }
     
+    func favoritePokemon(pokemonId: Int) -> Bool {
+        var favorites = Favorites.favoritePokemon.value
+        var added = false
+        for id in favorites {
+            if id == pokemonId {
+                added = true
+                favorites.removeAll { ids in
+                    if ids == id {
+                        return true
+                    }
+                    return false
+                }
+            }
+        }
+        if !added {
+            favorites.append(pokemonId)
+        }
+        favorites.sort()
+        
+        self.saveUserDefatuls(value: favorites, for: Favorites.favoritePokemonKey)
+        Favorites.favoritePokemon.accept(favorites)
+        return !added
+    }
+    
     func typeURL(name type : String, completion : @escaping(TypeModel)->Void) {
         var url = ""
         if let type1 = urlType1, type == TypePortuguese.getTypePortuguese(name: type1.name) {

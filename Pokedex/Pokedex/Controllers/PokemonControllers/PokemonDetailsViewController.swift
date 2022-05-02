@@ -317,6 +317,7 @@ extension PokemonDetailsViewController {
     @objc func toggleShiny() {
         self.shiny.accept(!self.shiny.value)
     }
+    
     @IBAction func didTapFemale(_ sender: UIButton) {
         self.gender.accept(.female)
     }
@@ -331,28 +332,8 @@ extension PokemonDetailsViewController {
     
     @IBAction func didTapHeart(_ sender: UIButton) {
         if self.id == 0 {return}
-        var favorites = Favorites.favoritePokemon.value
-        var added = false
-        for id in favorites {
-            if id == self.id {
-                added = true
-                sender.setImage(UIImage(systemName: "heart"), for: .normal)
-                favorites.removeAll { ids in
-                    if ids == id {
-                        return true
-                    }
-                    return false
-                }
-            }
-        }
-        if !added {
-            sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            favorites.append(self.id)
-        }
-        favorites.sort()
         
-        self.viewModel.saveUserDefatuls(value: favorites, for: Favorites.favoritePokemonKey)
-        Favorites.favoritePokemon.accept(favorites)
+        sender.setImage(UIImage(systemName: self.viewModel.favoritePokemon(pokemonId: self.id) ? "heart.fill" : "heart"), for: .normal)
     }
     
     @IBAction func didTapType(_ sender : UIButton) {

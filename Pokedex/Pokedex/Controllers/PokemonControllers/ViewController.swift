@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     var pokemonTypeOriginal : BehaviorRelay<[PokemonsByType]> = BehaviorRelay(value:[])
     var numberOfCells = 0
     var size : Int = 0
-    var range : Observable<Int> = Observable<Int>.range(start: 0, count: 0)
     var typeSelected : String = ""
     
     @IBOutlet weak var pokemonTypeTableView: UITableView!
@@ -41,7 +40,6 @@ extension ViewController {
         }
         self.navigationController?.navigationBar.barStyle = .black
         self.navigationController?.navigationBar.tintColor = .white
-        range = .range(start: 0, count: numberOfCells)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -280,11 +278,5 @@ extension ViewController : PokemonDetailsViewControllerDelegate {
                 self.presentAction(message: erro)
             })
         }
-    }
-}
-
-extension ViewController : UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected")
     }
 }
