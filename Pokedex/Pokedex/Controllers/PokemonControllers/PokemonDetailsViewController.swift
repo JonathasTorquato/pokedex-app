@@ -39,6 +39,7 @@ class PokemonDetailsViewController: UIViewController {
     let forms = BehaviorRelay<[Forms]>(value: [])
     let secondEvolutions: BehaviorRelay<[Chain]> = BehaviorRelay(value: [])
     let thirdEvolutions: BehaviorRelay<[Chain]> = BehaviorRelay(value: [])
+    let pokemon : PublishRelay<PokemonDTO> = PublishRelay<PokemonDTO>()
     let bag = DisposeBag()
     let shiny : BehaviorRelay<Bool> = BehaviorRelay(value: false)
     let gender : BehaviorRelay<PokemonGender> = BehaviorRelay(value: .none)
@@ -46,7 +47,6 @@ class PokemonDetailsViewController: UIViewController {
     let viewModel = PokemonDescriptionViewModel()
     
     var genderColor : BehaviorRelay<UIColor> = BehaviorRelay(value: .black)
-    var pokemon : PokemonDTO?
     var id = 0
     var delegate: PokemonDetailsViewControllerDelegate?
 }
@@ -59,12 +59,12 @@ extension PokemonDetailsViewController {
         if self.traitCollection.userInterfaceStyle == .dark {
             self.genderColor.accept(.white)
         }
+        setPokemonUI()
         setupForms()
         setupEvolutions()
         setupTables()
         setupPokemonImage()
         setupPokemonGender()
-        
         otherFormsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         secondEvolutionTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         thirdEvolutionTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -140,11 +140,11 @@ extension PokemonDetailsViewController {
     
     fileprivate func setupPokemonImage() {
         
-        Observable.combineLatest(self.shiny, self.gender, self.frontImage)
-            .subscribe(onNext:{ valueShiny, valueGender, valueFront in
+        Observable.combineLatest(self.shiny, self.gender, self.frontImage, self.pokemon)
+            .subscribe(onNext:{ valueShiny, valueGender, valueFront, pokemon in
                 if valueShiny{
                     if valueGender != .female {
-                        if let image = valueFront ? self.pokemon?.sprites.frontMaleShiny : self.pokemon?.sprites.backMaleShiny, let imageURL = URL(string: image) {
+                        if let image = valueFront ? pokemon.sprites.frontMaleShiny : pokemon.sprites.backMaleShiny, let imageURL = URL(string: image) {
                             
                             DispatchQueue.main.async{
                                 GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
@@ -153,7 +153,7 @@ extension PokemonDetailsViewController {
                         }
                     }
                     else {
-                        if let image = valueFront ? self.pokemon?.sprites.frontFemaleShiny : self.pokemon?.sprites.backFemaleShiny, let imageURL = URL(string: image) {
+                        if let image = valueFront ? pokemon.sprites.frontFemaleShiny : pokemon.sprites.backFemaleShiny, let imageURL = URL(string: image) {
                             
                             DispatchQueue.main.async{
                                 GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
@@ -164,7 +164,7 @@ extension PokemonDetailsViewController {
                 }
                 else {
                     if valueGender != .female{
-                        if let image = valueFront ? self.pokemon?.sprites.frontMale : self.pokemon?.sprites.backMale, let imageURL = URL(string: image) {
+                        if let image = valueFront ? pokemon.sprites.frontMale : pokemon.sprites.backMale, let imageURL = URL(string: image) {
                             DispatchQueue.main.async{
                                 GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
                                 self.navigationItem.rightBarButtonItem?.title = "Shiny"
@@ -172,7 +172,7 @@ extension PokemonDetailsViewController {
                         }
                     }
                     else {
-                        if let image = valueFront ? self.pokemon?.sprites.frontFemale : self.pokemon?.sprites.backFemale, let imageURL = URL(string: image) {
+                        if let image = valueFront ? pokemon.sprites.frontFemale : pokemon.sprites.backFemale, let imageURL = URL(string: image) {
                             DispatchQueue.main.async{
                                 GetImage.downloadImage(from: imageURL, imageView: self.pokemonImage)
                                 self.navigationItem.rightBarButtonItem?.title = "Shiny"
@@ -183,114 +183,114 @@ extension PokemonDetailsViewController {
             }).disposed(by: bag)
     }
     
-    fileprivate func setPokemonUI(pokemon: PokemonDTO){
-        thirdEvolutions.accept([])
-        Network.getPokemonEntry(idPokemon: self.id) { result in
-            switch result{
-            case .success(let success):
-                //MARK: - Evolutions
-                if let chain = success.evolution_chain?.url{
-                    Network.getPokemonChain(url: chain) { result in
-                        switch result{
-                        case .success(let success):
-                            self.firstEvolution.setTitle(success.chain?.species?.name, for: .normal)
-                            if let evolves_to = success.chain?.evolves_to{
-                                self.secondEvolutions.accept(evolves_to)
+    func setPokemonUI(){
+        self.pokemon.subscribe(onNext:{ pokemon in
+            self.thirdEvolutions.accept([])
+            Network.getPokemonEntry(idPokemon: self.id) { result in
+                switch result{
+                case .success(let success):
+                    //MARK: - Evolutions
+                    if let chain = success.evolution_chain?.url{
+                        Network.getPokemonChain(url: chain) { result in
+                            DispatchQueue.main.async {
+                                switch result{
+                                case .success(let success):
+                                    self.firstEvolution.setTitle(success.chain?.species?.name, for: .normal)
+                                    if let evolves_to = success.chain?.evolves_to{
+                                        self.secondEvolutions.accept(evolves_to)
+                                    }
+                                case .failure(let error):
+                                    self.firstEvolution.setTitle("ERROR " + error.localizedDescription, for: .normal)
+                                }
                             }
-                        case .failure(let error):
-                            self.firstEvolution.setTitle("ERROR " + error.localizedDescription, for: .normal)
                         }
                     }
-                }
-                DispatchQueue.main.async {
-                    self.leftButton.isEnabled = self.id > 1
-                    self.rightButton.isEnabled = self.id <= 897
-                }
-                //MARK: - Entry
-                DispatchQueue.main.async{
-                    var textEntry: String = ""
-                    for flavor in success.flavor_text_entries
-                    {
-                        if flavor.language.name == "en"
+                    DispatchQueue.main.async {
+                        self.leftButton.isEnabled = self.id > 1
+                        self.rightButton.isEnabled = self.id <= 897
+                    }
+                    //MARK: - Entry
+                    DispatchQueue.main.async{
+                        var textEntry: String = ""
+                        for flavor in success.flavor_text_entries
                         {
-                            textEntry = flavor.flavor_text
+                            if flavor.language.name == "en"
+                            {
+                                textEntry = flavor.flavor_text
+                            }
+                        }
+                        textEntry = textEntry.replacingOccurrences(of: "\n", with: " ")
+                        self.descriptionLabel.text = textEntry
+                        self.nameLabel.text = pokemon.name.capitalizingFirstLetter()
+                        self.title = "No. " + self.id.numberToSpecialNumber()
+                        
+                        if let sprite = pokemon.sprites.frontMale, let url = URL(string: sprite){
+                            self.imageButton.setTitle("", for: .normal)
+                            self.imageButton.isEnabled = true
+                            GetImage.downloadImage(from: url, imageView: self.pokemonImage)
+                        }
+                        else {
+                            self.imageButton.setTitle("Nenhuma foto foi encontrada", for: .normal)
+                            self.imageButton.isEnabled = false
+                            self.pokemonImage.image = nil
+                        }
+                        self.type1label.setTitle(TypePortuguese.getTypePortuguese(name: pokemon.types[0].type.name, self.type1label.titleLabel), for: .normal)
+                        self.type1label.setTitleColor(self.type1label.titleLabel?.textColor, for: .normal)
+                        self.viewModel.urlType1 = pokemon.types[0].type
+                        if pokemon.types.count == 2
+                        {
+                            self.type2Label.setTitle(TypePortuguese.getTypePortuguese(name: pokemon.types[1].type.name, self.type2Label.titleLabel), for: .normal)
+                            self.type2Label.setTitleColor(self.type2Label.titleLabel?.textColor, for: .normal)
+                            self.viewModel.urlType2 = pokemon.types[1].type
+                        }
+                        else
+                        {
+                            self.type2Label.setTitle("", for: .normal)
+                            self.viewModel.urlType2 = nil
                         }
                     }
-                    textEntry = textEntry.replacingOccurrences(of: "\n", with: " ")
-                    self.descriptionLabel.text = textEntry
-                    self.nameLabel.text = pokemon.name.capitalizingFirstLetter()
-                    self.title = "No. " + self.id.numberToSpecialNumber()
-                    
-                    if let sprite = pokemon.sprites.frontMale, let url = URL(string: sprite){
-                        self.imageButton.setTitle("", for: .normal)
-                        self.imageButton.isEnabled = true
-                        GetImage.downloadImage(from: url, imageView: self.pokemonImage)
+                    //MARK: - Varieties
+                    if let forms = success.varieties, forms.count > 0 {
+                        self.forms.accept(forms)
                     }
-                    else {
-                        self.imageButton.setTitle("Nenhuma foto foi encontrada", for: .normal)
-                        self.imageButton.isEnabled = false
-                        self.pokemonImage.image = nil
-                    }
-                    self.type1label.setTitle(TypePortuguese.getTypePortuguese(name: pokemon.types[0].type.name, self.type1label.titleLabel), for: .normal)
-                    self.type1label.setTitleColor(self.type1label.titleLabel?.textColor, for: .normal)
-                    self.viewModel.urlType1 = pokemon.types[0].type
-                    if pokemon.types.count == 2
-                    {
-                        self.type2Label.setTitle(TypePortuguese.getTypePortuguese(name: pokemon.types[1].type.name, self.type2Label.titleLabel), for: .normal)
-                        self.type2Label.setTitleColor(self.type2Label.titleLabel?.textColor, for: .normal)
-                        self.viewModel.urlType2 = pokemon.types[1].type
-                    }
-                    else
-                    {
-                        self.type2Label.setTitle("", for: .normal)
-                        self.viewModel.urlType2 = nil
+                case .failure(let failure):
+                    print(failure.localizedDescription)
+                }
+                
+            }
+            DispatchQueue.main.async {
+                self.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                for id in Favorites.favoritePokemon.value {
+                    if id == self.id {
+                        self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     }
                 }
-                //MARK: - Varieties
-                if let forms = success.varieties, forms.count > 0 {
-                    self.forms.accept(forms)
-                    
-                }
-            case .failure(let failure):
-                print(failure.localizedDescription)
             }
             
-        }
-        DispatchQueue.main.async {
-            self.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-            for id in Favorites.favoritePokemon.value {
-                if id == self.id {
-                    self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                }
+            self.frontImage.accept(true)
+            
+            //MARK: - SETUP GENDER
+            guard let _ = pokemon.sprites.frontFemale else {
+                self.gender.accept(.none)
+                return
             }
-        }
-        
-        self.frontImage.accept(true)
-        
-        //MARK: - SETUP GENDER
-        guard let _ = pokemon.sprites.frontFemale else {
-            self.gender.accept(.none)
-            return
-        }
-        self.gender.accept(.male)
-        
+            self.gender.accept(.male)
+        }).disposed(by: bag)
     }
+    
     func setPokemon(pokemon: PokemonDTO){
         self.id = pokemon.id
         self.shiny.accept(false)
         if self.id >= 899 {
             self.delegate?.pokemonVariation(other: pokemon.species.name){ identifier in
                 self.id = identifier
-                self.pokemon = pokemon
-                DispatchQueue.main.async {
-                    self.setPokemonUI(pokemon: pokemon)
-                }
+                self.pokemon.accept(pokemon)
             }
         }
-        else
-        {
-            self.pokemon = pokemon
-            setPokemonUI(pokemon: pokemon)
+        else {
+            DispatchQueue.main.async {
+                self.pokemon.accept(pokemon)
+            }
         }
     }
     

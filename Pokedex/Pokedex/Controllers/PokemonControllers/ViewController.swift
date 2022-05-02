@@ -17,7 +17,9 @@ class ViewController: UIViewController {
     let types : BehaviorRelay <[TypeURLDTO]> = BehaviorRelay(value: [])
     let pokemonsType : PublishRelay <[PokemonsByType]> = PublishRelay <[PokemonsByType]>()
     let viewModel : MainViewModel = MainViewModel()
+    let pokemonSearch : PublishRelay<String> = PublishRelay<String>()
 
+    var pokemonTypeOriginal : BehaviorRelay<[PokemonsByType]> = BehaviorRelay(value:[])
     var numberOfCells = 0
     var size : Int = 0
     var range : Observable<Int> = Observable<Int>.range(start: 0, count: 0)
@@ -41,7 +43,6 @@ extension ViewController {
         self.navigationController?.navigationBar.tintColor = .white
         range = .range(start: 0, count: numberOfCells)
         
-        //typesCollection.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "PokemonTableViewCell", bundle: .main), forCellReuseIdentifier: "PokemonTableCell")
@@ -49,6 +50,7 @@ extension ViewController {
         
         pokemonTypeTableView.register(UINib(nibName: "PokemonTableViewCell", bundle: .main), forCellReuseIdentifier: "PokemonTableCell")
         getCount()
+        setupSearch()
     }
     
     fileprivate func setupCollection() {
@@ -67,19 +69,24 @@ extension ViewController {
                 self.pokemonTypeTableView.isHidden = false
                 self.viewModel.getPokemonsType(url: model.element?.url ?? "") { pokemons in
                     self.pokemonsType.accept(pokemons)
+                    self.pokemonTypeOriginal.accept(pokemons)
                 }
             } else {
                 self.typeSelected = ""
                 self.tableView.isHidden = false
                 self.pokemonTypeTableView.isHidden = true
+                self.pokemonsType.accept([])
+                self.pokemonTypeOriginal.accept([])
             }
             self.types.accept(self.types.value)
         }.disposed(by: bag)
         self.pokemonsType.bind(to: pokemonTypeTableView.rx.items(cellIdentifier: "PokemonTableCell", cellType: PokemonTableViewCell.self)){ row, pokemon, cell in
             
-            self.viewModel.getPokemonName(name: pokemon.pokemon.name) { pokemonDTO in
+            self.viewModel.getPokemonName(name: pokemon.pokemon.name, completionSuc: { pokemonDTO in
                 cell.setPokemonDTO(pokemonDTO)
-            }
+            }, completionError: { erro in
+                self.presentAction(message: erro)
+            })
             
         }.disposed(by: bag)
         
@@ -98,36 +105,64 @@ extension ViewController {
         }
     }
     
+    fileprivate func setupSearch() {
+        Observable.combineLatest(self.pokemonSearch, self.pokemonTypeOriginal).subscribe(onNext:{ value, pokemons in
+            if value == ""{
+                self.pokemonsType.accept(pokemons)
+            } else if value.first?.isLetter ?? false {
+                var newList : [PokemonsByType] = []
+                for pokemon in pokemons {
+                    if pokemon.pokemon.name.contains(value.lowercased()) {
+                        newList.append(pokemon)
+                        
+                    }
+                }
+                self.pokemonsType.accept(newList)
+            }
+            
+        }).disposed(by: bag)
+    }
     
     //MARK: - Navigation
     func showPokemonEntry(id: Int, animated: Bool = true) {
         let vc = PokemonDetailsViewController()
-        
         vc.navigationItem.rightBarButtonItem = {
             let button = UIBarButtonItem(title: "Shiny", style: .plain, target: vc, action: #selector(vc.toggleShiny))
             return button
         }()
         vc.delegate = self
-        viewModel.getPokemonId(id: id) { pokemon in
-            vc.setPokemon(pokemon: pokemon)
+        viewModel.getPokemonId(id: id,completionSuc: { pokemon in
             self.navigationController?.pushViewController(vc, animated: animated)
-        }
+            vc.setPokemonUI()
+            vc.setPokemon(pokemon: pokemon)
+        },completionError: { erro in
+            self.presentAction(message: erro)
+        })
     }
     
     func showPokemonEntryName(name: String, animated: Bool = true) {
         let vc = PokemonDetailsViewController()
-        
         vc.navigationItem.rightBarButtonItem = {
             let button = UIBarButtonItem(title: "Shiny", style: .plain, target: vc, action: #selector(vc.toggleShiny))
             return button
         }()
         vc.delegate = self
-        viewModel.getPokemonName(name: name) { pokemon in
-            vc.setPokemon(pokemon: pokemon)
+        viewModel.getPokemonName(name: name, completionSuc: { pokemon in
             self.navigationController?.pushViewController(vc, animated: animated)
-        }
+            vc.setPokemonUI()
+            vc.setPokemon(pokemon: pokemon)
+        },completionError: { erro in
+            self.presentAction(message: erro)
+        })
     }
 
+    func presentAction(message : String) {
+        let alert = UIAlertController(title: "Erro de servidor", message: message, preferredStyle: .alert)
+        let alertButton = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(alertButton)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 //MARK: - TableViewDelegate
@@ -196,39 +231,54 @@ extension ViewController: FooterTableCellDelegate {
 extension ViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let search = searchBar.text else {return}
-        if search.first?.isLetter ?? false {
-            self.viewModel.getPokemonName(name: search.lowercased()) { result in
-                self.showPokemonEntry(id: result.id)
+        if self.typeSelected == "" {
+            if search.first?.isLetter ?? false {
+                self.viewModel.getPokemonName(name: search.lowercased(),completionSuc: { result in
+                    self.showPokemonEntry(id: result.id)
+                }, completionError: { erro in
+                    self.presentAction(message: erro)
+                })
+            } else if let searched = (Int(search)), searched <= 898 && searched > 0 {
+                self.viewModel.getPokemonId(id: searched, completionSuc: { result in
+                    self.showPokemonEntry(id: result.id)
+                }, completionError: { erro in
+                    self.presentAction(message: erro)
+                })
             }
-        } else if let searched = (Int(search)), searched <= 898 && searched > 0 {
-            self.viewModel.getPokemonId(id: searched) { result in
-                self.showPokemonEntry(id: result.id)
-            }
+        } else {
+            self.pokemonSearch.accept(search)
         }
+        view.endEditing(true)
     }
 }
 
 //MARK: - Extension PokemonDetailsViewControllerDelegate
 extension ViewController : PokemonDetailsViewControllerDelegate {
     func pokemonVariation(other name: String, completion: @escaping (Int) -> Void) {
-        viewModel.getPokemonName(name: name) { pokemon in
+        viewModel.getPokemonName(name: name,completionSuc: { pokemon in
             completion(pokemon.id)
-        }
+        }, completionError: { erro in
+            self.presentAction(message: erro)
+        })
     }
     
     func otherPokemon(to name: String, viewController: PokemonDetailsViewController) {
         if name != "" {
-            viewModel.getPokemonName(name: name) { pokemon in
+            viewModel.getPokemonName(name: name,completionSuc: { pokemon in
                 viewController.setPokemon(pokemon: pokemon)
-            }
+            },completionError : { erro in
+                self.presentAction(message: erro)
+            })
         }
     }
     
     func otherPokemon(to id: Int, viewController : PokemonDetailsViewController) {
         if id != 0 {
-            viewModel.getPokemonId(id: id) { pokemon in
+            viewModel.getPokemonId(id: id, completionSuc: { pokemon in
                 viewController.setPokemon(pokemon: pokemon)
-            }
+            }, completionError: { erro in
+                self.presentAction(message: erro)
+            })
         }
     }
 }

@@ -25,27 +25,27 @@ class MainViewModel {
         }
     }
     
-    func getPokemonId(id: Int, completion: @escaping(PokemonDTO)->Void) {
+    func getPokemonId(id: Int, completionSuc: @escaping(PokemonDTO)->Void, completionError: @escaping(String)->Void) {
         Network.getPokemonID(id: id){ result in
             switch result
             {
                 
             case .success(let response):
-                completion(response)
+                completionSuc(response)
             case .failure(let error):
-                print(error.localizedDescription)
+                completionError(error.localizedDescription)
             }
         }
     }
     
-    func getPokemonName(name: String, completion: @escaping(PokemonDTO)->Void) {
+    func getPokemonName(name: String, completionSuc: @escaping(PokemonDTO)->Void, completionError: @escaping(String)->Void) {
         Network.getPokemonName(name: name) { result in
             switch result {
                 
             case .success(let success):
-                completion(success)
+                completionSuc(success)
             case .failure(let error):
-                print("Erro" + error.localizedDescription)
+                completionError(error.localizedDescription)
             }
         }
     }
