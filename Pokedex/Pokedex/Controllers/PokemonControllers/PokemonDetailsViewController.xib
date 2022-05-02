@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PokemonDetailsViewController" customModule="Pokedex" customModuleProvider="target">
             <connections>
                 <outlet property="descriptionLabel" destination="qkG-NE-ihn" id="6h2-qV-tcX"/>
+                <outlet property="entriesTableView" destination="eQw-VW-uVc" id="k5Y-yM-QPN"/>
                 <outlet property="femalePokemonButton" destination="NS1-Ct-HI8" id="ONB-VM-Lt2"/>
                 <outlet property="firstEvolution" destination="YLM-Ej-tYA" id="q4H-V5-hSJ"/>
                 <outlet property="imageButton" destination="B1h-ca-9lJ" id="7Vl-uX-I0C"/>
@@ -153,12 +154,24 @@
                                                 </button>
                                             </subviews>
                                         </stackView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descrição" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkG-NE-ihn">
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dct-jn-WZx">
                                             <rect key="frame" x="0.0" y="145" width="382" height="135"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <subviews>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eQw-VW-uVc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="135"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="QHw-2q-iVR"/>
+                                                    </constraints>
+                                                </tableView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descrição" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="qkG-NE-ihn">
+                                                    <rect key="frame" x="110" y="0.0" width="272" height="135"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cadeia de evolução" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvj-SR-o7Y">
                                             <rect key="frame" x="0.0" y="290" width="382" height="135"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>

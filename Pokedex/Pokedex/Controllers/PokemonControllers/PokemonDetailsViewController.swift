@@ -20,6 +20,7 @@ protocol PokemonDetailsViewControllerDelegate {
 //MARK: - Declarations
 class PokemonDetailsViewController: UIViewController {
 
+    @IBOutlet weak var entriesTableView: UITableView!
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var femalePokemonButton: UIButton!
@@ -44,6 +45,7 @@ class PokemonDetailsViewController: UIViewController {
     let shiny : BehaviorRelay<Bool> = BehaviorRelay(value: false)
     let gender : BehaviorRelay<PokemonGender> = BehaviorRelay(value: .none)
     let frontImage : BehaviorRelay<Bool> = BehaviorRelay(value: true)
+    let entryVersions : BehaviorRelay<[Entry]> = BehaviorRelay(value:[])
     let viewModel = PokemonDescriptionViewModel()
     
     var genderColor : BehaviorRelay<UIColor> = BehaviorRelay(value: .black)
@@ -65,6 +67,7 @@ extension PokemonDetailsViewController {
         setupTables()
         setupPokemonImage()
         setupPokemonGender()
+        entriesTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         otherFormsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         secondEvolutionTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         thirdEvolutionTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -110,6 +113,19 @@ extension PokemonDetailsViewController {
         self.otherFormsTableView.rx.modelSelected(Forms.self).subscribe(onNext:{ [unowned self] pokemonForm in
             self.delegate?.otherPokemon(to: pokemonForm.pokemon?.name ?? "", viewController: self)
         }).disposed(by: bag)
+        
+        self.entryVersions.bind(to: self.entriesTableView.rx.items(cellIdentifier: "cell")){ row, entry,cell in
+            cell.textLabel?.text = entry.version.name
+            
+        }.disposed(by: bag)
+        
+        self.entriesTableView.rx.modelSelected(Entry.self).subscribe{ model in
+            var textEntry = model.element?.flavor_text ?? ""
+            textEntry = textEntry.replacingOccurrences(of: "\n", with: " ")
+            self.descriptionLabel.text = textEntry
+        }.disposed(by: bag)
+        
+        
     }
     
     func setupForms() {
@@ -210,17 +226,9 @@ extension PokemonDetailsViewController {
                         self.rightButton.isEnabled = self.id <= 897
                     }
                     //MARK: - Entry
+                    self.entryVersions.accept( self.viewModel.getAllEntries(pokemon: success))
                     DispatchQueue.main.async{
-                        var textEntry: String = ""
-                        for flavor in success.flavor_text_entries
-                        {
-                            if flavor.language.name == "en"
-                            {
-                                textEntry = flavor.flavor_text
-                            }
-                        }
-                        textEntry = textEntry.replacingOccurrences(of: "\n", with: " ")
-                        self.descriptionLabel.text = textEntry
+                        self.descriptionLabel.text = self.entryVersions.value.first?.flavor_text ?? ""
                         self.nameLabel.text = pokemon.name.capitalizingFirstLetter()
                         self.title = "No. " + self.id.numberToSpecialNumber()
                         

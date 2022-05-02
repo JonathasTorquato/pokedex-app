@@ -107,15 +107,25 @@ extension ViewController {
         Observable.combineLatest(self.pokemonSearch, self.pokemonTypeOriginal).subscribe(onNext:{ value, pokemons in
             if value == ""{
                 self.pokemonsType.accept(pokemons)
-            } else if value.first?.isLetter ?? false {
+            } else {
                 var newList : [PokemonsByType] = []
-                for pokemon in pokemons {
-                    if pokemon.pokemon.name.contains(value.lowercased()) {
-                        newList.append(pokemon)
-                        
+                if value.first?.isLetter ?? false {
+                    for pokemon in pokemons {
+                        if pokemon.pokemon.name.contains(value.lowercased()) {
+                            newList.append(pokemon)
+                        }
                     }
+                } else if value.first?.isNumber ?? false {
+                    for pokemon in pokemons {
+                        if ("\(pokemon.pokemon.url )").contains(value.lowercased()) {
+                            newList.append(pokemon)
+                        }
+                    }
+                } else {
+                    newList = self.pokemonTypeOriginal.value
                 }
                 self.pokemonsType.accept(newList)
+                
             }
             
         }).disposed(by: bag)

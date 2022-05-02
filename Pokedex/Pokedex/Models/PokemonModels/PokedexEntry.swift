@@ -16,6 +16,7 @@ class Entry : Codable
 {
     var flavor_text : String
     var language : Language
+    var version : TypeURLDTO
 }
 struct Language : Codable{
     var name : String

@@ -47,6 +47,16 @@ extension PokemonDescriptionViewModel {
         return !added
     }
     
+    func getAllEntries(pokemon : PokedexEntry) ->[Entry] {
+        var entries : [Entry] = []
+        for entry in pokemon.flavor_text_entries {
+            if entry.language.name == "en" {
+                entries.append(entry)
+            }
+        }
+        return entries
+    }
+    
     func typeURL(name type : String, completion : @escaping(TypeModel)->Void) {
         var url = ""
         if let type1 = urlType1, type == TypePortuguese.getTypePortuguese(name: type1.name) {
