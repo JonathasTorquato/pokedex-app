@@ -138,7 +138,7 @@ extension PokemonDetailsViewController {
         
     }
     
-    fileprivate func setupPokemonImage(){
+    fileprivate func setupPokemonImage() {
         
         Observable.combineLatest(self.shiny, self.gender, self.frontImage)
             .subscribe(onNext:{ valueShiny, valueGender, valueFront in
@@ -314,7 +314,7 @@ extension PokemonDetailsViewController {
         self.delegate?.otherPokemon(to: self.id - 1, viewController: self)
     }
     
-    @objc func toggleShiny(){
+    @objc func toggleShiny() {
         self.shiny.accept(!self.shiny.value)
     }
     @IBAction func didTapFemale(_ sender: UIButton) {

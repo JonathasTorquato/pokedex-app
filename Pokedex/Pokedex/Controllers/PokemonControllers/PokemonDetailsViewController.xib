@@ -45,7 +45,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GeZ-oT-Q6A">
                                             <rect key="frame" x="0.0" y="0.0" width="91" height="200"/>
                                             <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" title="Type"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Type1"/>
                                             <connections>
                                                 <action selector="didTapType:" destination="-1" eventType="touchUpInside" id="4DN-Du-XBM"/>
                                             </connections>
@@ -81,7 +81,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1w2-2P-PDA">
                                             <rect key="frame" x="291" y="0.0" width="91" height="200"/>
                                             <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" title="Type"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Type2"/>
                                             <connections>
                                                 <action selector="didTapType:" destination="-1" eventType="touchUpInside" id="VTg-om-rV4"/>
                                             </connections>
