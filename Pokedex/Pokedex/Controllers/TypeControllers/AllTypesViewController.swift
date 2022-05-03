@@ -16,12 +16,11 @@ class AllTypesViewController : UIViewController {
     let bag = DisposeBag()
     let types : BehaviorRelay<[TypeURLDTO]> = BehaviorRelay(value: [])
     
-    @IBOutlet weak var typesTableView : UITableView!
+    @IBOutlet weak var typesCollectionVIew: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.typesTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.typesCollectionVIew.register(UINib(nibName: "TypeCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "TypeCollectionCell")
         setupTable()
         self.viewModel.getTypes { types in
             self.types.accept(types)
@@ -29,11 +28,16 @@ class AllTypesViewController : UIViewController {
     }
     
     fileprivate func setupTable() {
-        self.types.bind(to: typesTableView.rx.items(cellIdentifier: "cell")) { row, type, cell in
-            cell.textLabel?.text = TypePortuguese.getTypePortuguese(name: type.name, cell.textLabel)
+        self.types.bind(to: typesCollectionVIew.rx.items(cellIdentifier: "TypeCollectionCell")) { row, type, cell in
+            if let cell = cell as? TypeCollectionViewCell {
+                cell.typeImageView.image = UIImage(named: type.name)
+                cell.widthImageView.constant = 100
+                cell.heightImageView.constant = 100
+                cell.upperView.alpha = 0
+            }
             
         }.disposed(by: bag)
-        self.typesTableView.rx.modelSelected(TypeURLDTO.self).subscribe { model in
+        self.typesCollectionVIew.rx.modelSelected(TypeURLDTO.self).subscribe { model in
             let vc = TypeDescriptionViewController()
             self.viewModel.getTypeFromURL(url: model.element?.url ?? "") { typeModel in
                 vc.tipo.accept(typeModel)

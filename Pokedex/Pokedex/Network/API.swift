@@ -20,6 +20,7 @@ enum API {
     case chainURL(url : String)
     case items
     case itemId(id : Int)
+    case itemName(name : String)
 }
 
 extension API: TargetType {
@@ -61,6 +62,8 @@ extension API: TargetType {
             return Endpoint.ITEM.items + "/\(id)"
         case .types:
             return Endpoint.TYPE.types
+        case .itemName(name: let name):
+            return Endpoint.ITEM.items + "/\(name)"
         }
     }
     

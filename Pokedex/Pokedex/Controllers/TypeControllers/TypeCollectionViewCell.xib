@@ -43,8 +43,10 @@
             </constraints>
             <size key="customSize" width="218" height="189"/>
             <connections>
+                <outlet property="heightImageView" destination="ogi-te-8LX" id="tFM-x6-BVK"/>
                 <outlet property="typeImageView" destination="DiK-vx-XnX" id="RKt-QU-6uZ"/>
                 <outlet property="upperView" destination="yQY-kN-Lr7" id="5kj-w6-jrl"/>
+                <outlet property="widthImageView" destination="tUf-GR-5vM" id="uAl-OS-T5c"/>
             </connections>
             <point key="canvasLocation" x="259.4202898550725" y="101.11607142857143"/>
         </collectionViewCell>

@@ -13,6 +13,7 @@ class ListAllItemsViewController: UIViewController {
     
     @IBOutlet weak var itemsTableView: UITableView!
     
+    @IBOutlet weak var itemSearchBar: UISearchBar!
     let viewModel = AllItemsViewModel()
     let bag = DisposeBag()
     let total:PublishSubject<Int> = PublishSubject()
@@ -27,6 +28,7 @@ class ListAllItemsViewController: UIViewController {
         setupTable()
         subscribeLimit()
         getLimit()
+        itemSearchBar.delegate = self
         
     }
     
@@ -47,7 +49,24 @@ class ListAllItemsViewController: UIViewController {
         itemsTableView.delegate = self
         itemsTableView.dataSource = self
     }
-   
+    
+    func presentItemDescription(item : ItemDTO) {
+        let itemDescriptionVC = ItemDescriptionViewController()
+        itemDescriptionVC.modalTransitionStyle = .partialCurl
+        item.name = item.name.capitalizingFirstLetter().replacingOccurrences(of: "-", with: " ")
+        self.navigationController?.pushViewController(itemDescriptionVC, animated: true)
+        DispatchQueue.main.async{
+            itemDescriptionVC.item.accept(item)
+        }
+    }
+    @IBAction func didTapSurpriseButton(_ sender: Any) {
+        let itemRand = Int.random(in: 1...1000)
+        self.viewModel.getItemId(id: itemRand) { item in
+            self.presentItemDescription(item: item)
+        }
+        
+    }
+    
 }
 //MARK: - TableView Delegate e Data source
 extension ListAllItemsViewController : UITableViewDelegate, UITableViewDataSource {
@@ -87,16 +106,31 @@ extension ListAllItemsViewController : UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row < itemLimit {
-            let itemDescriptionVC = ItemDescriptionViewController()
-            itemDescriptionVC.modalTransitionStyle = .partialCurl
+            
             if let cell = tableView.cellForRow(at: indexPath) as? ItemsCell, let item = cell.itemValue {
-                itemDescriptionVC.item.accept(item)
+                self.presentItemDescription(item: item)
             }
-            self.navigationController?.pushViewController(itemDescriptionVC, animated: true)
+            
             
         }
     }
     
     
     
+}
+
+extension ListAllItemsViewController : UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let search = searchBar.text, search != "" {
+            self.viewModel.getItemName(name: search, completionSuc: {item in
+                self.presentItemDescription(item: item)
+            }, completionError: { erro in
+                let alert = UIAlertController(title: "Item não encontrado", message: erro, preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .default)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            })
+        }
+        self.view.endEditing(true)
+    }
 }

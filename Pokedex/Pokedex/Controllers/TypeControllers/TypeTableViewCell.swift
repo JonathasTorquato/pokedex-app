@@ -15,7 +15,8 @@ protocol TypeTableViewCellDelegate {
 
 class TypeTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var relationsTableView: UITableView!
+    
+    @IBOutlet weak var relationsCollectionView: UICollectionView!
     @IBOutlet weak var nameLabel: UILabel!
     
     let bag = DisposeBag()
@@ -26,16 +27,20 @@ class TypeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        relationsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        relationsCollectionView.register(UINib(nibName: "TypeCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "TypeCollectionCell")
         setupTable()
     }
     
     fileprivate func setupTable() {
-        tipos.bind(to: relationsTableView.rx.items(cellIdentifier: "cell")){row,tipo,cell in
-            cell.backgroundColor = .clear
-            cell.imageView?.image = UIImage(named: tipo.name)
+        tipos.bind(to: relationsCollectionView.rx.items(cellIdentifier: "TypeCollectionCell")){row,tipo,cell in
+            
+            if let cell = cell as? TypeCollectionViewCell {
+                cell.backgroundColor = .clear
+                cell.upperView.alpha = 0
+                cell.typeImageView.image = UIImage(named: tipo.name)
+            }
         }.disposed(by: bag)
-        relationsTableView.rx.modelSelected(TypeURLDTO.self).subscribe{ type in
+        relationsCollectionView.rx.modelSelected(TypeURLDTO.self).subscribe{ type in
             guard let url = type.element?.url else {return}
             self.viewModel.retrieveType(url: url) { typeM in
                 self.delegate?.selectedType(type: typeM)

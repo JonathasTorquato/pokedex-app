@@ -51,6 +51,11 @@ extension TypeDescriptionViewController {
         setupTable()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationItem.leftBarButtonItem?.customView?.backgroundColor = .systemBackground
+    }
+    
     //MARK: - Rx Setup
     fileprivate func setupTable() {
         self.relacoes.bind(to: contentTableView.rx.items(cellIdentifier: "TypeTableViewCell")) { row, relacao, cell  in
