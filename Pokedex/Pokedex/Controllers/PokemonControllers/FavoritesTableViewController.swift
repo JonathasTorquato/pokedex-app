@@ -30,7 +30,12 @@ extension FavoritesTableViewController {
         self.tableView.register(UINib(nibName: "PokemonTableViewCell", bundle: .main), forCellReuseIdentifier: "PokemonTableCell")
         
         setupTable()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.barTintColor = .black
+        self.navigationController?.navigationBar.tintColor = .black
     }
     
     //MARK: - Rx Setup
@@ -38,19 +43,32 @@ extension FavoritesTableViewController {
         
         Favorites.favoritePokemon.subscribe(onNext: {value in
             self.originalPokemon.accept([])
-            self.pokemon.accept([])
             for id in value {
                 self.viewModel.getPokemonId(id: id) { pokemon in
                     var listPokemon = self.pokemon.value
                     listPokemon.append(pokemon)
+                    listPokemon.sort { p1, p2 in
+                        return p1.id <= p2.id
+                    }
                     self.originalPokemon.accept(listPokemon)
-                    self.pokemon.accept(listPokemon)
                 }
             }
         }).disposed(by: bag)
         
+        self.originalPokemon.subscribe(onNext: { value in
+            var sortedValue = value
+            sortedValue.sort { p1, p2 in
+                if p1.id <= p2.id
+                {
+                    return true
+                }
+                return false
+            }
+            self.pokemon.accept(value)
+        }).disposed(by: bag)
+        
         pokemon.bind(to: self.tableView.rx.items(cellIdentifier: "PokemonTableCell")) { row,pokemon,cell in
-            if let cell = cell as? PokemonTableViewCell{
+            if let cell = cell as? PokemonTableViewCell {
                 cell.setPokemonDTO(pokemon)
             }
         }.disposed(by: bag)

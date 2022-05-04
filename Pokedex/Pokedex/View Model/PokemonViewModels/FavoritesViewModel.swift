@@ -53,6 +53,7 @@ class FavoritesViewModel {
                 list.append(pokemon)
             }
         }
+        
         return list
         
     }
