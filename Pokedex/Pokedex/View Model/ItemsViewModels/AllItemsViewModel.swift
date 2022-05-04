@@ -47,4 +47,32 @@ class AllItemsViewModel {
         }
     }
     
+    
+    func getItemCategoryId(id : Int, completionSuc : @escaping(ItemCategory)->Void, completionError: @escaping(String)->Void) {
+        Network.getCategoryById(id: id) { result in
+            switch result {
+                
+            case .success(let success):
+                success.name = success.name.capitalizingFirstLetter().replacingOccurrences(of: "-", with: " ")
+                completionSuc(success)
+            case .failure(let error):
+                completionError(error.localizedDescription)
+            }
+        }
+    }
+    
+    func searchFilteredItems(search : String, filtered items: [GenericURLDTO]) -> [GenericURLDTO] {
+        var searchedItems : [GenericURLDTO] = []
+        if search == "" {
+            return items
+        }
+        for item in items {
+            if item.name.lowercased().replacingOccurrences(of: " ", with: "-").contains(search.lowercased().replacingOccurrences(of: " ", with: "-")){
+                searchedItems.append(item)
+            }
+        }
+        
+        return searchedItems
+    }
+    
 }

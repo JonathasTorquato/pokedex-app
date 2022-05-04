@@ -24,5 +24,6 @@ struct Endpoint {
     
     struct ITEM {
         static let items = "/item"
+        static let itemCategory = "/item-category"
     }
 }

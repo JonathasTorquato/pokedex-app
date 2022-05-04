@@ -13,5 +13,5 @@ class PokemonDTO: Codable{
     let id: Int
     let types: [TypeURLDTO2]
     let sprites: Sprites
-    let species : TypeURLDTO
+    let species : GenericURLDTO
 }

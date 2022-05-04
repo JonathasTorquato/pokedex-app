@@ -22,7 +22,7 @@ class TypeDescriptionViewController: UIViewController {
     @IBOutlet weak var otherView: UIView!
     
     let bag = DisposeBag()
-    let relacoes : BehaviorRelay<[[String:[TypeURLDTO]]]> = BehaviorRelay(value:[])
+    let relacoes : BehaviorRelay<[[String:[GenericURLDTO]]]> = BehaviorRelay(value:[])
     let tipo : BehaviorRelay<TypeModel> = BehaviorRelay(value: TypeModel(name:"", relacoes: []))
     
     deinit {

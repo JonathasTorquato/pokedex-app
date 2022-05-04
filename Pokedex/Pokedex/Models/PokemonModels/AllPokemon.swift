@@ -9,5 +9,5 @@ import Foundation
 
 struct AllPokemon : Codable{
     
-    var result : [TypeURLDTO]
+    var result : [GenericURLDTO]
 }

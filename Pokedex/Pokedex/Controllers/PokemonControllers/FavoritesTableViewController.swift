@@ -11,9 +11,11 @@ import RxCocoa
 
 //MARK: - Declarations
 class FavoritesTableViewController: UIViewController {
+    @IBOutlet weak var favoritesSearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     let bag = DisposeBag()
+    let pokemon : BehaviorRelay <[Int]> = BehaviorRelay(value : [])
     let viewModel = FavoritesViewModel()
 }
 
@@ -23,16 +25,19 @@ extension FavoritesTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.favoritesSearchBar.delegate = self
         self.tableView.register(UINib(nibName: "PokemonTableViewCell", bundle: .main), forCellReuseIdentifier: "PokemonTableCell")
         
         setupTable()
+        
+        pokemon.accept(Favorites.favoritePokemon.value)
+        
     }
     
     //MARK: - Rx Setup
     fileprivate func setupTable() {
         
-        Favorites.favoritePokemon.bind(to: self.tableView.rx.items(cellIdentifier: "PokemonTableCell")) { row,pokemonId,cell in
+        pokemon.bind(to: self.tableView.rx.items(cellIdentifier: "PokemonTableCell")) { row,pokemonId,cell in
             if let cell = cell as? PokemonTableViewCell{
                 cell.setPokemon(pokemonId)
             }
@@ -102,4 +107,13 @@ extension FavoritesTableViewController : PokemonDetailsViewControllerDelegate {
     }
     
     
+}
+
+extension FavoritesTableViewController : UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let search = searchBar.text{
+            self.viewModel.searchPokemon(search: search, from: Favorites.favoritePokemon.value, to: pokemon)
+        }
+        self.view.endEditing(true)
+    }
 }

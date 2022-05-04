@@ -13,12 +13,12 @@ class TypeDTO: Codable{
     var pokemon : [PokemonsByType]
 }
 struct DamageRelations : Codable {
-    let doubleDamageFrom: [TypeURLDTO]
-    let halfDamageFrom: [TypeURLDTO]
-    let halfDamageTo: [TypeURLDTO]
-    let doubleDamageTo: [TypeURLDTO]
-    let noDamageTo: [TypeURLDTO]
-    let noDamageFrom: [TypeURLDTO]
+    let doubleDamageFrom: [GenericURLDTO]
+    let halfDamageFrom: [GenericURLDTO]
+    let halfDamageTo: [GenericURLDTO]
+    let doubleDamageTo: [GenericURLDTO]
+    let noDamageTo: [GenericURLDTO]
+    let noDamageFrom: [GenericURLDTO]
     
     enum CodingKeys: String, CodingKey {
         case doubleDamageFrom = "double_damage_from"
@@ -30,5 +30,5 @@ struct DamageRelations : Codable {
     }
 }
 struct PokemonsByType : Codable {
-    var pokemon : TypeURLDTO
+    var pokemon : GenericURLDTO
 }

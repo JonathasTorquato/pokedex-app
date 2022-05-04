@@ -52,6 +52,7 @@
 		C2B057B5281AC749003A95BC /* TypeTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B057B4281AC749003A95BC /* TypeTableViewCellViewModel.swift */; };
 		C2B057B7281AFB7D003A95BC /* AllTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B057B6281AFB7D003A95BC /* AllTypesViewController.swift */; };
 		C2B057B9281B0960003A95BC /* AllTypesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B057B8281B0960003A95BC /* AllTypesViewModel.swift */; };
+		C2B8F1BF2822A1DF00744FC9 /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8F1BE2822A1DF00744FC9 /* ItemCategory.swift */; };
 		C2BF358227F47F42000A3149 /* PokemonCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BF358127F47F42000A3149 /* PokemonCount.swift */; };
 		C2BF358627F480B0000A3149 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BF358527F480B0000A3149 /* MainViewModel.swift */; };
 		C2BF358927F49C94000A3149 /* TypePortuguese.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BF358827F49C94000A3149 /* TypePortuguese.swift */; };
@@ -83,7 +84,7 @@
 		C2DBE8F327CFE6490065FE19 /* TypeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8F227CFE6490065FE19 /* TypeDTO.swift */; };
 		C2DBE8F527CFEA1D0065FE19 /* Sprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8F427CFEA1D0065FE19 /* Sprites.swift */; };
 		C2DBE8F727CFEDCE0065FE19 /* GetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8F627CFEDCE0065FE19 /* GetImage.swift */; };
-		C2DBE8F927CFF2640065FE19 /* TypeURLDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8F827CFF2640065FE19 /* TypeURLDTO.swift */; };
+		C2DBE8F927CFF2640065FE19 /* GenericURLDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8F827CFF2640065FE19 /* GenericURLDTO.swift */; };
 		C2DBE8FB27CFF2FE0065FE19 /* TypeURLDTO2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBE8FA27CFF2FE0065FE19 /* TypeURLDTO2.swift */; };
 		C2E9785527D23EE400B16496 /* FooterTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E9785327D23EE400B16496 /* FooterTableCell.swift */; };
 		C2E9785627D23EE400B16496 /* FooterTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2E9785427D23EE400B16496 /* FooterTableCell.xib */; };
@@ -152,6 +153,7 @@
 		C2B057B4281AC749003A95BC /* TypeTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		C2B057B6281AFB7D003A95BC /* AllTypesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTypesViewController.swift; sourceTree = "<group>"; };
 		C2B057B8281B0960003A95BC /* AllTypesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTypesViewModel.swift; sourceTree = "<group>"; };
+		C2B8F1BE2822A1DF00744FC9 /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
 		C2BF358127F47F42000A3149 /* PokemonCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCount.swift; sourceTree = "<group>"; };
 		C2BF358527F480B0000A3149 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		C2BF358827F49C94000A3149 /* TypePortuguese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypePortuguese.swift; sourceTree = "<group>"; };
@@ -184,7 +186,7 @@
 		C2DBE8F227CFE6490065FE19 /* TypeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDTO.swift; sourceTree = "<group>"; };
 		C2DBE8F427CFEA1D0065FE19 /* Sprites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sprites.swift; sourceTree = "<group>"; };
 		C2DBE8F627CFEDCE0065FE19 /* GetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImage.swift; sourceTree = "<group>"; };
-		C2DBE8F827CFF2640065FE19 /* TypeURLDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeURLDTO.swift; sourceTree = "<group>"; };
+		C2DBE8F827CFF2640065FE19 /* GenericURLDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericURLDTO.swift; sourceTree = "<group>"; };
 		C2DBE8FA27CFF2FE0065FE19 /* TypeURLDTO2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeURLDTO2.swift; sourceTree = "<group>"; };
 		C2E9785327D23EE400B16496 /* FooterTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterTableCell.swift; sourceTree = "<group>"; };
 		C2E9785427D23EE400B16496 /* FooterTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterTableCell.xib; sourceTree = "<group>"; };
@@ -297,7 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				C2DBE8F227CFE6490065FE19 /* TypeDTO.swift */,
-				C2DBE8F827CFF2640065FE19 /* TypeURLDTO.swift */,
+				C2DBE8F827CFF2640065FE19 /* GenericURLDTO.swift */,
 				C2DBE8FA27CFF2FE0065FE19 /* TypeURLDTO2.swift */,
 				C2B057AF281AB1AE003A95BC /* TypeModel.swift */,
 				C2B057B1281AC4E3003A95BC /* TypeMapping.swift */,
@@ -350,6 +352,7 @@
 			children = (
 				C2CCA68A2816C8FE00808DBC /* ItemDTO.swift */,
 				C2CCA68C2816CBBD00808DBC /* ItemURL.swift */,
+				C2B8F1BE2822A1DF00744FC9 /* ItemCategory.swift */,
 			);
 			path = ItemsModels;
 			sourceTree = "<group>";
@@ -678,8 +681,9 @@
 				C2DBE8FB27CFF2FE0065FE19 /* TypeURLDTO2.swift in Sources */,
 				C2DBE8E827CFDB150065FE19 /* Network.swift in Sources */,
 				C243D13F28084362008F3FED /* Evolution_Chain.swift in Sources */,
+				C2B8F1BF2822A1DF00744FC9 /* ItemCategory.swift in Sources */,
 				C2528853281814D700893E6C /* ItemDescriptionViewController.swift in Sources */,
-				C2DBE8F927CFF2640065FE19 /* TypeURLDTO.swift in Sources */,
+				C2DBE8F927CFF2640065FE19 /* GenericURLDTO.swift in Sources */,
 				C2DBE8EE27CFE2C40065FE19 /* Enviroment.swift in Sources */,
 				C27CA40E2806F7D50027EA7C /* PokedexEntry.swift in Sources */,
 				C2E9785527D23EE400B16496 /* FooterTableCell.swift in Sources */,

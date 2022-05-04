@@ -111,7 +111,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pXn-5s-yAL">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pXn-5s-yAL">
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6fJ-8J-n96">
@@ -121,8 +121,18 @@
                                         </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PlJ-ed-lo0">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="623"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKN-KQ-aBU">
+                                        <rect key="frame" x="0.0" y="55" width="414" height="31"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Selecionar Categoria"/>
+                                        <connections>
+                                            <action selector="didTapCategoryButton:" destination="Gmw-Ch-Ut7" eventType="touchUpInside" id="gyM-od-AsX"/>
+                                        </connections>
+                                    </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PlJ-ed-lo0" customClass="ItemTableView" customModule="Pokedex" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="91" width="414" height="582"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
@@ -151,8 +161,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="categoryButton" destination="SKN-KQ-aBU" id="wgh-8D-eWL"/>
                         <outlet property="itemSearchBar" destination="6fJ-8J-n96" id="asj-CY-2Ei"/>
-                        <outlet property="itemsTableView" destination="PlJ-ed-lo0" id="bLp-Dn-ofT"/>
+                        <outlet property="itemsTableView" destination="PlJ-ed-lo0" id="3JI-Gt-C9N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YcN-lh-sib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -190,22 +201,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DIQ-8i-id0">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="X4r-zX-GSu">
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                                <subviews>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="cZI-F2-d2n">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DIQ-8i-id0">
+                                        <rect key="frame" x="0.0" y="51" width="414" height="622"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IUa-hU-Uud"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="DIQ-8i-id0" firstAttribute="top" secondItem="IUa-hU-Uud" secondAttribute="top" id="2nr-ow-D0e"/>
-                            <constraint firstItem="DIQ-8i-id0" firstAttribute="leading" secondItem="IUa-hU-Uud" secondAttribute="leading" id="eCh-Ib-97T"/>
-                            <constraint firstItem="IUa-hU-Uud" firstAttribute="bottom" secondItem="DIQ-8i-id0" secondAttribute="bottom" id="hOY-Jd-wyD"/>
-                            <constraint firstItem="IUa-hU-Uud" firstAttribute="trailing" secondItem="DIQ-8i-id0" secondAttribute="trailing" id="pia-yU-ANz"/>
+                            <constraint firstItem="X4r-zX-GSu" firstAttribute="leading" secondItem="IUa-hU-Uud" secondAttribute="leading" id="PZm-Xl-kyf"/>
+                            <constraint firstItem="X4r-zX-GSu" firstAttribute="bottom" secondItem="IUa-hU-Uud" secondAttribute="bottom" id="g0G-ch-MCr"/>
+                            <constraint firstItem="X4r-zX-GSu" firstAttribute="trailing" secondItem="IUa-hU-Uud" secondAttribute="trailing" id="smt-gZ-Y4I"/>
+                            <constraint firstItem="X4r-zX-GSu" firstAttribute="top" secondItem="IUa-hU-Uud" secondAttribute="top" id="swf-qu-kAH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Favoritos" id="PeZ-we-dJl"/>
                     <connections>
+                        <outlet property="favoritesSearchBar" destination="cZI-F2-d2n" id="BzI-1Y-MBU"/>
                         <outlet property="tableView" destination="DIQ-8i-id0" id="ImH-Pp-2Qe"/>
                     </connections>
                 </viewController>
@@ -359,6 +380,9 @@
         <image name="tag.fill" catalog="system" width="128" height="119"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

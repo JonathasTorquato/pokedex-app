@@ -20,7 +20,7 @@ class TypeTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     let bag = DisposeBag()
-    let tipos: PublishRelay<[TypeURLDTO]> = PublishRelay<[TypeURLDTO]>()
+    let tipos: PublishRelay<[GenericURLDTO]> = PublishRelay<[GenericURLDTO]>()
     let viewModel = TypeTableViewCellViewModel()
     
     var delegate : TypeTableViewCellDelegate?
@@ -40,7 +40,7 @@ class TypeTableViewCell: UITableViewCell {
                 cell.typeImageView.image = UIImage(named: tipo.name)
             }
         }.disposed(by: bag)
-        relationsCollectionView.rx.modelSelected(TypeURLDTO.self).subscribe{ type in
+        relationsCollectionView.rx.modelSelected(GenericURLDTO.self).subscribe{ type in
             guard let url = type.element?.url else {return}
             self.viewModel.retrieveType(url: url) { typeM in
                 self.delegate?.selectedType(type: typeM)

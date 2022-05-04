@@ -14,7 +14,7 @@ class AllTypesViewController : UIViewController {
     
     let viewModel = AllTypesViewModel()
     let bag = DisposeBag()
-    let types : BehaviorRelay<[TypeURLDTO]> = BehaviorRelay(value: [])
+    let types : BehaviorRelay<[GenericURLDTO]> = BehaviorRelay(value: [])
     
     @IBOutlet weak var typesCollectionVIew: UICollectionView!
     
@@ -37,7 +37,7 @@ class AllTypesViewController : UIViewController {
             }
             
         }.disposed(by: bag)
-        self.typesCollectionVIew.rx.modelSelected(TypeURLDTO.self).subscribe { model in
+        self.typesCollectionVIew.rx.modelSelected(GenericURLDTO.self).subscribe { model in
             let vc = TypeDescriptionViewController()
             self.viewModel.getTypeFromURL(url: model.element?.url ?? "") { typeModel in
                 vc.tipo.accept(typeModel)

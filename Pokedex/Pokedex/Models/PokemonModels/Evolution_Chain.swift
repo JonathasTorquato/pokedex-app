@@ -12,5 +12,5 @@ struct EvolutionChainDTO : Codable{
 }
 class Chain : Codable {
     var evolves_to : [Chain]?
-    var species : TypeURLDTO?
+    var species : GenericURLDTO?
 }

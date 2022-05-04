@@ -21,6 +21,7 @@ enum API {
     case items
     case itemId(id : Int)
     case itemName(name : String)
+    case itemCategoryId(id : Int)
 }
 
 extension API: TargetType {
@@ -64,6 +65,8 @@ extension API: TargetType {
             return Endpoint.TYPE.types
         case .itemName(name: let name):
             return Endpoint.ITEM.items + "/\(name)"
+        case .itemCategoryId(id: let id):
+            return Endpoint.ITEM.itemCategory + "/\(id)"
         }
     }
     

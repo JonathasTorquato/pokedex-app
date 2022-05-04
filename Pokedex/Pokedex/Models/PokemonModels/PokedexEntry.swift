@@ -16,7 +16,7 @@ class Entry : Codable
 {
     var flavor_text : String
     var language : Language
-    var version : TypeURLDTO
+    var version : GenericURLDTO
 }
 struct Language : Codable{
     var name : String
@@ -25,5 +25,5 @@ struct EvolutionChain : Codable {
     var url : String?
 }
 struct Forms : Codable {
-    var pokemon : TypeURLDTO?
+    var pokemon : GenericURLDTO?
 }

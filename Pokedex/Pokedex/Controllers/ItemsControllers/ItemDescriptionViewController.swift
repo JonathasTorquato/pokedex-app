@@ -14,17 +14,27 @@ class ItemDescriptionViewController: UIViewController {
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemDescriptionLabel: UILabel!
     
+    var firstItem : ItemDTO?
+    
     let bag = DisposeBag()
     let item : PublishRelay<ItemDTO> = PublishRelay<ItemDTO>()
     
-    init(){
+    init(item : ItemDTO){
         super.init(nibName: "ItemDescriptionViewController", bundle: .main)
-        setupItem()
+        self.firstItem = item
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setupItem()
+        if let firstItem = firstItem {
+            self.item.accept(firstItem)
+        }
     }
     
     fileprivate func setupItem() {

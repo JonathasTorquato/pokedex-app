@@ -50,7 +50,7 @@ class MainViewModel {
         }
     }
     
-    func getAllTypes(completion : @escaping([TypeURLDTO])->Void) {
+    func getAllTypes(completion : @escaping([GenericURLDTO])->Void) {
         Network.getAllTypes { result in
             switch result {
                 

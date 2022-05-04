@@ -10,7 +10,7 @@ import Foundation
 class AllTypesViewModel {
     init() {}
     
-    func getTypes(completion : @escaping([TypeURLDTO]) -> Void) {
+    func getTypes(completion : @escaping([GenericURLDTO]) -> Void) {
         Network.getAllTypes { result in
             switch result {
                 

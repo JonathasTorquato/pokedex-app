@@ -9,9 +9,9 @@ import Foundation
 
 class TypeModel {
     var name : String
-    var relacoes : [[String:[TypeURLDTO]]]
+    var relacoes : [[String:[GenericURLDTO]]]
     
-    init(name : String, relacoes : [[String:[TypeURLDTO]]]) {
+    init(name : String, relacoes : [[String:[GenericURLDTO]]]) {
         self.name = name
         self.relacoes = relacoes
     }

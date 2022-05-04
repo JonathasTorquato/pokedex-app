@@ -7,12 +7,12 @@
 
 import Foundation
 
-class TypeURLDTO: Codable{
+class GenericURLDTO: Codable{
     let url: String
     let name: String
     
 }
 
 class AllTypes : Codable {
-    let results : [TypeURLDTO]
+    let results : [GenericURLDTO]
 }

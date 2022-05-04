@@ -10,8 +10,8 @@ import Foundation
 //MARK: - Declarations
 class PokemonDescriptionViewModel {
     fileprivate let defaults = UserDefaults.standard
-    var urlType1 : TypeURLDTO?
-    var urlType2 : TypeURLDTO?
+    var urlType1 : GenericURLDTO?
+    var urlType2 : GenericURLDTO?
     init(){}
 }
 

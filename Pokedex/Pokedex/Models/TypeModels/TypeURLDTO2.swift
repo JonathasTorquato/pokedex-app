@@ -8,6 +8,6 @@
 import Foundation
 class TypeURLDTO2: Codable{
     let slot: Int
-    let type: TypeURLDTO
+    let type: GenericURLDTO
     
 }

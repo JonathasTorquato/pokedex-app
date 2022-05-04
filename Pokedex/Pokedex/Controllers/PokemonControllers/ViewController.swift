@@ -14,7 +14,7 @@ import RxCocoa
 class ViewController: UIViewController {
     
     let bag = DisposeBag()
-    let types : BehaviorRelay <[TypeURLDTO]> = BehaviorRelay(value: [])
+    let types : BehaviorRelay <[GenericURLDTO]> = BehaviorRelay(value: [])
     let pokemonsType : PublishRelay <[PokemonsByType]> = PublishRelay <[PokemonsByType]>()
     let viewModel : MainViewModel = MainViewModel()
     let pokemonSearch : PublishRelay<String> = PublishRelay<String>()
@@ -59,7 +59,7 @@ extension ViewController {
                 cell.upperView.alpha = type.name == self.typeSelected ? 0.5 : 0
             }
         }.disposed(by: bag)
-        self.typesCollection.rx.modelSelected(TypeURLDTO.self).subscribe { model in
+        self.typesCollection.rx.modelSelected(GenericURLDTO.self).subscribe { model in
             
             if self.typeSelected != model.element?.name {
                 self.typeSelected = model.element!.name
