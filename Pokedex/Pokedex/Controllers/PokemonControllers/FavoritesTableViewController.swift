@@ -15,7 +15,8 @@ class FavoritesTableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let bag = DisposeBag()
-    let pokemon : BehaviorRelay <[Int]> = BehaviorRelay(value : [])
+    let pokemon : BehaviorRelay <[PokemonDTO]> = BehaviorRelay(value : [])
+    let originalPokemon : BehaviorRelay <[PokemonDTO]> = BehaviorRelay(value : [])
     let viewModel = FavoritesViewModel()
 }
 
@@ -30,20 +31,31 @@ extension FavoritesTableViewController {
         
         setupTable()
         
-        pokemon.accept(Favorites.favoritePokemon.value)
-        
     }
     
     //MARK: - Rx Setup
     fileprivate func setupTable() {
         
-        pokemon.bind(to: self.tableView.rx.items(cellIdentifier: "PokemonTableCell")) { row,pokemonId,cell in
+        Favorites.favoritePokemon.subscribe(onNext: {value in
+            self.originalPokemon.accept([])
+            self.pokemon.accept([])
+            for id in value {
+                self.viewModel.getPokemonId(id: id) { pokemon in
+                    var listPokemon = self.pokemon.value
+                    listPokemon.append(pokemon)
+                    self.originalPokemon.accept(listPokemon)
+                    self.pokemon.accept(listPokemon)
+                }
+            }
+        }).disposed(by: bag)
+        
+        pokemon.bind(to: self.tableView.rx.items(cellIdentifier: "PokemonTableCell")) { row,pokemon,cell in
             if let cell = cell as? PokemonTableViewCell{
-                cell.setPokemon(pokemonId)
+                cell.setPokemonDTO(pokemon)
             }
         }.disposed(by: bag)
-        self.tableView.rx.modelSelected(Int.self).subscribe(onNext: { [unowned self] value in
-            self.showPokemonEntry(id: value)
+        self.tableView.rx.modelSelected(PokemonDTO.self).subscribe(onNext: { [unowned self] value in
+            self.showPokemonEntry(id: value.id)
             
         }).disposed(by: bag)
     }
@@ -112,7 +124,7 @@ extension FavoritesTableViewController : PokemonDetailsViewControllerDelegate {
 extension FavoritesTableViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let search = searchBar.text{
-            self.viewModel.searchPokemon(search: search, from: Favorites.favoritePokemon.value, to: pokemon)
+            self.pokemon.accept(self.viewModel.searchPokemon(search: search, from: self.originalPokemon.value))
         }
         self.view.endEditing(true)
     }

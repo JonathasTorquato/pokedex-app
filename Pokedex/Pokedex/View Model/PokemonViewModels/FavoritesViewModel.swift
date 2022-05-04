@@ -38,31 +38,22 @@ class FavoritesViewModel {
         }
     }
     
-    func searchPokemon(search : String, from pokemons : [Int], to list : BehaviorRelay<[Int]>) {
+    func searchPokemon(search : String, from pokemons : [PokemonDTO]) -> [PokemonDTO]{
         if search == "" {
-            list.accept(pokemons)
-            return
+            return pokemons
         }
-        var number = false
-        if Int(search) != nil{
-            number = true
+        var s = search
+        while (s.first ?? " ") == "0"
+        {
+            s.removeFirst()
         }
-        list.accept([])
-        for pokemonId in pokemons {
-            if !number {
-                self.getPokemonId(id: pokemonId) { pokemon in
-                    if pokemon.name.contains(search.lowercased().replacingOccurrences(of: "-", with: " ")) {
-                        var listAp = list.value
-                        listAp.append(pokemonId)
-                        list.accept(listAp)
-                    }
-                }
-            } else if "\(pokemonId)".contains(search){
-                var listAp = list.value
-                listAp.append(pokemonId)
-                list.accept(listAp)
+        var list : [PokemonDTO] = []
+        for pokemon in pokemons {
+            if pokemon.id.numberToSpecialNumber().contains(s) || "\(pokemon.name.lowercased().replacingOccurrences(of: " ", with: "-"))".contains(s.lowercased().replacingOccurrences(of: " ", with: "-")){
+                list.append(pokemon)
             }
         }
+        return list
         
     }
     
