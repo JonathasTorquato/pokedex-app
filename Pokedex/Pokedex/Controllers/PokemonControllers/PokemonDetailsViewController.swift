@@ -57,7 +57,6 @@ class PokemonDetailsViewController: UIViewController {
 extension PokemonDetailsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationController?.navigationBar.barStyle = .black
         if self.traitCollection.userInterfaceStyle == .dark {
             self.genderColor.accept(.white)
         }
@@ -127,7 +126,7 @@ extension PokemonDetailsViewController {
         }).disposed(by: bag)
         
         self.entryVersions.bind(to: self.entriesTableView.rx.items(cellIdentifier: "cell")){ row, entry,cell in
-            cell.textLabel?.text = entry.version.name
+            cell.textLabel?.text = entry.version.name.capitalizingFirstLetter().replacingOccurrences(of: "-", with: " ")
             
         }.disposed(by: bag)
         

@@ -17,9 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2022-03-02 at 13.20.01" translatesAutoresizingMaskIntoConstraints="NO" id="kyV-G0-iJb">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="l1i-BW-aPO">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <subviews>
@@ -67,12 +64,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kyV-G0-iJb" secondAttribute="bottom" id="Bdd-Lc-3s1"/>
                             <constraint firstItem="l1i-BW-aPO" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="H78-8B-JgT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kyV-G0-iJb" secondAttribute="trailing" id="Hv0-Kl-lOl"/>
-                            <constraint firstItem="kyV-G0-iJb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="RqA-mL-fMo"/>
                             <constraint firstItem="l1i-BW-aPO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XWy-8i-gQi"/>
-                            <constraint firstItem="kyV-G0-iJb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XdU-Dh-qbU"/>
                             <constraint firstItem="l1i-BW-aPO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ykr-ZI-8jp"/>
                             <constraint firstItem="l1i-BW-aPO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yvp-QI-usD"/>
                         </constraints>
@@ -372,7 +365,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Screen Shot 2022-03-02 at 13.20.01" width="189" height="352"/>
         <image name="appstore" width="341.33334350585938" height="341.33334350585938"/>
         <image name="circle.circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
