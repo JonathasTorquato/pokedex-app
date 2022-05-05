@@ -57,7 +57,7 @@ class PokemonDetailsViewController: UIViewController {
 extension PokemonDetailsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.barStyle = .black
+        //self.navigationController?.navigationBar.barStyle = .black
         if self.traitCollection.userInterfaceStyle == .dark {
             self.genderColor.accept(.white)
         }
@@ -74,6 +74,18 @@ extension PokemonDetailsViewController {
         
         self.malePokemonButton.layer.borderWidth = 1
         self.femalePokemonButton.layer.borderWidth = 1
+        
+        self.entriesTableView.clipsToBounds = true
+        self.entriesTableView.layer.borderWidth = 3
+        self.entriesTableView.layer.cornerRadius = 5
+        self.entriesTableView.layer.borderColor = UIColor.red.cgColor
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.barTintColor = .link
+        self.navigationController?.navigationBar.tintColor = .link
     }
     
     fileprivate func setupPokemonGender() {
@@ -130,7 +142,7 @@ extension PokemonDetailsViewController {
     
     func setupForms() {
         forms.bind(to:otherFormsTableView.rx.items(cellIdentifier: "cell",  cellType: UITableViewCell.self)){row,form,cell in
-            cell.textLabel?.text = form.pokemon?.name ?? "ERRO"
+            cell.textLabel?.text = form.pokemon?.name.capitalizingFirstLetter().replacingOccurrences(of: "-", with: " ") ?? "ERRO"
             cell.textLabel?.textAlignment = .center
             
         }.disposed(by: bag)
@@ -139,7 +151,7 @@ extension PokemonDetailsViewController {
     func setupEvolutions() {
         secondEvolutions.bind(to: secondEvolutionTable.rx.items(cellIdentifier: "cell", cellType: UITableViewCell.self))
         {row, evolution,cell in
-            cell.textLabel?.text = "->\(evolution.species?.name ?? "ERRO")"
+            cell.textLabel?.text = "->\(evolution.species?.name.capitalizingFirstLetter().replacingOccurrences(of: "-", with: " ") ?? "ERRO")"
             cell.textLabel?.textAlignment = .center
             if let tEvolutions = evolution.evolves_to{
                 let evolutions =  self.thirdEvolutions.value + tEvolutions
@@ -148,7 +160,7 @@ extension PokemonDetailsViewController {
         }.disposed(by: bag)
         thirdEvolutions.bind(to: thirdEvolutionTableView.rx.items(cellIdentifier: "cell", cellType: UITableViewCell.self))
         {row, evolution, cell  in
-            cell.textLabel?.text = "->\(evolution.species?.name ?? "ERRO")"
+            cell.textLabel?.text = "->\(evolution.species?.name.capitalizingFirstLetter().replacingOccurrences(of: "-", with: " ") ?? "ERRO")"
             cell.textLabel?.textAlignment = .center
         }.disposed(by: bag)
         
@@ -211,7 +223,7 @@ extension PokemonDetailsViewController {
                             DispatchQueue.main.async {
                                 switch result{
                                 case .success(let success):
-                                    self.firstEvolution.setTitle(success.chain?.species?.name, for: .normal)
+                                    self.firstEvolution.setTitle(success.chain?.species?.name.capitalizingFirstLetter().replacingOccurrences(of: "-", with: " "), for: .normal)
                                     if let evolves_to = success.chain?.evolves_to{
                                         self.secondEvolutions.accept(evolves_to)
                                     }
@@ -228,8 +240,8 @@ extension PokemonDetailsViewController {
                     //MARK: - Entry
                     self.entryVersions.accept( self.viewModel.getAllEntries(pokemon: success))
                     DispatchQueue.main.async{
-                        self.descriptionLabel.text = self.entryVersions.value.first?.flavor_text ?? ""
-                        self.nameLabel.text = pokemon.name.capitalizingFirstLetter()
+                        self.descriptionLabel.text = "Selecione uma versão"
+                        self.nameLabel.text = pokemon.name.capitalizingFirstLetter().replacingOccurrences(of: "-", with: " ")
                         self.title = "No. " + self.id.numberToSpecialNumber()
                         
                         if let sprite = pokemon.sprites.frontMale, let url = URL(string: sprite){
@@ -312,7 +324,7 @@ extension PokemonDetailsViewController {
     //MARK: - Actions
     
     @IBAction func didTapFirstStage(_ sender: UIButton) {
-        self.delegate?.otherPokemon(to: sender.currentTitle ?? "", viewController: self)
+        self.delegate?.otherPokemon(to: sender.currentTitle?.lowercased().replacingOccurrences(of: " ", with: "-") ?? "", viewController: self)
     }
     @IBAction func didTapRight(_ sender: UIButton) {
         self.delegate?.otherPokemon(to: self.id + 1, viewController: self)

@@ -125,7 +125,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="j5I-mm-Pol">
-                                    <rect key="frame" x="0.0" y="251" width="382" height="455.5"/>
+                                    <rect key="frame" x="0.0" y="251" width="382" height="450.5"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="0sH-nq-FGa">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="135"/>
@@ -155,17 +155,18 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dct-jn-WZx">
-                                            <rect key="frame" x="0.0" y="145" width="382" height="135"/>
+                                            <rect key="frame" x="0.0" y="145" width="382" height="130"/>
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eQw-VW-uVc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="135"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="130"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="QHw-2q-iVR"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="130" id="Kjj-NZ-bRV"/>
+                                                        <constraint firstAttribute="width" constant="150" id="QHw-2q-iVR"/>
                                                     </constraints>
                                                 </tableView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descrição" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="qkG-NE-ihn">
-                                                    <rect key="frame" x="110" y="0.0" width="272" height="135"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecione uma região" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="qkG-NE-ihn">
+                                                    <rect key="frame" x="160" y="0.0" width="222" height="130"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -173,13 +174,13 @@
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cadeia de evolução" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvj-SR-o7Y">
-                                            <rect key="frame" x="0.0" y="290" width="382" height="20.5"/>
+                                            <rect key="frame" x="0.0" y="285" width="382" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ZqE-p3-4c0">
-                                            <rect key="frame" x="0.0" y="320.5" width="382" height="135"/>
+                                            <rect key="frame" x="0.0" y="315.5" width="382" height="135"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLM-Ej-tYA">
                                                     <rect key="frame" x="0.0" y="0.0" width="126" height="135"/>
@@ -203,7 +204,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cFC-lF-ALN">
-                                    <rect key="frame" x="0.0" y="716.5" width="382" height="263.5"/>
+                                    <rect key="frame" x="0.0" y="711.5" width="382" height="268.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outras Formas:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzS-bu-quf">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
@@ -212,7 +213,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XCA-wo-WFf">
-                                            <rect key="frame" x="0.0" y="20.5" width="382" height="243"/>
+                                            <rect key="frame" x="0.0" y="20.5" width="382" height="248"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         </tableView>
                                     </subviews>

@@ -27,6 +27,13 @@ class AllTypesViewController : UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.tintColor = .label
+        self.navigationController?.navigationBar.tintColor = .systemBackground
+        
+    }
+    
     fileprivate func setupTable() {
         self.types.bind(to: typesCollectionVIew.rx.items(cellIdentifier: "TypeCollectionCell")) { row, type, cell in
             if let cell = cell as? TypeCollectionViewCell {

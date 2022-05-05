@@ -21,6 +21,10 @@ class TypeDescriptionViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var otherView: UIView!
     
+    let layer : AVPlayerLayer = {
+        let player = AVPlayer()
+        return AVPlayerLayer(player: player)
+    }()
     let bag = DisposeBag()
     let relacoes : BehaviorRelay<[[String:[GenericURLDTO]]]> = BehaviorRelay(value:[])
     let tipo : BehaviorRelay<TypeModel> = BehaviorRelay(value: TypeModel(name:"", relacoes: []))
@@ -49,11 +53,21 @@ extension TypeDescriptionViewController {
         otherView.layer.addSublayer(gradient)
         setupTypeRX()
         setupTable()
+        
+        
+        layer.frame = view.bounds
+        layer.videoGravity = .resizeAspectFill
+        
+        view.layer.insertSublayer(layer, below: otherView.layer)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationItem.leftBarButtonItem?.customView?.backgroundColor = .systemBackground
+        self.navigationController?.navigationItem.leftBarButtonItem?.customView?.backgroundColor = .link
+        self.navigationController?.navigationBar.barTintColor = .clear
+        self.navigationController?.navigationBar.backgroundColor = .clear
+        self.navigationController?.navigationBar.tintColor = .white
     }
     
     //MARK: - Rx Setup
@@ -83,10 +97,8 @@ extension TypeDescriptionViewController {
     fileprivate func setupBackgroundVideo(type name: String) {
         if let path = Bundle.main.path(forResource: "\(name)Type", ofType: "mp4"){
             let player = AVPlayer(url: URL(fileURLWithPath: path))
-            let layer = AVPlayerLayer(player: player)
-            layer.frame = view.bounds
-            layer.videoGravity = .resizeAspectFill
-            view.layer.insertSublayer(layer, below: otherView.layer)
+            layer.player = player
+            
             player.volume = 0
             player.play()
             

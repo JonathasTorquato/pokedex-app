@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Pokemon-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="Search" id="BYZ-38-t0r" customClass="ViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,7 +77,7 @@
                             <constraint firstItem="l1i-BW-aPO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yvp-QI-usD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="DV5-7q-vKG">
+                    <navigationItem key="navigationItem" title="Pokemon" id="DV5-7q-vKG">
                         <view key="titleView" contentMode="scaleToFill" id="ZMv-U8-aqd">
                             <rect key="frame" x="207" y="22" width="0.0" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -234,10 +234,10 @@
             </objects>
             <point key="canvasLocation" x="2735" y="76"/>
         </scene>
-        <!-- Pokemons-->
+        <!--Pokemon-->
         <scene sceneID="u0b-ey-LsQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9mq-tG-E0Y" sceneMemberID="viewController">
+                <navigationController title="Pokemon" automaticallyAdjustsScrollViewInsets="NO" id="9mq-tG-E0Y" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title=" Pokemons" image="circle.circle.fill" catalog="system" id="XEg-Dn-57A"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="D9y-aS-H8y">
@@ -355,7 +355,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" systemColor="systemBackgroundColor"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" systemColor="labelColor"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

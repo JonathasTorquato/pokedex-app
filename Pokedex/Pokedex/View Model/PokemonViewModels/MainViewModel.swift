@@ -55,6 +55,9 @@ class MainViewModel {
             switch result {
                 
             case .success(let suc):
+                suc.results.removeAll { type in
+                    return (type.name == "shadow" || type.name == "unknown")
+                }
                 completion(suc.results)
             case .failure(let error):
                 print(error.localizedDescription)

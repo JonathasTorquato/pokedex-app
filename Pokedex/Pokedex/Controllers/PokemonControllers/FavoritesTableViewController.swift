@@ -40,7 +40,6 @@ extension FavoritesTableViewController {
     
     //MARK: - Rx Setup
     fileprivate func setupTable() {
-        
         Favorites.favoritePokemon.subscribe(onNext: {value in
             self.originalPokemon.accept([])
             for id in value {

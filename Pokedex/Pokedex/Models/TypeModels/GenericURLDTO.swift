@@ -14,5 +14,5 @@ class GenericURLDTO: Codable{
 }
 
 class AllTypes : Codable {
-    let results : [GenericURLDTO]
+    var results : [GenericURLDTO]
 }

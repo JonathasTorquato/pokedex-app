@@ -111,7 +111,7 @@ extension ViewController {
                 var newList : [PokemonsByType] = []
                 if value.first?.isLetter ?? false {
                     for pokemon in pokemons {
-                        if pokemon.pokemon.name.contains(value.lowercased()) {
+                        if pokemon.pokemon.name.contains(value.lowercased().replacingOccurrences(of: " ", with: "-")) {
                             newList.append(pokemon)
                         }
                     }
@@ -241,7 +241,7 @@ extension ViewController : UISearchBarDelegate {
         guard let search = searchBar.text else {return}
         if self.typeSelected == "" {
             if search.first?.isLetter ?? false {
-                self.viewModel.getPokemonName(name: search.lowercased(),completionSuc: { result in
+                self.viewModel.getPokemonName(name: search.lowercased().replacingOccurrences(of: " ", with: "-"),completionSuc: { result in
                     self.showPokemonEntry(id: result.id)
                 }, completionError: { erro in
                     self.presentAction(message: erro)
