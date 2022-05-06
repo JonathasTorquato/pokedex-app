@@ -80,7 +80,7 @@ extension ViewController {
         }.disposed(by: bag)
         self.pokemonsType.bind(to: pokemonTypeTableView.rx.items(cellIdentifier: "PokemonTableCell", cellType: PokemonTableViewCell.self)){ row, pokemon, cell in
             
-            self.viewModel.getPokemonName(name: pokemon.pokemon.name, completionSuc: { pokemonDTO in
+            self.viewModel.getPokemonName(name: pokemon.pokemon.name, otherId: "\(pokemon.pokemon.url)", completionSuc: { pokemonDTO in
                 cell.setPokemonDTO(pokemonDTO)
             }, completionError: { erro in
                 self.presentAction(message: erro)
@@ -155,7 +155,7 @@ extension ViewController {
             return button
         }()
         vc.delegate = self
-        viewModel.getPokemonName(name: name, completionSuc: { pokemon in
+        viewModel.getPokemonName(name: name, otherId : "", completionSuc: { pokemon in
             self.navigationController?.pushViewController(vc, animated: animated)
             vc.setPokemonUI()
             vc.setPokemon(pokemon: pokemon)
@@ -241,7 +241,7 @@ extension ViewController : UISearchBarDelegate {
         guard let search = searchBar.text else {return}
         if self.typeSelected == "" {
             if search.first?.isLetter ?? false {
-                self.viewModel.getPokemonName(name: search.lowercased().replacingOccurrences(of: " ", with: "-"),completionSuc: { result in
+                self.viewModel.getPokemonName(name: search.lowercased().replacingOccurrences(of: " ", with: "-"), otherId: "" ,completionSuc: { result in
                     self.showPokemonEntry(id: result.id)
                 }, completionError: { erro in
                     self.presentAction(message: erro)
@@ -263,21 +263,16 @@ extension ViewController : UISearchBarDelegate {
 //MARK: - Extension PokemonDetailsViewControllerDelegate
 extension ViewController : PokemonDetailsViewControllerDelegate {
     func pokemonVariation(other name: String, otherId : String, completion: @escaping (Int) -> Void) {
-        viewModel.getPokemonName(name: name,completionSuc: { pokemon in
+        viewModel.getPokemonName(name: name, otherId : otherId, completionSuc: { pokemon in
             completion(pokemon.id)
         }, completionError: { erro in
-            self.viewModel.getPokemonId(id: self.viewModel.getIdFromURL(url: otherId), completionSuc: { pokemon in
-                completion(pokemon.id)
-                
-            }, completionError: { erro in
-                self.presentAction(message: erro)
-            })
+            self.presentAction(message: erro)
         })
     }
     
     func otherPokemon(to name: String, otherId: String, viewController: PokemonDetailsViewController) {
         if name != "" {
-            viewModel.getPokemonName(name: name,completionSuc: { pokemon in
+            viewModel.getPokemonName(name: name, otherId: otherId, completionSuc: { pokemon in
                 viewController.setPokemon(pokemon: pokemon)
             },completionError : { erro in
                 self.viewModel.getPokemonId(id: self.viewModel.getIdFromURL(url: otherId), completionSuc: {pokemon in
