@@ -66,7 +66,7 @@ extension TypeDescriptionViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationItem.leftBarButtonItem?.customView?.backgroundColor = .link
         self.navigationController?.navigationBar.barTintColor = .clear
-        self.navigationController?.navigationBar.backgroundColor = .clear
+         self.navigationController?.navigationBar.backgroundColor = .clear
         self.navigationController?.navigationBar.tintColor = .white
     }
     

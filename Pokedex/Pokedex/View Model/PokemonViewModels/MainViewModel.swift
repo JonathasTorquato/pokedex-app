@@ -89,4 +89,10 @@ class MainViewModel {
         }
     }
     
+    func getIdFromURL(url : String) ->Int {
+        var newId = url.replacingOccurrences(of: Endpoint.baseURL, with: "")
+        newId = newId.replacingOccurrences(of: Endpoint.POKEMON.pokemonEntry.replacingOccurrences(of: "/", with: ""), with: "")
+        return Int(newId.replacingOccurrences(of: "/", with: "")) ?? 0
+    }
+    
 }

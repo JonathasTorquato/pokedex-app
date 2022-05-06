@@ -13,8 +13,8 @@ import RxSwift
 //MARK: - Delegate
 protocol PokemonDetailsViewControllerDelegate {
     func otherPokemon(to id: Int, viewController: PokemonDetailsViewController)
-    func otherPokemon(to name: String, viewController: PokemonDetailsViewController)
-    func pokemonVariation(other name: String, completion : @escaping(Int)->Void)
+    func otherPokemon(to name: String, otherId: String, viewController: PokemonDetailsViewController)
+    func pokemonVariation(other name: String, otherId: String, completion : @escaping(Int)->Void)
 }
 
 //MARK: - Declarations
@@ -30,7 +30,7 @@ class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var firstEvolution: UIButton!
+    @IBOutlet weak var firstEvolution: PokemonButton!
     @IBOutlet weak var secondEvolutionTable: UITableView!
     @IBOutlet weak var thirdEvolutionTableView: UITableView!
     @IBOutlet weak var otherFormsTableView: UITableView!
@@ -114,15 +114,15 @@ extension PokemonDetailsViewController {
     func setupTables() {
         
         self.secondEvolutionTable.rx.modelSelected(Chain.self).subscribe {[unowned self] pokemon in
-            self.delegate?.otherPokemon(to: pokemon.element?.species?.name ?? "", viewController: self)
+            self.delegate?.otherPokemon(to: pokemon.element?.species?.name ?? "", otherId: pokemon.element?.species?.url ?? "", viewController: self)
         }.disposed(by: bag)
         
         self.thirdEvolutionTableView.rx.modelSelected(Chain.self).subscribe {[unowned self] pokemon in
-            self.delegate?.otherPokemon(to: pokemon.element?.species?.name ?? "", viewController: self)
+            self.delegate?.otherPokemon(to: pokemon.element?.species?.name ?? "", otherId: pokemon.element?.species?.url ?? "", viewController: self)
         }.disposed(by: bag)
         
         self.otherFormsTableView.rx.modelSelected(Forms.self).subscribe(onNext:{ [unowned self] pokemonForm in
-            self.delegate?.otherPokemon(to: pokemonForm.pokemon?.name ?? "", viewController: self)
+            self.delegate?.otherPokemon(to: pokemonForm.pokemon?.name ?? "", otherId: pokemonForm.pokemon?.url ?? "", viewController: self)
         }).disposed(by: bag)
         
         self.entryVersions.bind(to: self.entriesTableView.rx.items(cellIdentifier: "cell")){ row, entry,cell in
@@ -223,6 +223,8 @@ extension PokemonDetailsViewController {
                                 switch result{
                                 case .success(let success):
                                     self.firstEvolution.setTitle(success.chain?.species?.name.capitalizingFirstLetter().replacingOccurrences(of: "-", with: " "), for: .normal)
+                                    self.firstEvolution.url = success.chain?.species?.url
+                                    self.firstEvolution.name = success.chain?.species?.name
                                     if let evolves_to = success.chain?.evolves_to{
                                         self.secondEvolutions.accept(evolves_to)
                                     }
@@ -301,7 +303,7 @@ extension PokemonDetailsViewController {
         self.id = pokemon.id
         self.shiny.accept(false)
         if self.id >= 899 {
-            self.delegate?.pokemonVariation(other: pokemon.species.name){ identifier in
+            self.delegate?.pokemonVariation(other: pokemon.species.name, otherId: pokemon.species.url){ identifier in
                 self.id = identifier
                 self.pokemon.accept(pokemon)
             }
@@ -322,8 +324,8 @@ extension PokemonDetailsViewController {
     
     //MARK: - Actions
     
-    @IBAction func didTapFirstStage(_ sender: UIButton) {
-        self.delegate?.otherPokemon(to: sender.currentTitle?.lowercased().replacingOccurrences(of: " ", with: "-") ?? "", viewController: self)
+    @IBAction func didTapFirstStage(_ sender: PokemonButton) {
+        self.delegate?.otherPokemon(to: sender.currentTitle?.lowercased().replacingOccurrences(of: " ", with: "-") ?? "", otherId : sender.url!, viewController: self)
     }
     @IBAction func didTapRight(_ sender: UIButton) {
         self.delegate?.otherPokemon(to: self.id + 1, viewController: self)
@@ -373,4 +375,9 @@ enum PokemonGender {
     case male
     case female
     case none
+}
+
+class PokemonButton : UIButton {
+    var name : String?
+    var url : String?
 }

@@ -26,14 +26,17 @@ class FavoritesViewModel {
         }
     }
     
-    func getPokemonName(name: String, completion: @escaping(PokemonDTO)->Void) {
+    func getPokemonName(name: String, otherId: String, completion: @escaping(PokemonDTO)->Void) {
         Network.getPokemonName(name: name) { result in
             switch result {
                 
             case .success(let success):
                 completion(success)
-            case .failure(let error):
-                print("Erro" + error.localizedDescription)
+            case .failure(_):
+                self.getPokemonId(id: self.getIdFromURL(url: otherId)) { pokemon in
+                    completion(pokemon)
+                }
+                
             }
         }
     }
@@ -56,6 +59,12 @@ class FavoritesViewModel {
         
         return list
         
+    }
+    
+    func getIdFromURL(url : String) ->Int {
+        var newId = url.replacingOccurrences(of: Endpoint.baseURL, with: "")
+        newId = newId.replacingOccurrences(of: Endpoint.POKEMON.pokemonEntry.replacingOccurrences(of: "/", with: ""), with: "")
+        return Int(newId.replacingOccurrences(of: "/", with: "")) ?? 0
     }
     
 }

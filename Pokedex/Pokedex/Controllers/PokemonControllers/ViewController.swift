@@ -262,20 +262,31 @@ extension ViewController : UISearchBarDelegate {
 
 //MARK: - Extension PokemonDetailsViewControllerDelegate
 extension ViewController : PokemonDetailsViewControllerDelegate {
-    func pokemonVariation(other name: String, completion: @escaping (Int) -> Void) {
+    func pokemonVariation(other name: String, otherId : String, completion: @escaping (Int) -> Void) {
         viewModel.getPokemonName(name: name,completionSuc: { pokemon in
             completion(pokemon.id)
         }, completionError: { erro in
-            self.presentAction(message: erro)
+            self.viewModel.getPokemonId(id: self.viewModel.getIdFromURL(url: otherId), completionSuc: { pokemon in
+                completion(pokemon.id)
+                
+            }, completionError: { erro in
+                self.presentAction(message: erro)
+            })
         })
     }
     
-    func otherPokemon(to name: String, viewController: PokemonDetailsViewController) {
+    func otherPokemon(to name: String, otherId: String, viewController: PokemonDetailsViewController) {
         if name != "" {
             viewModel.getPokemonName(name: name,completionSuc: { pokemon in
                 viewController.setPokemon(pokemon: pokemon)
             },completionError : { erro in
-                self.presentAction(message: erro)
+                self.viewModel.getPokemonId(id: self.viewModel.getIdFromURL(url: otherId), completionSuc: {pokemon in
+                    viewController.setPokemon(pokemon: pokemon)
+                    
+                }, completionError: {erro in
+                    self.presentAction(message: erro)
+                    
+                })
             })
         }
     }

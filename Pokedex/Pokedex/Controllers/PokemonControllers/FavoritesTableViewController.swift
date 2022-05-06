@@ -98,15 +98,15 @@ extension FavoritesTableViewController {
 //MARK: -PokemonDetailsDelegate Extension
 extension FavoritesTableViewController : PokemonDetailsViewControllerDelegate {
     
-    func pokemonVariation(other name: String, completion: @escaping (Int) -> Void) {
-        viewModel.getPokemonName(name: name) { pokemon in
+    func pokemonVariation(other name: String, otherId : String, completion: @escaping (Int) -> Void) {
+        viewModel.getPokemonName(name: name, otherId: otherId) { pokemon in
             completion(pokemon.id)
         }
     }
     
-    func otherPokemon(to name: String, viewController: PokemonDetailsViewController) {
+    func otherPokemon(to name: String, otherId: String, viewController: PokemonDetailsViewController) {
         if name != "" {
-            viewModel.getPokemonName(name: name) { pokemon in
+            viewModel.getPokemonName(name: name, otherId: otherId) { pokemon in
                 viewController.setPokemon(pokemon: pokemon)
             }
         }
