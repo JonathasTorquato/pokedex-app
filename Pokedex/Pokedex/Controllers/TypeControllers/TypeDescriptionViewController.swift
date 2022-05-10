@@ -61,9 +61,8 @@ extension TypeDescriptionViewController {
         view.layer.insertSublayer(layer, below: otherView.layer)
         
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if let navigationController = self.navigationController{
             navigationController.navigationItem.leftBarButtonItem?.customView?.backgroundColor = .link
             navigationController.navigationBar.barTintColor = .clear

@@ -85,6 +85,7 @@ extension PokemonDetailsViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.barTintColor = .link
         self.navigationController?.navigationBar.tintColor = .link
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.label]
     }
     
     fileprivate func setupPokemonGender() {
