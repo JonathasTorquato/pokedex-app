@@ -169,11 +169,11 @@ extension ListAllItemsViewController : UITableViewDelegate, UITableViewDataSourc
         case .normal :
             if indexPath.row < itemLimit {
             
-                if let cell = tableView.cellForRow(at: indexPath) as? ItemsCell, let item = cell.itemValue {
-                    self.presentItemDescription(item: item)
+                if let itemId = tableView.indexPathForSelectedRow?.row{
+                    self.viewModel.getItemId(id: itemId + 1) { item in
+                        self.presentItemDescription(item: item)
+                    }
                 }
-                
-                
             }
         case .menu :
             if let cell = tableView.cellForRow(at: indexPath) as? CategoryTableViewCell, let category = cell.category {

@@ -72,6 +72,7 @@ extension FavoritesTableViewController {
             }
         }.disposed(by: bag)
         self.tableView.rx.modelSelected(PokemonDTO.self).subscribe(onNext: { [unowned self] value in
+            self.tableView.deselectRow(at: self.tableView.indexPathForSelectedRow!, animated: true)
             self.showPokemonEntry(id: value.id)
             
         }).disposed(by: bag)

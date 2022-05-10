@@ -61,13 +61,16 @@ extension TypeDescriptionViewController {
         view.layer.insertSublayer(layer, below: otherView.layer)
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationItem.leftBarButtonItem?.customView?.backgroundColor = .link
-        self.navigationController?.navigationBar.barTintColor = .clear
-         self.navigationController?.navigationBar.backgroundColor = .clear
-        self.navigationController?.navigationBar.tintColor = .white
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let navigationController = self.navigationController{
+            navigationController.navigationItem.leftBarButtonItem?.customView?.backgroundColor = .link
+            navigationController.navigationBar.barTintColor = .clear
+            navigationController.navigationBar.backgroundColor = .clear
+            navigationController.navigationBar.tintColor = .white
+            navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        }
     }
     
     //MARK: - Rx Setup

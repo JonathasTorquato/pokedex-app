@@ -31,6 +31,7 @@ class AllTypesViewController : UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.tintColor = .label
         self.navigationController?.navigationBar.tintColor = .systemBackground
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.label]
         
     }
     

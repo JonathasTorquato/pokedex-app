@@ -89,6 +89,7 @@ extension ViewController {
         }.disposed(by: bag)
         
         self.pokemonTypeTableView.rx.modelSelected(PokemonsByType.self).subscribe { model in
+            self.pokemonTypeTableView.deselectRow(at: self.pokemonTypeTableView.indexPathForSelectedRow!, animated: true)
             if let pokemon = model.element?.pokemon {
                 self.showPokemonEntryName(name: pokemon.name)
             }
@@ -176,6 +177,7 @@ extension ViewController {
 //MARK: - TableViewDelegate
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row < numberOfCells{
             showPokemonEntry(id: indexPath.row + 1)
         }
