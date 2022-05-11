@@ -37,8 +37,8 @@ class Network {
             case .success(let suc):
                 do {
                     let decoder = JSONDecoder()
-                    let pokemon = try decoder.decode(PokedexEntry.self, from: suc.data)
-                    completion(.success(pokemon))
+                    let entry = try decoder.decode(PokedexEntry.self, from: suc.data)
+                    completion(.success(entry))
                 }catch let error {
                     completion(.failure(error))
                 }
@@ -55,8 +55,8 @@ class Network {
             case .success(let suc):
                 do {
                     let decoder = JSONDecoder()
-                    let pokemon = try decoder.decode(EvolutionChainDTO.self, from: suc.data)
-                    completion(.success(pokemon))
+                    let chain = try decoder.decode(EvolutionChainDTO.self, from: suc.data)
+                    completion(.success(chain))
                 }catch let error {
                     completion(.failure(error))
                 }
@@ -73,8 +73,8 @@ class Network {
             case .success(let suc):
                 do {
                     let decoder = JSONDecoder()
-                    let pokemon = try decoder.decode(TypeDTO.self, from: suc.data)
-                    completion(.success(pokemon))
+                    let type = try decoder.decode(TypeDTO.self, from: suc.data)
+                    completion(.success(type))
                 }catch let error {
                     completion(.failure(error))
                 }
@@ -91,8 +91,8 @@ class Network {
             case .success(let suc):
                 do {
                     let decoder = JSONDecoder()
-                    let pokemon = try decoder.decode(AllTypes.self, from: suc.data)
-                    completion(.success(pokemon))
+                    let listType = try decoder.decode(AllTypes.self, from: suc.data)
+                    completion(.success(listType))
                 }catch let error {
                     completion(.failure(error))
                 }
@@ -109,8 +109,8 @@ class Network {
             case .success(let suc):
                 do {
                     let decoder = JSONDecoder()
-                    let pokemon = try decoder.decode(ItemResults.self, from: suc.data)
-                    completion(.success(pokemon))
+                    let listItem = try decoder.decode(ItemResults.self, from: suc.data)
+                    completion(.success(listItem))
                 }catch let error {
                     completion(.failure(error))
                 }
@@ -127,8 +127,8 @@ class Network {
             case .success(let suc):
                 do {
                     let decoder = JSONDecoder()
-                    let pokemon = try decoder.decode(ItemDTO.self, from: suc.data)
-                    completion(.success(pokemon))
+                    let item = try decoder.decode(ItemDTO.self, from: suc.data)
+                    completion(.success(item))
                 }catch let error {
                     completion(.failure(error))
                 }
@@ -144,8 +144,8 @@ class Network {
             case .success(let suc):
                 do {
                     let decoder = JSONDecoder()
-                    let pokemon = try decoder.decode(ItemDTO.self, from: suc.data)
-                    completion(.success(pokemon))
+                    let item = try decoder.decode(ItemDTO.self, from: suc.data)
+                    completion(.success(item))
                 }catch let error {
                     completion(.failure(error))
                 }
@@ -162,8 +162,8 @@ class Network {
             case .success(let suc):
                 do {
                     let decoder = JSONDecoder()
-                    let pokemon = try decoder.decode(ItemCategory.self, from: suc.data)
-                    completion(.success(pokemon))
+                    let category = try decoder.decode(ItemCategory.self, from: suc.data)
+                    completion(.success(category))
                 }catch let error {
                     completion(.failure(error))
                 }
@@ -180,8 +180,8 @@ class Network {
             case .success(let suc):
                 do {
                     let decoder = JSONDecoder()
-                    let pokemon = try decoder.decode(PokemonCount.self, from: suc.data)
-                    completion(.success(pokemon))
+                    let count = try decoder.decode(PokemonCount.self, from: suc.data)
+                    completion(.success(count))
                 }catch let error {
                     completion(.failure(error))
                 }
@@ -208,4 +208,3 @@ class Network {
         }
     }
 }
-
